@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //banner
+    <style name="boton" parent="">
+        <item name="cornerSizeBottomRight">40%</item>
+        <item name="cornerSizeBottomLeft">10%</item>
+        <item name="cornerSizeTopLeft">40%</item>
+        <item name="cornerSizeTopRight">10%</item>
+
+    </style>
+</resources>
