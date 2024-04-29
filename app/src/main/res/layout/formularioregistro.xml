@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILCorreo"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:hint="Correo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TECorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILContraseña"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="Contraseña"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILCorreo"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TEContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILNombre"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="Nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILContraseña"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TENombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILApellido"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="Apellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILNombre"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TEApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILelefono"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="Telefono"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILApellido"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILDNI"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:hint="DNI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILelefono"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/ic_launcher_foreground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TEDNI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/IMGRegistro"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:shapeAppearance="@style/fotoredonda"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        app:strokeColor="@android:color/holo_blue_bright"
+        app:strokeWidth="4dp" />
+
+    <Button
+        android:id="@+id/BTNRegistrar"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="275dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/orange"
+        android:text="Crear cuenta"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/orange"
+        android:textColorHint="#FF5722"
+        android:textColorLink="#FF5722"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IMGRegistro"
+        app:shapeAppearance="@style/boton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Imagen de perfil"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILDNI" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

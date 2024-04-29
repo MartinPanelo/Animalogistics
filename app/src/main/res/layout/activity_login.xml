@@ -2,23 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="1080px"
-    android:layout_height="2408px"
+    android:layout_width="@dimen/_1080px"
+    android:layout_height="@dimen/_2408px"
     tools:context=".UI.auth.login.LoginActivity">
+
+
+    <!--app:shapeAppearance="@style/banner"-->
 
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView"
-        android:layout_width="1080px"
-
-
-        android:layout_height="2408px"
-        android:scaleType="fitCenter"
+        android:layout_width="@dimen/_1080px"
+        android:layout_height="@dimen/_2408px"
+        android:scaleType="fitStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/login" />
-    <!--app:shapeAppearance="@style/banner"-->
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField"
@@ -59,7 +58,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/BTNIngresar"
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="275dp"
         android:layout_height="70dp"
@@ -77,7 +76,7 @@
         app:shapeAppearance="@style/boton" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/BTNRegistrar"
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="275dp"
         android:layout_height="70dp"
@@ -91,7 +90,7 @@
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/BTNIngresar"
         app:shapeAppearance="@style/boton" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -107,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/BTNRegistrar"
         app:layout_constraintVertical_bias="0.0"
         app:maxImageSize="50dp"
         app:srcCompat="@drawable/baseline_settings_24" />
