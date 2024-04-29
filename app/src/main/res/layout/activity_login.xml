@@ -23,17 +23,19 @@
         android:id="@+id/textField"
         android:layout_width="350dp"
         android:layout_height="60dp"
+
         android:layout_marginTop="400dp"
         android:hint="@string/usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/baseline_account_box_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,12 +45,13 @@
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:hint="@string/contrasena"
+
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textField"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/password_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

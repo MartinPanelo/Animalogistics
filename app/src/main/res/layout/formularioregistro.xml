@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/email_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TECorreo"
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TILCorreo"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/password_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TEContraseña"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TILContraseña"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/user_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TENombre"
@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TILNombre"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/user_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TEApellido"
@@ -97,7 +97,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TILApellido"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/phone_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -116,7 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TILelefono"
         app:startIconContentDescription="@string/app_name"
-        app:startIconDrawable="@drawable/ic_launcher_foreground">
+        app:startIconDrawable="@drawable/id_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TEDNI"
