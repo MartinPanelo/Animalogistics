@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_news"
+        android:enabled="true"
+        android:icon="@drawable/newspaper"
+        android:title="@string/app_name" />
+
+
+    <item
+        android:id="@+id/item_shelter"
+        android:enabled="true"
+        android:icon="@drawable/shelter"
+        android:title="@string/app_name" />
+
+    <item
+        android:id="@+id/item_search"
+        android:enabled="true"
+        android:icon="@drawable/search"
+        android:title="@string/app_name" />
+
+    <item
+        android:id="@+id/item_calendar"
+        android:enabled="true"
+        android:icon="@drawable/calendar"
+        android:title="@string/app_name" />
+</menu>
