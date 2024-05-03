@@ -73,7 +73,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/orange"
-        android:text="Ingresar"
+        android:text="@string/ingresar"
         android:textColor="@color/black"
         android:textColorHighlight="@color/orange"
         android:textColorHint="#FF5722"
@@ -91,7 +91,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/orange"
-        android:text="Registrarse"
+        android:text="@string/registrarse"
         android:textColor="@color/black"
         android:textColorHighlight="@color/orange"
         android:textColorHint="#FF5722"
@@ -103,7 +103,7 @@
         app:shapeAppearance="@style/boton" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/FABOpciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"

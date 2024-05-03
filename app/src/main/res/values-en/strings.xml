@@ -3,4 +3,9 @@
     <string name="app_name">Animalogistics</string>
     <string name="usuario">User</string>
     <string name="contrasena">Password</string>
+    <string name="campo_obligatorio_Correo">Email is required</string>
+    <string name="campo_obligatorio_Contrasena">Password is required</string>
+    <string name="ingresar">Sign in</string>
+    <string name="registrarse">Sign up</string>
+    <string name="configuraciones">Settings</string>
 </resources>
