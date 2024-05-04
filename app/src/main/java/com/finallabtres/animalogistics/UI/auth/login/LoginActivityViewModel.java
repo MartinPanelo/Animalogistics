@@ -46,7 +46,7 @@ public class LoginActivityViewModel extends AndroidViewModel{
         return CorreoM;
     }
 
-    public LiveData<Boolean> getContraseñaM(){
+    public LiveData<Boolean> getContrasenaM(){
         if(ContrasenaM == null){
             ContrasenaM = new MutableLiveData<>();
         }
@@ -64,11 +64,11 @@ public class LoginActivityViewModel extends AndroidViewModel{
             context.startActivity(intent);
         }
 
-    public void ingresar(String correo, String contraseña) {
+    public void ingresar(String correo, String contrasena) {
 
         API.ApiAnimalogistics API_A = API.getApi();
 
-        Call<String> call = API_A.Login(correo,contraseña);
+        Call<String> call = API_A.Login(correo,contrasena);
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -106,8 +106,8 @@ public class LoginActivityViewModel extends AndroidViewModel{
 
                                 }
 
-                                if (errors.has("Contraseña")) {
-                                    errorMessage = errors.getJSONArray("Contraseña").getString(0);
+                                if (errors.has("Contrasena")) {
+                                    errorMessage = errors.getJSONArray("Contrasena").getString(0);
                                     ContrasenaM.postValue(false);
                                 }else{
 

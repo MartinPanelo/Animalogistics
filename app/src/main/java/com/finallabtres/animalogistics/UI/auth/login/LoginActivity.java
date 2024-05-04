@@ -6,7 +6,9 @@ import androidx.core.os.LocaleListCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +21,8 @@ import com.finallabtres.animalogistics.databinding.ActivityLoginBinding;
 import com.finallabtres.animalogistics.databinding.ActivityMainBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
+
+import android.content.pm.PackageManager;
 
 import java.util.Locale;
 
@@ -48,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.BTNIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vm.ingresar(binding.TIETUsuario.getText().toString(), binding.TIETContraseA.getText().toString());
+                vm.ingresar(binding.TIETUsuario.getText().toString(), binding.TIETContrasena.getText().toString());
             }
         });
 
@@ -62,10 +66,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        vm.getContraseñaM().observe(this, new Observer<Boolean>() {
+        vm.getContrasenaM().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean s) {
-                binding.TILContraseA.setError(s ? null : getString(R.string.campo_obligatorio_Contrasena));
+                binding.TILContrasena.setError(s ? null : getString(R.string.campo_obligatorio_Contrasena));
             }
         });
 
@@ -106,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
+        permisos();
     }
 
 
@@ -135,6 +139,32 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
+
+
+
+    private void permisos() {
+
+        if((checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)) {
+            AlertDialog.Builder dialogo = new AlertDialog.Builder(LoginActivity.this);
+            dialogo.setTitle("Permisos Desactivados");
+            dialogo.setMessage("Debe aceptar los permisos para el correcto funcionamiento de la App");
+
+            dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 100);
+                }
+            });
+
+
+            dialogo.show();
+        }
+    }
+
 }
 
 

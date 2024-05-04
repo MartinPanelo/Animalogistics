@@ -7,8 +7,12 @@
     <string name="ingresar">Ingresar</string>
     <string name="registrarse">Registrarse</string>
     <string name="campo_obligatorio_Correo">El Correo es obligatorio</string>
-    <string name="campo_obligatorio_Contrasena">La Contraseña es obligatoria</string>
+    <string name="campo_obligatorio_Contrasena">La Contrasena es obligatoria</string>
     <string name="configuraciones">Configuraciones</string>
+    <string name="campo_obligatorio_Apellido">El apellido es obligatorio</string>
+    <string name="campo_obligatorio_Nombre">El nombre es obligatorio</string>
+    <string name="campo_obligatorio_Telefono">El telefono es obligatorio</string>
+    <string name="campo_obligatorio_DNI">El DNI es obligatorio</string>
 </resources>
 
 

@@ -6,14 +6,14 @@ public class UsuarioLogin implements Serializable {
 
     private String Correo;
 
-    private String Contraseña;
+    private String Contrasena;
 
     public UsuarioLogin() {};
 
 
-    public UsuarioLogin(String correo, String contraseña) {
+    public UsuarioLogin(String correo, String contrasena) {
         Correo = correo;
-        Contraseña = contraseña;
+        Contrasena = contrasena;
     }
 
     public String getCorreo() {
@@ -24,19 +24,19 @@ public class UsuarioLogin implements Serializable {
         Correo = correo;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getContrasena() {
+        return Contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        Contrasena = contrasena;
     }
 
     @Override
     public String toString() {
         return "UsuarioLogin{" +
                 "Correo='" + Correo + '\'' +
-                ", Contraseña='" + Contraseña + '\'' +
+                ", Contrasena='" + Contrasena + '\'' +
                 '}';
     }
 }

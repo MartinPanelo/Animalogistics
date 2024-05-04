@@ -2,14 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CLFormularioRegistro"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TILCorreo"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_width="352dp"
+        android:layout_height="85dp"
         android:layout_marginTop="40dp"
         android:hint="Correo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,16 +23,17 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TECorreo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="contra@contra.com" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TILContraseña"
+        android:id="@+id/TILContrasena"
         android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_height="85dp"
         android:layout_marginTop="25dp"
-        android:hint="Contraseña"
+        android:hint="Contrasena"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,36 +42,38 @@
         app:startIconDrawable="@drawable/password_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TEContraseña"
+            android:id="@+id/TEContrasena"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="contra" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TILNombre"
         android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TILContraseña"
+        app:layout_constraintTop_toBottomOf="@+id/TILContrasena"
         app:startIconContentDescription="@string/app_name"
         app:startIconDrawable="@drawable/user_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TENombre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="contra" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TILApellido"
         android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Apellido"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,14 +86,15 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TEApellido"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="contra" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TILelefono"
+        android:id="@+id/TILTelefono"
         android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Telefono"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,27 +106,29 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="222222" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TILDNI"
         android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="DNI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TILelefono"
+        app:layout_constraintTop_toBottomOf="@+id/TILTelefono"
         app:startIconContentDescription="@string/app_name"
         app:startIconDrawable="@drawable/id_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TEDNI"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="111111" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,7 +146,8 @@
         app:shapeAppearance="@style/fotoredonda"
         app:srcCompat="@android:drawable/ic_menu_camera"
         app:strokeColor="@android:color/holo_blue_bright"
-        app:strokeWidth="4dp" />
+        app:strokeWidth="4dp"
+        android:scaleType="centerCrop"/>
 
     <Button
         android:id="@+id/BTNRegistrar"

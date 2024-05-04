@@ -43,7 +43,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TILContraseña"
+        android:id="@+id/TILContrasena"
         android:layout_width="358dp"
         android:layout_height="85dp"
         android:layout_marginTop="10dp"
@@ -59,7 +59,7 @@
         app:startIconDrawable="@drawable/password_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TIETContraseña"
+            android:id="@+id/TIETContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
@@ -81,7 +81,7 @@
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TILContraseña"
+        app:layout_constraintTop_toBottomOf="@+id/TILContrasena"
         app:shapeAppearance="@style/boton" />
 
     <Button

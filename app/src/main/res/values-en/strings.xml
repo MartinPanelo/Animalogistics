@@ -8,4 +8,8 @@
     <string name="ingresar">Sign in</string>
     <string name="registrarse">Sign up</string>
     <string name="configuraciones">Settings</string>
+    <string name="campo_obligatorio_Apellido">The last name is required.</string>
+    <string name="campo_obligatorio_Nombre">The name is required.</string>
+    <string name="campo_obligatorio_Telefono">The phone number is required.</string>
+    <string name="campo_obligatorio_DNI">The ID number is required.</string>
 </resources>

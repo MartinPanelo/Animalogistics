@@ -3,17 +3,23 @@ package com.finallabtres.animalogistics.API;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public class API {
 
@@ -53,7 +59,20 @@ public class API {
 
         @FormUrlEncoded
         @POST("ControllerUsuario/usuarioLogin")
-        Call<String> Login (@Field("correo") String correo, @Field("contraseña") String contraseña);
+        Call<String> Login (@Field("correo") String correo, @Field("contrasena") String contrasena);
+
+
+        /*---------------------REGISTRO---------------------*/
+
+        @Multipart
+        @POST("ControllerUsuario/usuarioRegistrar")
+        Call<Usuario> Registrar (@Part("Correo") RequestBody Correo,
+                                 @Part("Contrasena") RequestBody Contrasena,
+                                 @Part("Nombre") RequestBody Nombre,
+                                 @Part("Apellido") RequestBody Apellido,
+                                 @Part("Telefono") RequestBody Telefono,
+                                 @Part("DNI") RequestBody DNI,
+                                 @Part MultipartBody.Part FotoFile);
 
 
     }
