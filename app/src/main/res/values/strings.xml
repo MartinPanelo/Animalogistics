@@ -13,6 +13,10 @@
     <string name="campo_obligatorio_Nombre">El nombre es obligatorio</string>
     <string name="campo_obligatorio_Telefono">El telefono es obligatorio</string>
     <string name="campo_obligatorio_DNI">El DNI es obligatorio</string>
+    <string name="Noticias">Noticias</string>
+    <string name="Refugios">Refugios</string>
+    <string name="RegistrarAnimal">Agregar Animal</string>
+    <string name="Eventos">Eventos</string>
 </resources>
 
 

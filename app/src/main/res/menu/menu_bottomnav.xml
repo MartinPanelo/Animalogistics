@@ -1,26 +1,28 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
     <item
-        android:id="@+id/item_news"
+        android:id="@+id/item_noticias"
         android:enabled="true"
         android:icon="@drawable/newspaper"
-        android:title="@string/app_name" />
-
+        android:title="@string/Noticias" />
 
     <item
-        android:id="@+id/item_shelter"
+        android:id="@+id/item_refugios"
         android:enabled="true"
         android:icon="@drawable/shelter"
-        android:title="@string/app_name" />
+        android:title="@string/Refugios" />
 
     <item
-        android:id="@+id/item_search"
+        android:id="@+id/item_registrar_animal"
         android:enabled="true"
         android:icon="@drawable/search"
-        android:title="@string/app_name" />
+        android:title="@string/RegistrarAnimal" />
 
     <item
-        android:id="@+id/item_calendar"
+        android:id="@+id/item_eventos"
         android:enabled="true"
         android:icon="@drawable/calendar"
-        android:title="@string/app_name" />
+        android:title="@string/Eventos" />
 </menu>

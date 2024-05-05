@@ -1,9 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Animalogistics" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Animalogistics" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
     </style>
 
     <style name="Theme.Animalogistics" parent="Base.Theme.Animalogistics" />
+
+    <style name="Theme.Animalogistics.AppBarOverlay" parent="ThemeOverlay.Material3.Light" />
+
+    <style name="Theme.Animalogistics.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
+
+
+    <style name="Theme.Animalogistics.chipi" parent="Base.Theme.Animalogistics">
+        <item name="chipStyle">@style/Chip</item>
+    </style>
 </resources>
