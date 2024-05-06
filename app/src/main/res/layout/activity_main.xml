@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="start"
+    android:layout_gravity="start|top"
     android:fitsSystemWindows="true">
 
 
@@ -18,44 +17,37 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.Animalogistics.PopupOverlay" />
 
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".MainActivity">
 
 
+        <!--// aca tendria que estar el contenentfragment?-->
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/host_fragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-  <!--// aca tendria que estar el contenentfragment?-->
-
-    <include layout="@layout/host_fragment" />
-
-
-
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="391dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="700dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="horizontal"
@@ -85,6 +77,6 @@
         android:layout_marginBottom="?attr/actionBarSize"
         android:fitsSystemWindows="true"
         app:drawerLayoutCornerSize="30dp"
-        app:headerLayout="@layout/navside"/>
+        app:headerLayout="@layout/navside" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

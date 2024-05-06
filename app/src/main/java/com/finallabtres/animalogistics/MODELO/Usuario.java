@@ -8,105 +8,101 @@ import java.util.Objects;
 
 public class Usuario implements Serializable {
 
-    private int Id;
-    private String Nombre;
-    private String Apellido;
-    private String DNI;
-    private String Telefono;
-    private String Contrasena;
-    private String Correo;
-    private String FotoUrl;
+    private int id;
+    private String nombre;
+    private String apellido;
+    private String dni;
+    private String telefono;
+    private String contrasena;
+    private String Ccorreo;
+    private String fotoUrl;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String DNI, String telefono, String contrasena, String correo) {
-
-        this.Nombre = nombre;
-        this.Apellido = apellido;
-        this.DNI = DNI;
-        this.Telefono = telefono;
-        this.Contrasena = contrasena;
-        this.Correo = correo;
+    public Usuario(int id, String nombre, String apellido, String dni, String telefono, String contrasena, String ccorreo, String fotoUrl) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.contrasena = contrasena;
+        Ccorreo = ccorreo;
+        this.fotoUrl = fotoUrl;
     }
-    public Usuario(int id, String nombre, String apellido, String DNI, String telefono, String contrasena, String correo, String fotoUrl) {
-        this.Id = id;
-        this.Nombre = nombre;
-        this.Apellido = apellido;
-        this.DNI = DNI;
-        this.Telefono = telefono;
-        this.Contrasena = contrasena;
-        this.Correo = correo;
-        this.FotoUrl = fotoUrl;
+
+    public Usuario(String nombre, String apellido, String dni, String telefono, String contrasena, String ccorreo, String fotoUrl) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.contrasena = contrasena;
+        Ccorreo = ccorreo;
+        this.fotoUrl = fotoUrl;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
-        Apellido = apellido;
+        this.apellido = apellido;
     }
 
-    public String getDNI() {
-        return DNI;
+    public String getDni() {
+        return dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        Telefono = telefono;
+        this.telefono = telefono;
     }
 
     public String getContrasena() {
-        return Contrasena;
+        return contrasena;
     }
 
     public void setContrasena(String contrasena) {
-        Contrasena = contrasena;
+        this.contrasena = contrasena;
     }
 
-    public String getCorreo() {
-        return Correo;
+    public String getCcorreo() {
+        return Ccorreo;
     }
 
-    public void setCorreo(String correo) {
-        Correo = correo;
+    public void setCcorreo(String ccorreo) {
+        Ccorreo = ccorreo;
     }
 
     public String getFotoUrl() {
-        return FotoUrl;
+        return fotoUrl;
     }
 
     public void setFotoUrl(String fotoUrl) {
-        FotoUrl = fotoUrl;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.Id);
+        this.fotoUrl = fotoUrl;
     }
 
     @Override
@@ -114,15 +110,15 @@ public class Usuario implements Serializable {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Usuario that = (Usuario) obj;
-        return Id == that.Id;
+        return id == that.id;
     }
 
     @NonNull
     @Override
     public String toString() {
         return "Usuario {" +
-                "nombre='" + Nombre + '\'' +
-                ", apellido='" + Apellido + '\'' +
+                "nombre='" + getNombre() + '\'' +
+                ", apellido='" + getApellido() + '\'' +
                 '}';
     }
 }

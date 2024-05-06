@@ -4,39 +4,39 @@ import java.io.Serializable;
 
 public class UsuarioLogin implements Serializable {
 
-    private String Correo;
+    private String correo;
 
-    private String Contrasena;
+    private String contrasena;
 
     public UsuarioLogin() {};
 
 
     public UsuarioLogin(String correo, String contrasena) {
-        Correo = correo;
-        Contrasena = contrasena;
+        correo = correo;
+        contrasena = contrasena;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
-        Correo = correo;
+        correo = correo;
     }
 
     public String getContrasena() {
-        return Contrasena;
+        return contrasena;
     }
 
     public void setContrasena(String contrasena) {
-        Contrasena = contrasena;
+        contrasena = contrasena;
     }
 
     @Override
     public String toString() {
         return "UsuarioLogin{" +
-                "Correo='" + Correo + '\'' +
-                ", Contrasena='" + Contrasena + '\'' +
+                "Correo='" + correo + '\'' +
+                ", Contrasena='" + contrasena + '\'' +
                 '}';
     }
 }

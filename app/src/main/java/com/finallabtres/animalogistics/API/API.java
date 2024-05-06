@@ -3,9 +3,12 @@ package com.finallabtres.animalogistics.API;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -16,6 +19,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -75,7 +79,19 @@ public class API {
                                  @Part MultipartBody.Part FotoFile);
 
 
+
+
+        /*---------------------NOTICIA---------------------*/
+
+        @GET("ControllerNoticia/noticiaLista")
+        Call<List<Noticia>> noticiaLista(@Header("Authorization") String token);
+
+
+
+
     }
+        /*---------------------TOKEN---------------------*/
+
 
     public static void GuardarToken(Context context, String token){
 

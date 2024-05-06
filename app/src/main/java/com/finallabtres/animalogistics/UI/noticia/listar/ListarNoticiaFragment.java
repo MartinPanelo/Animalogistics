@@ -1,33 +1,42 @@
 package com.finallabtres.animalogistics.UI.noticia.listar;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.Binder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListarNoticiaFragment extends Fragment {
 
     ListarNoticiaViewModel vm;
      FragmentListarNoticiaBinding binding;
+
 
 
    /* public static ListarNoticiaFragment newInstance() {
@@ -45,69 +54,51 @@ public class ListarNoticiaFragment extends Fragment {
 
 
 
-        // Lista de strings
-        List<String> listaDeChips = new ArrayList<>();
-        listaDeChips.add("Chip 1");
-        listaDeChips.add("Chip 2");
-        listaDeChips.add("Chip 3");
-        listaDeChips.add("Chip 4");
-        listaDeChips.add("Chip 5");
-        listaDeChips.add("Chip 6");
-        listaDeChips.add("Chip 7");
-        listaDeChips.add("Chip 8");
-        listaDeChips.add("Chip 9");
+        // lista de botones
 
-
-        ChipGroup chipGroup = binding.chipGroup;
-
-        for (String chip : listaDeChips) {
-            Chip chips = new Chip(this.getContext());
-
-            chips.setText(chip);
-            chips.setCheckable(true);
-            chipGroup.addView(chips);
-            chips.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
-                // aca me voy al vm y le mando la categoria y traigo las noticias y inflo el recycler
-            });
-        }
-
-
-
-
-
-
-/*        binding.button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                vm.cargarNoticiasPorCategoria("");
-            }
-        });*/
-/*
+        List<String> buttonTexts = Arrays.asList("Botón 1", "Botón 2", "Botón 3");
         MaterialButtonToggleGroup toggleButton = binding.toggleButton;
 
 
+        // Recorre la lista de textos y crea un botón para cada uno
+        for (String text : buttonTexts) {
+            MaterialButton button = new MaterialButton(root.getContext(), null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
+            button.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
+            button.setText(text);
+            button.setStrokeColorResource(R.color.orange);
+            button.setStrokeWidth(4);
+            toggleButton.addView(button);
+        }
 
-        toggleButton.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
 
+       /* ----------------cargo todas las noticias--------------------*/
 
+        vm.getErrorM().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String error) {
 
-
-            String message = "";
-
-            if(checkedId == R.id.button1){
-                message = "Button 1" + (isChecked ? " checked" : " unchecked");
-                Snackbar.make(root, message, Snackbar.LENGTH_SHORT).show();
-            } else if (checkedId == R.id.button2){
-                message = "Button 2" + (isChecked ? " checked" : " unchecked");
-            }else if (checkedId == R.id.button3){
-                message = "Button 3" + (isChecked ? " checked" : " unchecked");
+                Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();
             }
-
-
         });
-*/
+
+
+        vm.getListaNoticiasM().observe(getViewLifecycleOwner(), new Observer<List<Noticia>>() {
+            @Override
+            public void onChanged(List<Noticia> listaNoticias) {
+
+                GridLayoutManager glm=new GridLayoutManager(getContext(),1,GridLayoutManager.VERTICAL,false);
+                binding.RVNoticias.setLayoutManager(glm);
+
+                NoticiaAdapter noticiaAdapter=new NoticiaAdapter(listaNoticias,getContext(),getLayoutInflater()/*,getActivity()*/);
+                binding.RVNoticias.setAdapter(noticiaAdapter);
+            }
+        });
+
+        vm.cargarNoticias();
+
 
 
 
