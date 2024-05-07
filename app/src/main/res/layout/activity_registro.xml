@@ -52,22 +52,6 @@
                 app:srcCompat="@drawable/bannerregistro" />
 
 
-            <TextView
-                android:id="@+id/TVTituloRegistro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:background="#00FFFFFF"
-                android:clickable="false"
-                android:text="Registro"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-
-                android:textSize="48sp"
-                android:translationX="100dp"
-                android:translationY="0dp" />
-
-
             <!--            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,6 +65,21 @@
                     app:layout_collapseMode="pin" />
 
             </androidx.appcompat.widget.Toolbar>-->
+
+            <TextView
+                android:id="@+id/TVTituloRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:layout_marginLeft="100dp"
+                android:background="#00FFFFFF"
+                android:clickable="false"
+                android:text="@string/registro"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+
+                android:textStyle="bold"
+                android:textSize="50sp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

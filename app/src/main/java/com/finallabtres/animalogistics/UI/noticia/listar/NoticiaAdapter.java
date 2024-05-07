@@ -84,14 +84,13 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
             super(itemView);
 
             imagen = itemView.findViewById(R.id.IMGFotoNoticia);
-
             titulo = itemView.findViewById(R.id.TVTitulo);
             autor = itemView.findViewById(R.id.TVAutor);
 
 
 
 
-     /*       itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
@@ -103,9 +102,9 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
                     bundle.putSerializable("itemnoticia", noticia);
 
                     Navigation.findNavController(view).
-                            navigate(R.id.ACAELFRAGMETQUEVAALANOTICIA, bundle);
+                            navigate(R.id.detalleNoticiaFragment, bundle);
                 }
-            });*/
+            });
 
         }
     }

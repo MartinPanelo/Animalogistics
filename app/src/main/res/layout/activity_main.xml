@@ -23,27 +23,8 @@
             app:popupTheme="@style/Theme.Animalogistics.PopupOverlay" />
 
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        tools:context=".MainActivity">
-
-
-        <!--// aca tendria que estar el contenentfragment?-->
-
-        <include
-            android:id="@+id/include"
-            layout="@layout/host_fragment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -67,6 +48,24 @@
 
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".MainActivity">
+
+
+        <!--// aca tendria que estar el contenentfragment?-->
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/host_fragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

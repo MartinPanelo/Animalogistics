@@ -50,6 +50,12 @@
         android:name="com.finallabtres.animalogistics.UI.animal.listar.ListarAnimalFragment"
         android:label="fragment_listar_animal"
         tools:layout="@layout/fragment_listar_animal" />
+    <fragment
+        android:id="@+id/detalleNoticiaFragment"
+        android:name="com.finallabtres.animalogistics.UI.noticia.detalle.DetalleNoticiaFragment"
+        android:label="fragment_detalle_noticia"
+        tools:layout="@layout/fragment_detalle_noticia" />
+
     <!--
     ojoooooooooooooooooooooooooooooooooooooooo
 -->
