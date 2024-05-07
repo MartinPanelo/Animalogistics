@@ -36,7 +36,7 @@
         <activity
             android:name=".UI.auth.registro.RegistroActivity"
             android:exported="false"
-            android:theme="@style/Theme.Material3.Dark.NoActionBar"/>
+            android:theme="@style/Theme.Animalogistics"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -54,7 +54,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Material3.Dark.NoActionBar">
+            android:theme="@style/Theme.Animalogistics">
         </activity>
     </application>
 

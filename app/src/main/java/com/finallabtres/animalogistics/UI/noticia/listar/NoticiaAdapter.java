@@ -58,7 +58,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
                 .load(/*API.URLBASE + */listaNoticias.get(position).getBannerUrl())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
-                .override(210,238)
+                .override(150, 150)
                 .into(holder.imagen);
 
     }

@@ -12,8 +12,4 @@
 
     <style name="Theme.Animalogistics.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 
-
-    <style name="Theme.Animalogistics.chipi" parent="Base.Theme.Animalogistics">
-        <item name="chipStyle">@style/Chip</item>
-    </style>
 </resources>

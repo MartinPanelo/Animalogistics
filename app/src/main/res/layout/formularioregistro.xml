@@ -24,7 +24,9 @@
             android:id="@+id/TECorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="contra@contra.com" />
+            android:text="contra@contra.com"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +47,9 @@
             android:id="@+id/TEContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="contra" />
+            android:text="contra"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +70,9 @@
             android:id="@+id/TENombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="contra" />
+            android:text="contra"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +93,9 @@
             android:id="@+id/TEApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="contra" />
+            android:text="contra"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +115,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="222222" />
+            android:text="222222"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +138,9 @@
             android:id="@+id/TEDNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="111111" />
+            android:text="111111"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -15,6 +15,11 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="fotopuntaredonda" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20%</item>
+    </style>
+
 
     <style name="Chip" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipStrokeColor">#C11526</item>
