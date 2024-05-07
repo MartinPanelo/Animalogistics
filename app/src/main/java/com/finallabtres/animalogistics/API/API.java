@@ -24,6 +24,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 
 public class API {
 
@@ -85,6 +86,11 @@ public class API {
 
         @GET("ControllerNoticia/noticiaLista")
         Call<List<Noticia>> noticiaLista(@Header("Authorization") String token);
+
+        @GET("ControllerNoticia/noticiaListarPorCategoria")
+        Call<List<Noticia>> noticiaListaPorCategoria(@Header("Authorization") String token, @Query("categoria") String categoria);
+
+
 
 
 

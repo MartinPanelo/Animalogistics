@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Binder;
 import android.os.Bundle;
 
@@ -31,6 +32,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class ListarNoticiaFragment extends Fragment {
 
@@ -54,27 +56,48 @@ public class ListarNoticiaFragment extends Fragment {
 
 
 
-        // lista de botones
-
-        List<String> buttonTexts = Arrays.asList("Botón 1", "Botón 2", "Botón 3");
-        MaterialButtonToggleGroup toggleButton = binding.toggleButton;
+        /* ----------------cargo las caterogias--------------------*/
 
 
-        // Recorre la lista de textos y crea un botón para cada uno
-        for (String text : buttonTexts) {
-            MaterialButton button = new MaterialButton(root.getContext(), null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
-            button.setLayoutParams(new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            ));
-            button.setText(text);
-            button.setStrokeColorResource(R.color.orange);
-            button.setStrokeWidth(4);
-            toggleButton.addView(button);
-        }
+        vm.getListaCategoriasM().observe(getViewLifecycleOwner(), new Observer<Set<String>>() {
+            @Override
+            public void onChanged(Set<String> categorias) {
+                // Limpiar el toggleButton
+               // binding.toggleButton.clearChecked();
+                binding.toggleButton.removeAllViews();
 
 
-       /* ----------------cargo todas las noticias--------------------*/
+
+
+                // Crear y agregar el botón "Todas"
+                addButton(root.getContext(),"todas", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        vm.cargarDatos();
+
+                    }
+                });
+
+                // Crear y agregar los botones de categoría
+                for (String categoria : categorias) {
+                    addButton(root.getContext(), categoria, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            vm.cargarNoticiasPorCategorias(categoria);
+                        }
+                    });
+                }
+
+
+            }
+        });
+
+
+
+
+
+
+        /* ----------------cargo todas las noticias--------------------*/
 
         vm.getErrorM().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -97,7 +120,9 @@ public class ListarNoticiaFragment extends Fragment {
             }
         });
 
-        vm.cargarNoticias();
+        vm.cargarDatos();
+
+
 
 
 
@@ -106,6 +131,23 @@ public class ListarNoticiaFragment extends Fragment {
     return root;
     }
 
+
+    private void addButton(Context context, String text, View.OnClickListener listener) {
+        MaterialButton button = new MaterialButton(context, null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
+        button.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+        button.setText(text);
+        button.setTextColor(context.getResources().getColor(R.color.black));
+        button.setStrokeColorResource(R.color.orange);
+        button.setStrokeWidth(4);
+        button.setOnClickListener(listener);
+        binding.toggleButton.addView(button);
+        if(text.equals("todas")){
+            button.setChecked(true);
+        }
+    }
 
 }
 /*
