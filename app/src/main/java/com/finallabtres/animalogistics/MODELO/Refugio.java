@@ -12,12 +12,13 @@ public class Refugio implements Serializable {
     private String telefono;
     private Double gpsy;
     private Double gpsx;
+    private int gpsRango;
     private String bannerUrl;
 
     public Refugio() {
     }
 
-    public Refugio(int id, Usuario usuario, String nombre, String direccion, String descripcion, String telefono, Double gpsy, Double gpsx, String bannerUrl) {
+    public Refugio(int id, Usuario usuario, String nombre, String direccion, String descripcion, String telefono, Double gpsy, Double gpsx, int gpsRango, String bannerUrl) {
         this.id = id;
         this.usuario = usuario;
         this.nombre = nombre;
@@ -26,10 +27,11 @@ public class Refugio implements Serializable {
         this.telefono = telefono;
         this.gpsy = gpsy;
         this.gpsx = gpsx;
+        this.gpsRango = gpsRango;
         this.bannerUrl = bannerUrl;
     }
 
-    public Refugio(Usuario usuario, String nombre, String direccion, String descripcion, String telefono, Double gpsy, Double gpsx, String bannerUrl) {
+    public Refugio(Usuario usuario, String nombre, String direccion, String descripcion, String telefono, Double gpsy, Double gpsx, int gpsRango, String bannerUrl) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -37,6 +39,7 @@ public class Refugio implements Serializable {
         this.telefono = telefono;
         this.gpsy = gpsy;
         this.gpsx = gpsx;
+        this.gpsRango = gpsRango;
         this.bannerUrl = bannerUrl;
     }
 
@@ -102,6 +105,14 @@ public class Refugio implements Serializable {
 
     public void setGpsx(Double gpsx) {
         this.gpsx = gpsx;
+    }
+
+    public void setRango(int gpsRango) {
+        this.gpsRango = gpsRango;
+    }
+
+    public int getRango() {
+        return gpsRango;
     }
 
     public String getBannerUrl() {

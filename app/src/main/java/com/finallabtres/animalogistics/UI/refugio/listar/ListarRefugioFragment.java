@@ -1,38 +1,160 @@
 package com.finallabtres.animalogistics.UI.refugio.listar;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TableRow;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.API.API;
+import com.finallabtres.animalogistics.MODELO.Noticia;
+import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
+import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
+import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
+import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.finallabtres.animalogistics.databinding.FragmentListarRefugioBinding;
+import com.finallabtres.animalogistics.databinding.PerfilrefugioBinding;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
+import java.util.Objects;
 
 public class ListarRefugioFragment extends Fragment {
 
-    private ListarRefugioViewModel mViewModel;
-
-    public static ListarRefugioFragment newInstance() {
-        return new ListarRefugioFragment();
-    }
+    ListarRefugioViewModel vm;
+    FragmentListarRefugioBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_listar_refugio, container, false);
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ListarRefugioViewModel.class);
-        // TODO: Use the ViewModel
-    }
+        binding = FragmentListarRefugioBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        vm = new ViewModelProvider(this).get(ListarRefugioViewModel.class);
+
+        vm.getMapaDeRefugios().observe(getViewLifecycleOwner(), new Observer<ListarRefugioViewModel.MapaActual>() {
+            @Override
+            public void onChanged(ListarRefugioViewModel.MapaActual mapaActual) {
+                SupportMapFragment SMF = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
+                SMF.getMapAsync(mapaActual);
+
+            }
+        });
+
+
+        vm.getMarker().observe(getViewLifecycleOwner(), new Observer<Marker>() {
+
+            @Override
+            public void onChanged(Marker marker) {
+
+              vm.cargarPerfilRefugio(marker);
+
+
+
+
+         /*
+
+
+
+              ;*/
+
+            }
+        });
+
+        vm.getPerfilRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
+            @Override
+            public void onChanged(Refugio refugio) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(ListarRefugioFragment.this.requireContext());
+                View view1 = LayoutInflater.from(ListarRefugioFragment.this.getContext()).inflate(R.layout.perfilrefugio, null);
+                bottomSheetDialog.setContentView(view1);
+
+
+                ShapeableImageView SIVBanner = view1.findViewById(R.id.IMGFotoRefugio);
+
+
+                Glide.with(requireActivity())
+                        .load(/*API.URLBASE +  refugio.getBannerUrl()*/"https://random.imagecdn.app/200/200")
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .fitCenter()
+                        .override(210,238)
+                        .into(SIVBanner);
+
+                TextView nombrerefugio = view1.findViewById(R.id.TVNombreRefugio);
+                nombrerefugio.setText(refugio.getNombre());
+
+                TextView direccionrefugio = view1.findViewById(R.id.TVDireccion);
+                direccionrefugio.setText(refugio.getDireccion());
+
+                TextView telefonorefugio = view1.findViewById(R.id.TVTelefono);
+                telefonorefugio.setText(refugio.getTelefono());
+
+                Button BTN = view1.findViewById(R.id.BTNDetalleRefugio);
+
+
+                BTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putSerializable("itemnoticia", refugio);
+
+                        Snackbar.make(view, "En construccion"+refugio.getId(), Snackbar.LENGTH_LONG).show();
+
+                    /*    Navigation.findNavController(view).
+                                navigate(R.id.ACAELFRAGEMEDETAALDEUNREFUGIO, bundle);*/
+                    }
+                });
+
+                bottomSheetDialog.show();
+            }
+        });
+
+        vm.getErrorM().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String error) {
+
+                Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();
+            }
+        });
+
+
+
+        vm.getListaRefugioM().observe(getViewLifecycleOwner(), new Observer<List<Refugio>>() {
+            @Override
+            public void onChanged(List<Refugio> refugios) {
+                vm.ObtenerMapa();
+            }
+        });
+
+
+        vm.CargarRefugios();
+
+
+        return root;
+    };
 
 }

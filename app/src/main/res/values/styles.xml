@@ -22,7 +22,7 @@
         <item name="cornerSizeTopRight">20dp</item>
     </style>
 
-    <style name="bannernoticia" parent="">
+    <style name="banner" parent="">
         <item name="cornerSizeBottomRight">50dp</item>
         <item name="cornerSizeBottomLeft">50dp</item>
         <item name="cornerSizeTopLeft">0dp</item>

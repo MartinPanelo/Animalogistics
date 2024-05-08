@@ -16,5 +16,10 @@
     <color name="Azulado">#009688</color>
 
 
+    <!--MAPA-->
+    <color name="Area">#81009688</color>
+    <color name="Perimetro">#E2006296</color>
+
+
 
 </resources>

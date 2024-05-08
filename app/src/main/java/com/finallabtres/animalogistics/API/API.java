@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.finallabtres.animalogistics.MODELO.Noticia;
+import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,8 +92,10 @@ public class API {
         Call<List<Noticia>> noticiaListaPorCategoria(@Header("Authorization") String token, @Query("categoria") String categoria);
 
 
+        /*---------------------REFUGIO---------------------*/
 
-
+        @GET("ControllerRefugio/refugioLista")
+        Call<List<Refugio>> refugioLista(@Header("Authorization") String token);
 
 
     }
