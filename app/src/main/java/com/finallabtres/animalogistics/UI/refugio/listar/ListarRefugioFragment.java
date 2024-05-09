@@ -27,6 +27,7 @@ import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
 import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
+import com.finallabtres.animalogistics.UI.refugio.detalle.DetalleRefugioFragment;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarRefugioBinding;
 import com.finallabtres.animalogistics.databinding.PerfilrefugioBinding;
@@ -45,6 +46,10 @@ public class ListarRefugioFragment extends Fragment {
     ListarRefugioViewModel vm;
     FragmentListarRefugioBinding binding;
 
+    View viewperfilrefugio;
+
+    BottomSheetDialog bottomSheetDialog;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -53,6 +58,9 @@ public class ListarRefugioFragment extends Fragment {
         View root = binding.getRoot();
 
         vm = new ViewModelProvider(this).get(ListarRefugioViewModel.class);
+
+
+
 
         vm.getMapaDeRefugios().observe(getViewLifecycleOwner(), new Observer<ListarRefugioViewModel.MapaActual>() {
             @Override
@@ -72,27 +80,23 @@ public class ListarRefugioFragment extends Fragment {
 
               vm.cargarPerfilRefugio(marker);
 
-
-
-
-         /*
-
-
-
-              ;*/
-
             }
         });
 
         vm.getPerfilRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
             @Override
             public void onChanged(Refugio refugio) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(ListarRefugioFragment.this.requireContext());
-                View view1 = LayoutInflater.from(ListarRefugioFragment.this.getContext()).inflate(R.layout.perfilrefugio, null);
-                bottomSheetDialog.setContentView(view1);
 
 
-                ShapeableImageView SIVBanner = view1.findViewById(R.id.IMGFotoRefugio);
+                viewperfilrefugio = LayoutInflater.from(ListarRefugioFragment.this.getContext()).inflate(R.layout.perfilrefugio, null);
+
+                if(bottomSheetDialog == null){
+                    bottomSheetDialog = new BottomSheetDialog(ListarRefugioFragment.this.requireContext());
+                }
+                bottomSheetDialog.setContentView(viewperfilrefugio);
+
+
+                ShapeableImageView SIVBanner = viewperfilrefugio.findViewById(R.id.IMGFotoRefugio);
 
 
                 Glide.with(requireActivity())
@@ -102,34 +106,41 @@ public class ListarRefugioFragment extends Fragment {
                         .override(210,238)
                         .into(SIVBanner);
 
-                TextView nombrerefugio = view1.findViewById(R.id.TVNombreRefugio);
+                TextView nombrerefugio = viewperfilrefugio.findViewById(R.id.TVNombreRefugio);
                 nombrerefugio.setText(refugio.getNombre());
 
-                TextView direccionrefugio = view1.findViewById(R.id.TVDireccion);
+                TextView direccionrefugio = viewperfilrefugio.findViewById(R.id.TVDireccion);
                 direccionrefugio.setText(refugio.getDireccion());
 
-                TextView telefonorefugio = view1.findViewById(R.id.TVTelefono);
+                TextView telefonorefugio = viewperfilrefugio.findViewById(R.id.TVTelefono);
                 telefonorefugio.setText(refugio.getTelefono());
 
-                Button BTN = view1.findViewById(R.id.BTNDetalleRefugio);
+                Button BTN = viewperfilrefugio.findViewById(R.id.BTNDetalleRefugio);
 
 
                 BTN.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
+                        bottomSheetDialog.dismiss();
+
                         Bundle bundle = new Bundle();
 
-                        bundle.putSerializable("itemnoticia", refugio);
+                        bundle.putSerializable("itemrefugio", refugio);
 
-                        Snackbar.make(view, "En construccion"+refugio.getId(), Snackbar.LENGTH_LONG).show();
+                    //    Snackbar.make(view, "En construccion"+refugio.getId(), Snackbar.LENGTH_LONG).show();
 
-                    /*    Navigation.findNavController(view).
-                                navigate(R.id.ACAELFRAGEMEDETAALDEUNREFUGIO, bundle);*/
+
+                        Navigation.findNavController(root).
+                                navigate(R.id.detalleRefugioFragment, bundle);
                     }
                 });
 
-                bottomSheetDialog.show();
+                if(!bottomSheetDialog.isShowing()){
+                    bottomSheetDialog.show();
+                }
+                   // bottomSheetDialog.show();
+
             }
         });
 
@@ -151,7 +162,8 @@ public class ListarRefugioFragment extends Fragment {
         });
 
 
-        vm.CargarRefugios();
+
+            vm.CargarRefugios();
 
 
         return root;

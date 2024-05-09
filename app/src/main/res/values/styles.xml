@@ -15,6 +15,11 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="fotopuntacortada" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
     <style name="fotopuntaredonda" parent="">
         <item name="cornerSizeBottomRight">20dp</item>
         <item name="cornerSizeBottomLeft">50dp</item>

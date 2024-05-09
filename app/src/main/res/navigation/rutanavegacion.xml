@@ -54,7 +54,20 @@
         android:id="@+id/detalleNoticiaFragment"
         android:name="com.finallabtres.animalogistics.UI.noticia.detalle.DetalleNoticiaFragment"
         android:label="fragment_detalle_noticia"
-        tools:layout="@layout/fragment_detalle_noticia" />
+        tools:layout="@layout/fragment_detalle_noticia" >
+        <action
+            android:id="@+id/action_detalleNoticiaFragment_to_item_noticias"
+            app:destination="@id/item_noticias" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleRefugioFragment"
+        android:name="com.finallabtres.animalogistics.UI.refugio.detalle.DetalleRefugioFragment"
+        android:label="fragment_detalle_refugio"
+        tools:layout="@layout/fragment_detalle_refugio" >
+        <action
+            android:id="@+id/action_detalleRefugioFragment_to_item_refugios"
+            app:destination="@id/item_refugios" />
+    </fragment>
 
     <!--
     ojoooooooooooooooooooooooooooooooooooooooo

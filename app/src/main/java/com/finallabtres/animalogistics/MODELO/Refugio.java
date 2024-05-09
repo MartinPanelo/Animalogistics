@@ -1,5 +1,7 @@
 package com.finallabtres.animalogistics.MODELO;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 
 public class Refugio implements Serializable {
@@ -121,5 +123,19 @@ public class Refugio implements Serializable {
 
     public void setBannerUrl(String bannerUrl) {
         this.bannerUrl = bannerUrl;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        // Convertir obj a tipo Refugio
+        Refugio refugio = (Refugio) obj;
+        // Comparar los IDs
+        return getId() == refugio.getId();
     }
 }

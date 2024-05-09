@@ -2,6 +2,8 @@ package com.finallabtres.animalogistics.UI.refugio.listar;
 
 import static android.provider.Settings.System.getString;
 
+import static java.lang.Integer.*;
+
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
@@ -119,13 +121,14 @@ public class ListarRefugioViewModel extends AndroidViewModel {
     }
     public void cargarPerfilRefugio(Marker marker) {
 
-        for (Refugio refugio : Objects.requireNonNull(getListaRefugioM().getValue())) {
-            if (marker.getTitle().equals(refugio.getNombre())) {
+        int posicion = parseInt(Objects.requireNonNull(marker.getTag()).toString());
 
-                RefugioM.postValue(refugio);
-            }
+        Refugio refugio = Objects.requireNonNull(listaRefugioM.getValue()).get(posicion);
 
-        }
+        RefugioM.postValue(refugio);
+
+
+
     }
 
     public void setMarker(Marker value) {
@@ -175,24 +178,29 @@ public class ListarRefugioViewModel extends AndroidViewModel {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
 
-
+            googleMap.clear();
 
             googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
             // seteo todos los marker
 
 
+                        for (int i = 0; i < listaRefugioM.getValue().size(); i++) {
 
-                        for (Refugio refugio : Objects.requireNonNull(listaRefugioM.getValue())) {
+                            Refugio refugio = listaRefugioM.getValue().get(i);
 
                             LatLng  dire=new LatLng(refugio.getGpsy(),refugio.getGpsx());
 
-                            myMarker = googleMap.addMarker(new MarkerOptions().position(dire)
-                                                                                .title(refugio.getNombre()));
+                            myMarker = googleMap.addMarker(new MarkerOptions()
+                                            .position(dire)
+                                            .title(refugio.getNombre())
+                                            .snippet(refugio.getDescripcion()));
+                            myMarker.setTag(i);
+
 
                             CircleOptions circleOptions = new CircleOptions()
                                     .center(dire)
-                                    .radius(refugio.getRango()) // Radio en metros (en este caso, 1 km)
+                                    .radius(refugio.getRango()) // Radio en metros
                                     .strokeColor(R.color.Perimetro) // Color del borde del círculo
                                     .fillColor(R.color.Area); // Color de relleno del círculo
 
