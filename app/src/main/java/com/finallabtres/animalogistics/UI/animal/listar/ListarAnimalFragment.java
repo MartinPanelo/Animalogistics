@@ -13,10 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.finallabtres.animalogistics.R;
+import com.finallabtres.animalogistics.databinding.FragmentListarAnimalBinding;
 
 public class ListarAnimalFragment extends Fragment {
 
-    private ListarAnimalViewModel mViewModel;
+    private ListarAnimalViewModel vm;
+
+    private FragmentListarAnimalBinding binding;
 
     public static ListarAnimalFragment newInstance() {
         return new ListarAnimalFragment();
@@ -25,14 +28,23 @@ public class ListarAnimalFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_listar_animal, container, false);
+     //   return inflater.inflate(R.layout.fragment_listar_animal, container, false);
+
+
+        binding = FragmentListarAnimalBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+
+        ListarAnimalViewModel vm =
+                new ViewModelProvider(this).get(ListarAnimalViewModel.class);
+
+
+        return root;
+
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ListarAnimalViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
+
+
 
 }

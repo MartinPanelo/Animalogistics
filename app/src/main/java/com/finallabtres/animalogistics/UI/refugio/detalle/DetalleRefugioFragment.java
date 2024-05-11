@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.MODELO.Carousel;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
@@ -86,7 +87,7 @@ public class DetalleRefugioFragment extends Fragment {
                 CarouselLayoutManager layoutManager = new CarouselLayoutManager(new HeroCarouselStrategy(),RecyclerView.VERTICAL);
 
 
-
+                layoutManager.setCarouselAlignment(CarouselLayoutManager.ALIGNMENT_CENTER);
 
 
                 recyclerView.setLayoutManager(layoutManager);
@@ -96,16 +97,13 @@ public class DetalleRefugioFragment extends Fragment {
 
                 snapHelper.attachToRecyclerView(recyclerView);
 
-                snapHelper.attachToRecyclerView(recyclerView);
+               // refugio.setCarousel(new Carousel());
 
-                ArrayList<String> arrayList = new ArrayList<>();
-                arrayList.add("https://random.imagecdn.app/201/200");
-                arrayList.add("https://random.imagecdn.app/202/200");
-                arrayList.add("https://random.imagecdn.app/203/200");
-                arrayList.add("https://random.imagecdn.app/204/200");
-                arrayList.add("https://random.imagecdn.app/205/200");
+                Carousel carousel = new Carousel(refugio.getId());
 
-                CarouselAdapter adapter = new CarouselAdapter(getContext(),arrayList);
+
+                CarouselAdapter adapter = new CarouselAdapter(getContext(),carousel);
+
                 
                 recyclerView.setAdapter(adapter);
 
