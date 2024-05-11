@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="menu_items">
+        <item>Indefinido</item>
+        <item>Macho</item>
+        <item>Hembra</item>
+
+    </array>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="menu_items">
+        <item>Undefined</item>
+        <item>Male</item>
+        <item>Female</item>
+
+    </array>
+</resources>
