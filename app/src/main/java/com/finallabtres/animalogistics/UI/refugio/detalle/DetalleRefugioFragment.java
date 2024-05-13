@@ -42,7 +42,7 @@ public class DetalleRefugioFragment extends Fragment {
     DetalleRefugioViewModel vm;
     FragmentDetalleRefugioBinding binding;
 
-
+    SnapHelper snapHelper;
 
     public static DetalleRefugioFragment newInstance() {
         return new DetalleRefugioFragment();
@@ -93,7 +93,9 @@ public class DetalleRefugioFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
 
 
-                SnapHelper snapHelper = new CarouselSnapHelper(false);
+                if (snapHelper == null) {
+                    snapHelper = new CarouselSnapHelper(false);
+                }
 
                 snapHelper.attachToRecyclerView(recyclerView);
 

@@ -147,8 +147,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void permisos() {
+        // Verificar si los permisos no están otorgados
+        if ((checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) ||
+                (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
 
-        if((checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)) {
+            // Si no están otorgados, mostrar un único diálogo solicitando ambos permisos
             AlertDialog.Builder dialogo = new AlertDialog.Builder(LoginActivity.this);
             dialogo.setTitle("Permisos Desactivados");
             dialogo.setMessage("Debe aceptar los permisos para el correcto funcionamiento de la App");
@@ -156,10 +160,10 @@ public class LoginActivity extends AppCompatActivity {
             dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 100);
+                    // Solicitar permisos de cámara y ubicación
+                    requestPermissions(new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
                 }
             });
-
 
             dialogo.show();
         }

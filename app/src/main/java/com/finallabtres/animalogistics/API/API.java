@@ -91,11 +91,19 @@ public class API {
         @GET("ControllerNoticia/noticiaListarPorCategoria")
         Call<List<Noticia>> noticiaListaPorCategoria(@Header("Authorization") String token, @Query("categoria") String categoria);
 
+        @GET("ControllerNoticia/noticiaListarPorRefugio")
+        Call<List<Noticia>> noticiaListarPorRefugio(@Header("Authorization") String token, @Query("refugioId") String refugioId);
+
+        @GET("ControllerNoticia/noticiaListarPorRefugioPorCategoria")
+        Call<List<Noticia>> noticiaListarPorRefugioPorCategoria(@Header("Authorization") String token, @Query("categoria") String categoria, @Query("refugioId") String refugioId);
+
 
         /*---------------------REFUGIO---------------------*/
 
         @GET("ControllerRefugio/refugioLista")
         Call<List<Refugio>> refugioLista(@Header("Authorization") String token);
+
+
 
 
     }

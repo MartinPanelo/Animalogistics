@@ -35,8 +35,7 @@ public class ListarAnimalFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        ListarAnimalViewModel vm =
-                new ViewModelProvider(this).get(ListarAnimalViewModel.class);
+        vm = new ViewModelProvider(this).get(ListarAnimalViewModel.class);
 
 
         return root;

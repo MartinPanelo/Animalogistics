@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -80,7 +81,13 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
                     Snackbar.make(v, String.valueOf(carousel.getIdRefugio()), Snackbar.LENGTH_LONG).show();
 
                     // DESDE ACA ME VOY A LAS VISTAS PARTICULARIZANDO LA INFORMACION A UN REFUGIO
-                 //   bundle.putSerializable("item", refugio);
+                    bundle.putSerializable("IdRefugio", String.valueOf(carousel.getIdRefugio())); // carousel.getIdRefugio());
+
+
+                    if(getAdapterPosition() == 0){
+                        Navigation.findNavController(v).navigate(R.id.listarNoticiaPorRefugioFragment, bundle);
+                    }
+
 
 
                 }

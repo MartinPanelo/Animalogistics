@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CLFormularioAnimal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILNombreAnimal"
+        android:layout_width="360dp"
+        android:layout_height="85dp"
+        android:hint="Nombre"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/id_svgrepo_com">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TIETNombreAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:text="" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILTipoAnimal"
+        android:layout_width="360dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="10dp"
+        android:hint="Tipo De Animal"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILNombreAnimal"
+        app:startIconContentDescription="@string/app_name"
+        app:startIconDrawable="@drawable/pets">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TIETTipoAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:text="" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/MaterialCardViewD"
+        android:layout_width="360dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="tamanio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILTipoAnimal">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="left"
+            android:text="Edad"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="200dp" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/SLREdad"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:contentDescription="edad"
+            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="10.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="224dp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/MaterialCardView"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="25dp"
+        android:contentDescription="tamanio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MaterialCardViewD">
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="tamaño" />
+
+        <RadioGroup
+            android:id="@+id/RBTNTamano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/pequeno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="pequeño" />
+
+            <RadioButton
+
+                android:id="@+id/mediano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginBottom="5dp"
+                android:text="mediano" />
+
+            <RadioButton
+                android:id="@+id/grande"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|top"
+                android:layout_marginBottom="5dp"
+                android:text="Grande" />
+
+        </RadioGroup>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/MaterialCardViewd"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="tamanio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MaterialCardView">
+
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/SWTCollar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|bottom"
+            android:checked="false"
+            android:contentDescription="collar"
+            android:paddingHorizontal="5dp"
+            android:text="Collar" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menu"
+        android:layout_width="360dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="25dp"
+        android:hint="Genero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MaterialCardViewd"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:labelFor="@id/CBGenero"
+        android:contentDescription="genero del animals"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/CBGenero"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            app:simpleItems="@array/menu_items" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--  <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/MaterialCardViewdda"
+                    android:layout_width="360dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginTop="25dp"
+                    android:contentDescription="tamanio"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/MaterialCardView">-->
+
+    <!--   <TextView
+                        android:id="@+id/textView84"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Comentarios" />-->
+
+    <!--<com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/TIETNombreAnimadlLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="">-->
+
+    <!--  <EditText
+                            android:layout_width="match_parent"
+                            android:inputType="textImeMultiLine|textMultiLine"
+                            android:layout_height="wrap_content"
+                            android:hint="HINT"
+                            android:textColorHint="@color/orange"
+                            android:ems="10"
+                            android:imeOptions="actionDone"
+                            android:id="@+id/message_input"
+
+                            android:layout_gravity="start|center"
+                           />-->
+
+    <!--  </com.google.android.material.textfield.TextInputLayout>-->
+
+
+    <!--   </com.google.android.material.card.MaterialCardView>-->
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILNombrsdfeAnimal"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="61dp"
+        android:hint="Detalles"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu"
+        app:startIconContentDescription="@string/app_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+
+            android:id="@+id/TIETDetalles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="textImeMultiLine|textMultiLine"
+            android:text=""
+
+            android:textColorHint="@color/orange" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/CDFoto"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="tamanio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CDPosicion">
+
+        <TextView
+            android:id="@+id/textVieasdwwer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:text="Foto" />
+
+        <ImageView
+            android:id="@+id/IMGFoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="25dp"
+            android:src="@drawable/addphoto" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/CDPosicion"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="tamanio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILNombrsdfeAnimal">
+
+        <TextView
+            android:id="@+id/textVieasdw84"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:text="Posicion GPS" />
+
+
+        <ImageView
+            android:id="@+id/IMGPosicion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="25dp"
+            android:src="@drawable/pin" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mapaRegistroAnimal"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="283dp"
+            android:layout_height="164dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/BTNRegistrarAnimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="Registrar animal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CDFoto" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
