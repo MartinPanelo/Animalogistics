@@ -3,6 +3,7 @@ package com.finallabtres.animalogistics.API;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Usuario;
@@ -106,7 +107,26 @@ public class API {
 
 
 
+        /*---------------------ANIMAL---------------------*/
+
+
+        @Multipart
+        @POST("ControllerAnimal/animalAgregar")
+        Call<Animal> animalAgregar(@Header("Authorization") String token,
+                                     @Part("Nombre") RequestBody Nombre,
+                                     @Part("Edad") RequestBody Edad,
+                                     @Part("Tipo") RequestBody Tipo,
+                                     @Part("Tamano") RequestBody Tamano,
+                                     @Part("Collar") RequestBody Collar,
+                                     @Part("Genero") RequestBody Genero,
+                                   @Part("Comentarios") RequestBody Comentarios,
+                                   @Part("GPSX") RequestBody GPSX,
+                                   @Part("GPSY") RequestBody GPSY,
+                                   @Part MultipartBody.Part FotoFile);
+
     }
+
+
         /*---------------------TOKEN---------------------*/
 
 

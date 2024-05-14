@@ -21,9 +21,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.animal.listar.ListarAnimalFragment;
@@ -32,6 +36,7 @@ import com.finallabtres.animalogistics.databinding.FragmentAgregarAnimalBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarAnimalBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,7 +56,7 @@ public class AgregarAnimalFragment extends Fragment {
 
     private FusedLocationProviderClient fusedLocationClient;
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint({"MissingPermission", "ClickableViewAccessibility"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -68,18 +73,30 @@ public class AgregarAnimalFragment extends Fragment {
 
 
         binding.LYFormularioRegistrarAnimal.BTNRegistrarAnimal.setOnClickListener(new View.OnClickListener() {
-            @Override
+
+              @Override
             public void onClick(View view) {
-                vm.registrarAnimal(
+
+                  int radioButtonId = binding.LYFormularioRegistrarAnimal.RBTNTamano.getCheckedRadioButtonId();
+                  String tamanoSeleccionado ="";
+
+                  if (radioButtonId != -1) {
+                      // Encuentra el RadioButton seleccionado por su ID
+                      RadioButton radioButton = binding.LYFormularioRegistrarAnimal.RBTNTamano.findViewById(radioButtonId);
+
+                      // Obtén el texto del RadioButton seleccionado
+                      tamanoSeleccionado = radioButton.getText().toString();
+                  }
+
+                vm.registrarAnimal(view,
                         binding.LYFormularioRegistrarAnimal.TIETNombreAnimal.getText().toString(),
                         binding.LYFormularioRegistrarAnimal.TIETTipoAnimal.getText().toString(),
                         binding.LYFormularioRegistrarAnimal.SLREdad.getValue(),
-                        binding.LYFormularioRegistrarAnimal.RBTNTamano.getCheckedRadioButtonId(),
+                        tamanoSeleccionado,
                         binding.LYFormularioRegistrarAnimal.SWTCollar.isChecked(),
                         binding.LYFormularioRegistrarAnimal.CBGenero.getText().toString(),
                         binding.LYFormularioRegistrarAnimal.TIETDetalles.getText().toString(),
-                        binding.LYFormularioRegistrarAnimal.IMGFoto
-                        /* binding.LYFormularioRegistrarAnimal.POSICION*/);
+                        binding.LYFormularioRegistrarAnimal.IMGFoto);
             }
         });
 
@@ -103,7 +120,7 @@ public class AgregarAnimalFragment extends Fragment {
             }
         });
 
-        binding.LYFormularioRegistrarAnimal.CDPosicion.setOnClickListener(new View.OnClickListener() {
+        binding.LYFormularioRegistrarAnimal.BTNPosicionActual.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("MissingPermission")
             @Override
             public void onClick(View v) {
@@ -124,12 +141,52 @@ public class AgregarAnimalFragment extends Fragment {
         });
 
 
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener( requireActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            vm.ObtenerMapa(location);
+                            Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
         vm.getMapa().observe(requireActivity(), new Observer<AgregarAnimalViewModel.MapaActual>() {
             @Override
             public void onChanged(AgregarAnimalViewModel.MapaActual mapaActual) {
+
                 SupportMapFragment SMF = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapaRegistroAnimal);
 
                 SMF.getMapAsync(mapaActual);
+
+            }
+        });
+
+        binding.LYFormularioRegistrarAnimal.transparentImage.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        binding.SVRegistrarAnimal.requestDisallowInterceptTouchEvent(true);
+                        // Disable touch on transparent view
+                        return false;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        binding.SVRegistrarAnimal.requestDisallowInterceptTouchEvent(false);
+                        return true;
+
+                    case MotionEvent.ACTION_MOVE:
+                        binding.SVRegistrarAnimal.requestDisallowInterceptTouchEvent(true);
+                        return false;
+
+                    default:
+                        return true;
+                }
             }
         });
 

@@ -72,7 +72,11 @@
         android:id="@+id/listarNoticiaPorRefugioFragment"
         android:name="com.finallabtres.animalogistics.UI.noticia.listar.porRefugio.ListarNoticiaPorRefugioFragment"
         android:label="fragment_listar_noticia_por_refugio"
-        tools:layout="@layout/fragment_listar_noticia_por_refugio" />
+        tools:layout="@layout/fragment_listar_noticia_por_refugio" >
+        <action
+            android:id="@+id/action_listarNoticiaPorRefugioFragment_to_detalleRefugioFragment"
+            app:destination="@id/detalleRefugioFragment" />
+    </fragment>
 
     <!--
     ojoooooooooooooooooooooooooooooooooooooooo

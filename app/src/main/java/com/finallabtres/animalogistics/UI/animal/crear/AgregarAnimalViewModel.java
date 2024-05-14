@@ -4,13 +4,21 @@ import static android.app.Activity.RESULT_OK;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.annotation.NonNull;
@@ -18,7 +26,12 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
+import com.finallabtres.animalogistics.API.API;
+import com.finallabtres.animalogistics.MODELO.Animal;
+import com.finallabtres.animalogistics.MainActivity;
+import com.finallabtres.animalogistics.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,7 +40,18 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AgregarAnimalViewModel extends AndroidViewModel {
 
@@ -39,6 +63,7 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
     private MutableLiveData<MapaActual> MAMutable;
 
     private Location posicion;
+
 
 
     public AgregarAnimalViewModel(@NonNull Application application) {
@@ -91,6 +116,8 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
                 }
             });
 
+
+
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(posicion.getLatitude(), posicion.getLongitude()))
                     .zoom(19)
@@ -111,7 +138,78 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
     }
 
 
-    public void registrarAnimal(String nombre, String tipo, float edadValue, int tamanoCheckedRadioButtonId, boolean collarChecked, String genero, String detalles, ImageView foto/*, LatLng Posicion*/) {
+    public void registrarAnimal(View view, String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String comentarios, ImageView foto) {
+
+        API.ApiAnimalogistics API_A = API.getApi();
+
+        // recuperamos el token
+        String token = API.LeerToken(context);
+
+
+        // Preparamos el animal
+        RequestBody Nombre = RequestBody.create(MediaType.parse("application/json"), nombre);
+        RequestBody Edad  = RequestBody.create(MediaType.parse("application/json"), String.valueOf(edad));
+        RequestBody Tipo = RequestBody.create(MediaType.parse("application/json"), tipo);
+        RequestBody Tamano = RequestBody.create(MediaType.parse("application/json"), tamanoCheckedRadioButton);
+        RequestBody Collar = RequestBody.create(MediaType.parse("application/json"), String.valueOf(collarChecked));
+        RequestBody Genero = RequestBody.create(MediaType.parse("application/json"), genero);
+        RequestBody Comentarios = RequestBody.create(MediaType.parse("application/json"), comentarios);
+        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), String.valueOf(posicion.getLatitude()));
+        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), String.valueOf(posicion.getLongitude()));
+
+        MultipartBody.Part FotoFile = null; // Inicializa como null
+
+        if (foto.getDrawable() instanceof BitmapDrawable) {
+
+            // Preparamos la imagen del usuario
+            Bitmap bitmap = ((BitmapDrawable) foto.getDrawable()).getBitmap();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), byteArrayOutputStream.toByteArray());
+            // Creo una parte multipart con el RequestBody.
+            FotoFile = MultipartBody.Part.createFormData("FotoFile", "image.jpg", requestFile);
+
+        }
+
+
+
+        Call<Animal> call = API_A.animalAgregar(token,Nombre, Edad, Tipo, Tamano, Collar, Genero, Comentarios, GPSX, GPSY, FotoFile);
+
+        call.enqueue(new Callback<Animal>() {
+            @Override
+            public void onResponse(Call<Animal> call, Response<Animal> response) {
+                if (response.isSuccessful()) {
+
+                    Navigation.findNavController(view).navigate(R.id.item_registrar_animal);
+
+                } else {
+
+                    try {
+                        String errorResponse = response.errorBody().string();
+                        String errorMessage = "";
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(errorResponse);
+                            if (jsonObject.has("errors")) {
+
+                                Toast.makeText(context, "Problema al registrar : ", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            // Si no se pudo analizar como JSON, el mensaje de error es la respuesta tal cual
+                            errorMessage = errorResponse;
+                        }
+
+                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }public void onFailure(Call<Animal> call, Throwable t) {
+                Log.d("salida falla ",t.getMessage());
+            }
+
+        });
+
     }
 
     public void respuetaDeCamara(ActivityResult result) {

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:singleLine="true"
-            android:text="" />
+            android:text="SOYNOMBRE" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:singleLine="true"
-            android:text="" />
+            android:text="SOYTIPO" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -164,7 +164,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start|bottom"
-            android:checked="false"
+            android:checked="true"
             android:contentDescription="collar"
             android:paddingHorizontal="5dp"
             android:text="Collar" />
@@ -261,7 +261,7 @@
             android:ems="10"
             android:imeOptions="actionDone"
             android:inputType="textImeMultiLine|textMultiLine"
-            android:text=""
+            android:text="ES una Nutria salvaje"
 
             android:textColorHint="@color/orange" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -297,7 +297,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/CDPosicion"
         android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_height="500dp"
         android:layout_marginTop="32dp"
         android:contentDescription="tamanio"
         app:layout_constraintEnd_toEndOf="parent"
@@ -313,20 +313,39 @@
             android:text="Posicion GPS" />
 
 
-        <ImageView
-            android:id="@+id/IMGPosicion"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="25dp"
-            android:src="@drawable/pin" />
+        <Button
+            android:id="@+id/BTNPosicionActual"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="fill"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Mi posicion actual"
+            android:textColor="#000000"
+            android:tooltipText="Mi Posicion Actual"
+            app:icon="@drawable/pin"
+            app:iconSize="25dp"
+            app:iconTint="#000000" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/mapaRegistroAnimal"
             class="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="283dp"
-            android:layout_height="164dp"
+            android:layout_width="match_parent"
+            android:layout_height="422dp"
             android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/transparent_image"
+            android:layout_width="match_parent"
+            android:layout_height="422dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:src="#000E0404"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
