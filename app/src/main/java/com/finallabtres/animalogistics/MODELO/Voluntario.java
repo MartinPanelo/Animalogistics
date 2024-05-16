@@ -10,29 +10,25 @@ public class Voluntario implements Serializable {
     private int id;
     private Usuario usuario;
     private Refugio refugio;
-    private String cargo;
-    public String horarioDesde;
-    public String horarioHasta;
-
+    private String tarea;
+    private String descripcion;
 
     public Voluntario() {
     }
 
-    public Voluntario(int id, Usuario usuario, Refugio refugio, String cargo, String horarioDesde, String horarioHasta) {
+    public Voluntario(int id, Usuario usuario, Refugio refugio, String tarea, String descripcion) {
         this.id = id;
         this.usuario = usuario;
         this.refugio = refugio;
-        this.cargo = cargo;
-        this.horarioDesde = horarioDesde;
-        this.horarioHasta = horarioHasta;
+        this.tarea = tarea;
+        this.descripcion = Voluntario.this.descripcion;
     }
 
-    public Voluntario(Usuario usuario, Refugio refugio, String cargo, String horarioDesde, String horarioHasta) {
+    public Voluntario(Usuario usuario, Refugio refugio, String tarea, String descripcion) {
         this.usuario = usuario;
         this.refugio = refugio;
-        this.cargo = cargo;
-        this.horarioDesde = horarioDesde;
-        this.horarioHasta = horarioHasta;
+        this.tarea = tarea;
+        this.descripcion = Voluntario.this.descripcion;
     }
 
     public int getId() {
@@ -59,28 +55,20 @@ public class Voluntario implements Serializable {
         this.refugio = refugio;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
     public String getHorarioDesde() {
-        return horarioDesde;
+        return tarea;
     }
 
-    public void setHorarioDesde(String horarioDesde) {
-        this.horarioDesde = horarioDesde;
+    public void setHorarioDesde(String tarea) {
+        this.tarea = tarea;
     }
 
     public String getHorarioHasta() {
-        return horarioHasta;
+        return descripcion;
     }
 
-    public void setHorarioHasta(String horarioHasta) {
-        this.horarioHasta = horarioHasta;
+    public void setHorarioHasta(String descripcion) {
+        this.descripcion = Voluntario.this.descripcion;
     }
 
     @NonNull

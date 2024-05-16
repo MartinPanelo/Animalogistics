@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class Noticia implements Serializable {
 
     private int id;
-    private Refugio refugio;
     private Voluntario voluntario;
     private String categoria;
     private String titulo;
@@ -17,9 +16,8 @@ public class Noticia implements Serializable {
 
     public Noticia() {};
 
-    public Noticia(int id, Refugio refugio, Voluntario voluntario, String categoria, String titulo, String contenido, String bannerUrl) {
+    public Noticia(int id, Voluntario voluntario, String categoria, String titulo, String contenido, String bannerUrl) {
         this.id = id;
-        this.refugio = refugio;
         this.voluntario = voluntario;
         this.categoria = categoria;
         this.titulo = titulo;
@@ -27,8 +25,7 @@ public class Noticia implements Serializable {
         this.bannerUrl = bannerUrl;
     }
 
-    public Noticia(Refugio refugio, Voluntario voluntario, String categoria, String titulo, String contenido, String bannerUrl) {
-        this.refugio = refugio;
+    public Noticia(Voluntario voluntario, String categoria, String titulo, String contenido, String bannerUrl) {
         this.voluntario = voluntario;
         this.categoria = categoria;
         this.titulo = titulo;
@@ -42,14 +39,6 @@ public class Noticia implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Refugio getRefugio() {
-        return refugio;
-    }
-
-    public void setRefugio(Refugio refugio) {
-        this.refugio = refugio;
     }
 
     public Voluntario getVoluntario() {
