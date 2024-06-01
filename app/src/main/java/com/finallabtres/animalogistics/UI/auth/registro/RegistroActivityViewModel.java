@@ -21,6 +21,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.finallabtres.animalogistics.MainActivity;
+import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -205,7 +206,7 @@ public class RegistroActivityViewModel extends AndroidViewModel {
 
 
 
-                        Intent intent = new Intent(context, MainActivity.class);
+                        Intent intent = new Intent(context, LoginActivity.class);
 
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);

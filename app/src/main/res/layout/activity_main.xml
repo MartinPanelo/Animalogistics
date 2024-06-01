@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start|top"
     android:fitsSystemWindows="true"
+
     >
 
 
@@ -54,9 +55,10 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLContenedor"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
+        android:layout_height="match_parent"
         tools:context=".MainActivity">
 
 
@@ -65,6 +67,7 @@
         <include
             android:id="@+id/include"
             layout="@layout/host_fragment"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,14 +75,37 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/NVSideBar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginBottom="?attr/actionBarSize"
         android:fitsSystemWindows="true"
-        app:drawerLayoutCornerSize="30dp"
-        app:headerLayout="@layout/navside" />
+        android:isScrollContainer="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbars="none"
+        app:drawerLayoutCornerSize="30dp">
+<!--
+        app:headerLayout="@layout/navside"
+-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+              <include
+                  android:id="@+id/include2"
+                  layout="@layout/navside"
+                  android:isScrollContainer="true"
+
+                  />
+
+
+        </LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

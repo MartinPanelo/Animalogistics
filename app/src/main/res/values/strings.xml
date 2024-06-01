@@ -18,6 +18,7 @@
     <string name="RegistrarAnimal">Agregar Animal</string>
     <string name="Eventos">Eventos</string>
     <string name="registro">Registro</string>
+    <string name="actualizarPerfil">Actualizar perfil</string>
 
 
 </resources>

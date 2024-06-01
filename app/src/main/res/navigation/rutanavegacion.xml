@@ -49,7 +49,11 @@
         android:id="@+id/listarAnimalFragment"
         android:name="com.finallabtres.animalogistics.UI.animal.listar.ListarAnimalFragment"
         android:label="fragment_listar_animal"
-        tools:layout="@layout/fragment_listar_animal" />
+        tools:layout="@layout/fragment_listar_animal" >
+        <action
+            android:id="@+id/action_listarAnimalFragment_to_item_noticias"
+            app:destination="@id/item_noticias" />
+    </fragment>
     <fragment
         android:id="@+id/detalleNoticiaFragment"
         android:name="com.finallabtres.animalogistics.UI.noticia.detalle.DetalleNoticiaFragment"
@@ -76,6 +80,51 @@
         <action
             android:id="@+id/action_listarNoticiaPorRefugioFragment_to_detalleRefugioFragment"
             app:destination="@id/detalleRefugioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleAnimalPorUsuarioFragment"
+        android:name="com.finallabtres.animalogistics.UI.animal.detalle.porUsuario.DetalleAnimalPorUsuarioFragment"
+        android:label="fragment_detalle_animal_por_usuario"
+        tools:layout="@layout/fragment_detalle_animal_por_usuario" >
+        <action
+            android:id="@+id/action_detalleAnimalPorUsuarioFragment_to_listarAnimalFragment"
+            app:destination="@id/listarAnimalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarPerfilFragment"
+        android:name="com.finallabtres.animalogistics.UI.auth.editarPerfil.EditarPerfilFragment"
+        android:label="fragment_editar_perfil"
+        tools:layout="@layout/fragment_editar_perfil" >
+        <action
+            android:id="@+id/action_editarPerfilFragment_to_navigation_container"
+            app:destination="@id/navigation_container" />
+    </fragment>
+    <fragment
+        android:id="@+id/listarVoluntariadosDisponiblesFragment"
+        android:name="com.finallabtres.animalogistics.UI.refugio.voluntario.listar.ListarVoluntariadosDisponiblesFragment"
+        android:label="fragment_listar_voluntariados_disponibles"
+        tools:layout="@layout/fragment_listar_voluntariados_disponibles" >
+        <action
+            android:id="@+id/action_listarVoluntariadosDisponiblesFragment_to_detalleRefugioFragment"
+            app:destination="@id/detalleRefugioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleAnimalPorRefugioFragment"
+        android:name="com.finallabtres.animalogistics.UI.animal.detalle.PorRefugio.DetalleAnimalPorRefugioFragment"
+        android:label="fragment_detalle_animal_por_refugio"
+        tools:layout="@layout/fragment_detalle_animal_por_refugio" >
+        <action
+            android:id="@+id/action_detalleAnimalPorRefugioFragment_to_detalleRefugioFragment"
+            app:destination="@id/detalleRefugioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearRefugioFragment"
+        android:name="com.finallabtres.animalogistics.UI.refugio.crear.CrearRefugioFragment"
+        android:label="fragment_crear_refugio"
+        tools:layout="@layout/fragment_crear_refugio" >
+        <action
+            android:id="@+id/action_crearRefugioFragment_to_item_noticias"
+            app:destination="@id/item_noticias" />
     </fragment>
 
     <!--

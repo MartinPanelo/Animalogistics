@@ -29,6 +29,7 @@ import com.finallabtres.animalogistics.UI.noticia.listar.NoticiaAdapter;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleRefugioBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselSnapHelper;
 import com.google.android.material.carousel.FullScreenCarouselStrategy;
@@ -126,6 +127,21 @@ public class DetalleRefugioFragment extends Fragment {
         return root;
     }
 
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.GONE);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

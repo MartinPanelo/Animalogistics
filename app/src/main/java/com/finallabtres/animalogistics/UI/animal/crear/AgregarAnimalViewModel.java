@@ -45,6 +45,9 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -65,10 +68,18 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
     private Location posicion;
 
 
+    // Crear instancia de DecimalFormatSymbols y establecer la coma como separador decimal
+
+    DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.getDefault());
+    DecimalFormat formato;
+
 
     public AgregarAnimalViewModel(@NonNull Application application) {
         super(application);
         this.context=application.getApplicationContext();
+
+        simbolos.setDecimalSeparator(',');
+        formato = new DecimalFormat("#.######", simbolos);
     }
     public LiveData<Bitmap> getFoto() {
         if (foto == null) {
@@ -113,6 +124,9 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
                     MarkerOptions marker = new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("Ubicación del Avistamiento");
                     googleMap.addMarker(marker);
 
+                    posicion.setLatitude(point.latitude);
+                    posicion.setLongitude(point.longitude);
+
                 }
             });
 
@@ -138,7 +152,7 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
     }
 
 
-    public void registrarAnimal(View view, String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String comentarios, ImageView foto) {
+    public void registrarAnimal(View view,  String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String comentarios, ImageView foto) {
 
         API.ApiAnimalogistics API_A = API.getApi();
 
@@ -154,8 +168,8 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
         RequestBody Collar = RequestBody.create(MediaType.parse("application/json"), String.valueOf(collarChecked));
         RequestBody Genero = RequestBody.create(MediaType.parse("application/json"), genero);
         RequestBody Comentarios = RequestBody.create(MediaType.parse("application/json"), comentarios);
-        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), String.valueOf(posicion.getLatitude()));
-        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), String.valueOf(posicion.getLongitude()));
+        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLatitude()));
+        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLongitude()));
 
         MultipartBody.Part FotoFile = null; // Inicializa como null
 
@@ -211,6 +225,10 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
         });
 
     }
+
+
+
+
 
     public void respuetaDeCamara(ActivityResult result) {
 

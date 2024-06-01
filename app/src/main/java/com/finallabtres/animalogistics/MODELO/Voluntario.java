@@ -10,25 +10,19 @@ public class Voluntario implements Serializable {
     private int id;
     private Usuario usuario;
     private Refugio refugio;
-    private String tarea;
-    private String descripcion;
 
     public Voluntario() {
     }
 
-    public Voluntario(int id, Usuario usuario, Refugio refugio, String tarea, String descripcion) {
+    public Voluntario(int id, Usuario usuario, Refugio refugio) {
         this.id = id;
         this.usuario = usuario;
         this.refugio = refugio;
-        this.tarea = tarea;
-        this.descripcion = Voluntario.this.descripcion;
     }
 
-    public Voluntario(Usuario usuario, Refugio refugio, String tarea, String descripcion) {
+    public Voluntario(Usuario usuario, Refugio refugio) {
         this.usuario = usuario;
         this.refugio = refugio;
-        this.tarea = tarea;
-        this.descripcion = Voluntario.this.descripcion;
     }
 
     public int getId() {
@@ -55,21 +49,6 @@ public class Voluntario implements Serializable {
         this.refugio = refugio;
     }
 
-    public String getHorarioDesde() {
-        return tarea;
-    }
-
-    public void setHorarioDesde(String tarea) {
-        this.tarea = tarea;
-    }
-
-    public String getHorarioHasta() {
-        return descripcion;
-    }
-
-    public void setHorarioHasta(String descripcion) {
-        this.descripcion = Voluntario.this.descripcion;
-    }
 
     @NonNull
     @Override

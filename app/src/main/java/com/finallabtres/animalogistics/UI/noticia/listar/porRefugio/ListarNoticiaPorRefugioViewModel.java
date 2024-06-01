@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -13,6 +14,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -90,11 +95,38 @@ public class ListarNoticiaPorRefugioViewModel extends AndroidViewModel {
                     }
                     listaCategoriasM.postValue(categorias);
 
-                }else{
 
-                    errorM.postValue("Hubo problemas al cargar las noticias");
-                    Log.d("ERRORMORTAL", response.toString());
+                }else{
+                    try {
+                        String errorResponse = response.errorBody().string();
+                        String errorMessage = "";
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(errorResponse);
+                            if (jsonObject.has("errors")) {
+                                JSONObject errors = jsonObject.getJSONObject("errors");
+                                if (errors.has("SinNoticas")) {
+                                    errorMessage = errors.getJSONArray("SinNoticas").getString(0);
+                                    errorM.postValue(errorMessage);
+                                }
+                            }
+                        }catch(JSONException e){
+
+                                errorMessage = errorResponse;
+                                errorM.postValue(errorMessage);
+
+                        }
+
+                    }
+                     catch (IOException e) {
+
+                        errorM.postValue("Hubo un fallo al cargar las noticias");
+                    }
                 }
+
+
+
+
 
 
             }
@@ -105,6 +137,7 @@ public class ListarNoticiaPorRefugioViewModel extends AndroidViewModel {
                 Log.d("ERRORMORTAL", t.getMessage());
             }
         });
+
 
 
 

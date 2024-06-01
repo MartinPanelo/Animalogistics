@@ -1,6 +1,7 @@
 package com.finallabtres.animalogistics.MODELO;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Animal implements Serializable {
 
@@ -14,14 +15,15 @@ public class Animal implements Serializable {
     private Boolean collar;
     private String genero;
     private String comentarios;
-    private String gpsy;
-    private String gpsx;
+    private Double gpsy;
+    private Double  gpsx;
+    private String estado;
     private String fotoUrl;
 
     public Animal() {
     }
 
-    public Animal(int id, Refugio refugio, Usuario usuario, String nombre, String edad, String tipo, String tamano, Boolean collar, String genero, String comentarios, String gpsy, String gpsx, String fotoUrl) {
+    public Animal(int id, Refugio refugio, Usuario usuario, String nombre, String edad, String tipo, String tamano, Boolean collar, String genero, String comentarios, Double gpsy, Double gpsx, String estado, String fotoUrl) {
         this.id = id;
         this.refugio = refugio;
         this.usuario = usuario;
@@ -34,10 +36,11 @@ public class Animal implements Serializable {
         this.comentarios = comentarios;
         this.gpsy = gpsy;
         this.gpsx = gpsx;
+        this.estado = estado;
         this.fotoUrl = fotoUrl;
     }
 
-    public Animal(String nombre, String edad, String tipo, String tamano, Boolean collar, String genero, String comentarios, String gpsy, String gpsx) {
+    public Animal(String nombre, String edad, String tipo, String tamano, Boolean collar, String genero, String comentarios, Double gpsy, Double gpsx, String estado) {
         this.nombre = nombre;
         this.edad = edad;
         this.tipo = tipo;
@@ -47,6 +50,7 @@ public class Animal implements Serializable {
         this.comentarios = comentarios;
         this.gpsy = gpsy;
         this.gpsx = gpsx;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -129,19 +133,19 @@ public class Animal implements Serializable {
         this.comentarios = comentarios;
     }
 
-    public String getGpsy() {
+    public Double getGpsy() {
         return gpsy;
     }
 
-    public void setGpsy(String gpsy) {
+    public void setGpsy(Double gpsy) {
         this.gpsy = gpsy;
     }
 
-    public String getGpsx() {
+    public Double getGpsx() {
         return gpsx;
     }
 
-    public void setGpsx(String gpsx) {
+    public void setGpsx(Double gpsx) {
         this.gpsx = gpsx;
     }
 
@@ -151,5 +155,13 @@ public class Animal implements Serializable {
 
     public void setFotoUrl(String fotoUrl) {
         this.fotoUrl = fotoUrl;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

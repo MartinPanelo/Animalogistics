@@ -13,6 +13,9 @@
         android:layout_height="85dp"
         android:layout_marginTop="40dp"
         android:hint="Correo"
+        app:errorEnabled="true"
+        app:helperText=""
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +27,8 @@
             android:id="@+id/TECorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:text="contra@contra.com"
             android:textColor="#000000"
             android:textColorHighlight="#000000" />
@@ -36,6 +41,10 @@
         android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Contrasena"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:helperText=""
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +56,9 @@
             android:id="@+id/TEContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="contra"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:singleLine="true"
             android:textColor="#000000"
             android:textColorHighlight="#000000" />
 
@@ -59,6 +70,9 @@
         android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Nombre"
+        app:errorEnabled="true"
+        app:helperText=""
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +84,8 @@
             android:id="@+id/TENombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:text="contra"
             android:textColor="#000000"
             android:textColorHighlight="#000000" />
@@ -82,6 +98,9 @@
         android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Apellido"
+        app:errorEnabled="true"
+        app:helperText=""
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +112,8 @@
             android:id="@+id/TEApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:text="contra"
             android:textColor="#000000"
             android:textColorHighlight="#000000" />
@@ -105,6 +126,9 @@
         android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="Telefono"
+        app:errorEnabled="true"
+        app:helperText=""
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,8 +137,11 @@
         app:startIconDrawable="@drawable/phone_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TETelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:text="222222"
             android:textColor="#000000"
             android:textColorHighlight="#000000" />
@@ -127,6 +154,9 @@
         android:layout_height="85dp"
         android:layout_marginTop="25dp"
         android:hint="DNI"
+        app:errorEnabled="true"
+        app:helperText=""
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,6 +168,8 @@
             android:id="@+id/TEDNI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:text="111111"
             android:textColor="#000000"
             android:textColorHighlight="#000000" />
@@ -154,7 +186,7 @@
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/TVNombreUsuario"
         app:shapeAppearance="@style/fotoredonda"
         app:srcCompat="@android:drawable/ic_menu_camera"
         app:strokeColor="@android:color/holo_blue_bright"
@@ -164,7 +196,7 @@
     <Button
         android:id="@+id/BTNRegistrar"
         style="@style/Widget.Material3.Button.ElevatedButton"
-        android:layout_width="275dp"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/orange"
@@ -181,7 +213,7 @@
         app:shapeAppearance="@style/boton" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/TVNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

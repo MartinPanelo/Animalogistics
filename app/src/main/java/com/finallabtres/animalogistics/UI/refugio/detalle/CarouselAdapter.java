@@ -1,7 +1,10 @@
 package com.finallabtres.animalogistics.UI.refugio.detalle;
 
+import static com.finallabtres.animalogistics.API.API.URLBASE;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.MODELO.Carousel;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
@@ -43,8 +47,17 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Glide.with(context).load(carousel.getImagenes().get(position)).into(holder.imageView);
+      //  Glide.with(context).load(carousel.getImagenes().get(position)).into(holder.imageView);
 
+      /*  Glide.with(context)
+                .load(URLBASE + carousel.getImagenes().get(position))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .override(150, 150)
+                .into(holder.imageView);*/
+
+
+        Glide.with(context).load( URLBASE +carousel.getImagenes().get(position)).into(holder.imageView);
         holder.descripcionCarousel.setText(carousel.getDescripciones().get(position));
 
 
@@ -67,7 +80,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.image);
+            imageView = itemView.findViewById(R.id.IMGMenuRefugio);
 
             descripcionCarousel = itemView.findViewById(R.id.TVDescripcionCarousel);
 
@@ -86,6 +99,12 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
 
                     if(getAdapterPosition() == 0){
                         Navigation.findNavController(v).navigate(R.id.listarNoticiaPorRefugioFragment, bundle);
+                    }
+                    if(getAdapterPosition() == 1){
+                        Navigation.findNavController(v).navigate(R.id.listarVoluntariadosDisponiblesFragment, bundle);
+                    }
+                    if(getAdapterPosition() == 2){
+                        Navigation.findNavController(v).navigate(R.id.detalleAnimalPorRefugioFragment, bundle);
                     }
 
 

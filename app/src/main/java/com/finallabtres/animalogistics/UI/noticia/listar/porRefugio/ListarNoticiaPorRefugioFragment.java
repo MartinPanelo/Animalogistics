@@ -19,6 +19,7 @@ import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.animal.listar.ListarAnimalFragment;
 import com.finallabtres.animalogistics.UI.noticia.listar.NoticiaAdapter;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -160,6 +161,24 @@ public class ListarNoticiaPorRefugioFragment extends Fragment {
         binding.toggleButton.addView(button);
         if(text.equals("todas")){
             button.setChecked(true);
+        }
+    }
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.GONE);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
         }
     }
 

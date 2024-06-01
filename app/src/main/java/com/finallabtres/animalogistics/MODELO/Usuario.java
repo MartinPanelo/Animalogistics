@@ -14,30 +14,39 @@ public class Usuario implements Serializable {
     private String dni;
     private String telefono;
     private String contrasena;
-    private String Ccorreo;
+    private String correo;
     private String fotoUrl;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombre, String apellido, String dni, String telefono, String contrasena, String ccorreo, String fotoUrl) {
+    public Usuario(int id, String nombre, String apellido, String dni, String telefono, String contrasena, String correo, String fotoUrl) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
         this.contrasena = contrasena;
-        Ccorreo = ccorreo;
+        this.correo = correo;
         this.fotoUrl = fotoUrl;
     }
-
-    public Usuario(String nombre, String apellido, String dni, String telefono, String contrasena, String ccorreo, String fotoUrl) {
+    public Usuario(String nombre, String apellido, String dni, String telefono, String contrasena, String correo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
         this.contrasena = contrasena;
-        Ccorreo = ccorreo;
+        this.correo = correo;
+
+    }
+
+    public Usuario(String nombre, String apellido, String dni, String telefono, String contrasena, String correo, String fotoUrl) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.contrasena = contrasena;
+        this.correo = correo;
         this.fotoUrl = fotoUrl;
     }
 
@@ -89,12 +98,12 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
-    public String getCcorreo() {
-        return Ccorreo;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCcorreo(String ccorreo) {
-        Ccorreo = ccorreo;
+    public void setCorreo(String correo) {
+        correo = correo;
     }
 
     public String getFotoUrl() {

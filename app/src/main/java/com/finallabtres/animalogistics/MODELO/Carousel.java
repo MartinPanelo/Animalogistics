@@ -23,10 +23,10 @@ public class Carousel implements Serializable {
 
     public Carousel(int idRefugio) {
         this.imagenes = Arrays.asList(
-                "https://random.imagecdn.app/201/200",
-                "https://random.imagecdn.app/202/200",
-                "https://random.imagecdn.app/203/200",
-                "https://random.imagecdn.app/204/200"
+                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
+                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
+                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
+                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg"
         );
         this.descripciones = Arrays.asList(
                 "Noticias",

@@ -189,7 +189,7 @@ public class ListarRefugioViewModel extends AndroidViewModel {
 
                             Refugio refugio = listaRefugioM.getValue().get(i);
 
-                            LatLng  dire=new LatLng(refugio.getGpsy(),refugio.getGpsx());
+                            LatLng  dire=new LatLng(refugio.getGpsx(),refugio.getGpsy());
 
                             myMarker = googleMap.addMarker(new MarkerOptions()
                                             .position(dire)
