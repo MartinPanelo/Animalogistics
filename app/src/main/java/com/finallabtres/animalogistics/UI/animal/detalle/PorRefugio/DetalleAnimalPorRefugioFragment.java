@@ -8,28 +8,21 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.finallabtres.animalogistics.MODELO.Animal;
-import com.finallabtres.animalogistics.MODELO.Carousel;
 import com.finallabtres.animalogistics.R;
-import com.finallabtres.animalogistics.UI.refugio.detalle.CarouselAdapter;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleAnimalPorRefugioBinding;
-import com.finallabtres.animalogistics.databinding.FragmentDetalleAnimalPorUsuarioBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselSnapHelper;
 import com.google.android.material.carousel.FullScreenCarouselStrategy;
-import com.google.android.material.carousel.HeroCarouselStrategy;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 

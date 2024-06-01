@@ -11,18 +11,22 @@ public class Voluntario implements Serializable {
     private Usuario usuario;
     private Refugio refugio;
 
+    private Tarea tarea;
+
     public Voluntario() {
     }
 
-    public Voluntario(int id, Usuario usuario, Refugio refugio) {
+    public Voluntario(int id, Usuario usuario, Refugio refugio, Tarea tarea) {
         this.id = id;
         this.usuario = usuario;
         this.refugio = refugio;
+        this.tarea = tarea;
     }
 
-    public Voluntario(Usuario usuario, Refugio refugio) {
+    public Voluntario(Usuario usuario, Refugio refugio, Tarea tarea) {
         this.usuario = usuario;
         this.refugio = refugio;
+        this.tarea = tarea;
     }
 
     public int getId() {
@@ -49,6 +53,13 @@ public class Voluntario implements Serializable {
         this.refugio = refugio;
     }
 
+    public Tarea getTarea() {
+        return tarea;
+    }
+
+    public void setTarea(Tarea tarea) {
+        this.tarea = tarea;
+    }
 
     @NonNull
     @Override

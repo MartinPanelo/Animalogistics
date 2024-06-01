@@ -1,4 +1,4 @@
-package com.finallabtres.animalogistics.UI.refugio.detalle;
+package com.finallabtres.animalogistics.UI.refugio.detalle.usuario;
 
 import android.app.Application;
 import android.content.Context;

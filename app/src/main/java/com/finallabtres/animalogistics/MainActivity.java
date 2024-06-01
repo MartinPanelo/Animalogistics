@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
                 vm.cargarDatosNavSide();
-                vm.cargarDatosUsuario();
+                /*vm.cargarDatosUsuario();*/
 
             }
 

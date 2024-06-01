@@ -212,18 +212,23 @@ public class API {
 
         /*---------------------VOLUNTARIO---------------------*/
 
+        @GET("ControllerVoluntario/listarVoluntariadosDisponbilesDeUnRefugio")
+        Call<List<Voluntario>> listarVoluntariadosDisponbilesDeUnRefugio(@Header("Authorization") String token,
+                                                             @Query("refugioId") String refugioId);
+
         @PUT("ControllerVoluntario/anotarseComoVoluntario")
         Call<Voluntario> anotarseComoVoluntario(@Header("Authorization") String token,
-                                                      @Query("tareaId") String tareaId);
+                                                @Query("voluntarioId") int voluntarioId);
 
 
         /*---------------------TAREA---------------------*/
 
-        @GET("ControllerTarea/listarTareasDisponbilesDeUnRefugio")
-        Call<List<Tarea>> listarTareasDisponbilesDeUnRefugio(@Header("Authorization") String token,
-                                                             @Query("refugioId") String refugioId);
 
-
+    /*    @Multipart
+        @PUT("ControllerTarea/anotarseComoVoluntario")
+        Call<Tarea> anotarseComoVoluntario(@Header("Authorization") String token,
+                                           @Query("refugioId") String refugioId);
+*/
 
     }
 

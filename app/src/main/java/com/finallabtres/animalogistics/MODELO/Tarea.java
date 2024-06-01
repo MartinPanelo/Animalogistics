@@ -5,19 +5,19 @@ import java.io.Serializable;
 public class Tarea  implements Serializable {
 
     private int id;
-    private Voluntario voluntario;
+
     private String actividad;
     private String descripcion;
 
-    public Tarea(int id, Voluntario voluntario, String actividad, String descripcion) {
+    public Tarea(int id, String actividad, String descripcion) {
         this.id = id;
-        this.voluntario = voluntario;
+
         this.actividad = actividad;
         this.descripcion = descripcion;
     }
 
-    public Tarea(Voluntario voluntario, String actividad, String descripcion) {
-        this.voluntario = voluntario;
+    public Tarea(String actividad, String descripcion) {
+
         this.actividad = actividad;
         this.descripcion = descripcion;
     }
@@ -28,14 +28,6 @@ public class Tarea  implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Voluntario getVoluntario() {
-        return voluntario;
-    }
-
-    public void setVoluntario(Voluntario voluntario) {
-        this.voluntario = voluntario;
     }
 
     public String getActividad() {

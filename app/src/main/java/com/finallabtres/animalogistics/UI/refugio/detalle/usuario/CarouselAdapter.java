@@ -1,10 +1,9 @@
-package com.finallabtres.animalogistics.UI.refugio.detalle;
+package com.finallabtres.animalogistics.UI.refugio.detalle.usuario;
 
 import static com.finallabtres.animalogistics.API.API.URLBASE;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +15,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.MODELO.Carousel;
-import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHolder> {
 

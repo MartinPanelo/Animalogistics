@@ -82,6 +82,8 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         cargarDataRefugiosVoluntario();
 
+        cargarDatosUsuario();
+
     }
 
 

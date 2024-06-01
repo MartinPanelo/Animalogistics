@@ -1,4 +1,4 @@
-package com.finallabtres.animalogistics.UI.refugio.detalle;
+package com.finallabtres.animalogistics.UI.refugio.detalle.usuario;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,35 +8,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.MODELO.Carousel;
-import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
-import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
-import com.finallabtres.animalogistics.UI.noticia.listar.NoticiaAdapter;
-import com.finallabtres.animalogistics.databinding.FragmentDetalleNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleRefugioBinding;
-import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselSnapHelper;
-import com.google.android.material.carousel.FullScreenCarouselStrategy;
 import com.google.android.material.carousel.HeroCarouselStrategy;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DetalleRefugioFragment extends Fragment {
 

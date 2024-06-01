@@ -35,9 +35,9 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
     private Refugio refugio;
 /*    private MutableLiveData<Refugio> refugioM;*/
 
-    private MutableLiveData<List<Tarea>> listaTareasDisponibleM;
+    private MutableLiveData<List<Voluntario>> listaVoluntarioDisponibleM;
 
-    private MutableLiveData<Tarea> TareaDisponibleM;
+    private MutableLiveData<Voluntario> VoluntarioDisponibleM;
     private MutableLiveData<String> errorM;
 
 /*    private MutableLiveData<Tarea> TareaElegidaM;*/
@@ -49,20 +49,20 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<List<Tarea>> getlistaTareasDisponibleM(){
-        if(listaTareasDisponibleM==null){
+    public LiveData<List<Voluntario>> getlistaVoluntariosDisponibleM(){
+        if(listaVoluntarioDisponibleM==null){
 
-            listaTareasDisponibleM=new MutableLiveData<>();
+            listaVoluntarioDisponibleM=new MutableLiveData<>();
         }
-        return listaTareasDisponibleM;
+        return listaVoluntarioDisponibleM;
 
     }
-    public LiveData<Tarea> getTareaDisponibleM(){
-        if(TareaDisponibleM==null){
+    public LiveData<Voluntario> getVoluntarioDisponibleM(){
+        if(VoluntarioDisponibleM==null){
 
-            TareaDisponibleM=new MutableLiveData<>();
+            VoluntarioDisponibleM=new MutableLiveData<>();
         }
-        return TareaDisponibleM;
+        return VoluntarioDisponibleM;
 
     }
 /*    public LiveData<Tarea> getTareaElegidaM(){
@@ -94,15 +94,17 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
 
 
 
-        Call<List<Tarea>> call = API_A.listarTareasDisponbilesDeUnRefugio(token,refugioId);
+        Call<List<Voluntario>> call = API_A.listarVoluntariadosDisponbilesDeUnRefugio(token,refugioId);
 
-        call.enqueue(new Callback<List<Tarea>>() {
+        call.enqueue(new Callback<List<Voluntario>>() {
             @Override
-            public void onResponse(Call<List<Tarea>> call, Response<List<Tarea>> response) {
+            public void onResponse(Call<List<Voluntario>> call, Response<List<Voluntario>> response) {
 
                 if(response.isSuccessful()){
 
-                    listaTareasDisponibleM.postValue(response.body());
+
+
+                    listaVoluntarioDisponibleM.postValue(response.body());
 
                 }else{
 
@@ -138,7 +140,7 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
 
     public void mostrarTarea(int itemAtPosition) {
 
-        TareaDisponibleM.postValue(listaTareasDisponibleM.getValue().get(itemAtPosition));
+        VoluntarioDisponibleM.postValue(listaVoluntarioDisponibleM.getValue().get(itemAtPosition));
 
 
     }
@@ -150,7 +152,7 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
     /*    Tarea tarea = listaTareasDisponibleM.getValue().get(selectedPosition);
         TareaElegidaM.postValue(tarea);*/
 
-        Tarea tarea = listaTareasDisponibleM.getValue().get(selectedPosition);
+        Voluntario voluntario = listaVoluntarioDisponibleM.getValue().get(selectedPosition);
 
 
         String token = API.LeerToken(context);
@@ -158,7 +160,7 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
         API.ApiAnimalogistics API_A = API.getApi();
 
 
-        Call<Voluntario> call = API_A.anotarseComoVoluntario(token, String.valueOf(tarea.getId()));
+        Call<Voluntario> call = API_A.anotarseComoVoluntario(token, voluntario.getId());
 
 
         call.enqueue(new Callback<Voluntario>() {
@@ -167,13 +169,15 @@ public class ListarVoluntariadosDisponiblesViewModel extends AndroidViewModel {
 
                 if(response.isSuccessful()){
 
-                    Navigation.findNavController(view).popBackStack(R.id.detalleRefugioFragment, false);
+                    Navigation.findNavController(view).popBackStack(R.id.detalleRefugioFragment, true);
 
-                   /* Voluntario voluntario = response.body();
+
+                    Voluntario voluntario = response.body();
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("itemrefugio", voluntario.getRefugio());
-                    Navigation.findNavController(view).navigate(R.id.detalleRefugioFragment, bundle);*/
+                    Navigation.findNavController(view).navigate(R.id.detalleRefugioFragment, bundle);
+
 
 
                 }else{

@@ -47,24 +47,26 @@ public class ListarVoluntariadosDisponiblesFragment extends Fragment {
 
         vm = new ViewModelProvider(this).get(ListarVoluntariadosDisponiblesViewModel.class);
 
-        vm.getlistaTareasDisponibleM().observe(getViewLifecycleOwner(), new Observer<List<Tarea>>() {
+        vm.getlistaVoluntariosDisponibleM().observe(getViewLifecycleOwner(), new Observer<List<Voluntario>>() {
             @Override
-            public void onChanged(List<Tarea> tareas) {
+            public void onChanged(List<Voluntario> voluntarios) {
 
-                List<String> actividades = tareas.stream()
-                        .map(Tarea::getActividad)
+                List<String> actividades = voluntarios.stream()
+                        .map(voluntario -> voluntario.getTarea().getActividad())
                         .collect(Collectors.toList());
 
+
+                // Crear un ArrayAdapter para mostrar los elementos de la lista
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, actividades);
 
                 binding.CBTareas.setAdapter(adapter);
 
                 // Establecer el primer elemento por defecto si la lista no está vacía
-                if (!tareas.isEmpty()) {
+                if (!actividades.isEmpty()) {
                     binding.CBTareas.setText(actividades.get(0), false); // false evita que se muestre el dropdown
                     selectedPosition = 0;
                     // Establecer el texto en el TextView al primer elemento
-                    binding.TVDetalleTarea.setText(tareas.get(0).getDescripcion());
+                    binding.TVDetalleTarea.setText(voluntarios.get(0).getTarea().getDescripcion());
                 }
             }
         });
@@ -77,10 +79,10 @@ public class ListarVoluntariadosDisponiblesFragment extends Fragment {
             }
         });
 
-        vm.getTareaDisponibleM().observe(getViewLifecycleOwner(), new Observer<Tarea>() {
+        vm.getVoluntarioDisponibleM().observe(getViewLifecycleOwner(), new Observer<Voluntario>() {
             @Override
-            public void onChanged(Tarea tarea) {
-                binding.TVDetalleTarea.setText(tarea.getDescripcion());
+            public void onChanged(Voluntario voluntario) {
+                binding.TVDetalleTarea.setText(voluntario.getTarea().getDescripcion());
             }
         });
 

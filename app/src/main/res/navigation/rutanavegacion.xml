@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/detalleRefugioFragment"
-        android:name="com.finallabtres.animalogistics.UI.refugio.detalle.DetalleRefugioFragment"
+        android:name="com.finallabtres.animalogistics.UI.refugio.detalle.usuario.DetalleRefugioFragment"
         android:label="fragment_detalle_refugio"
         tools:layout="@layout/fragment_detalle_refugio" >
         <action
@@ -124,6 +124,15 @@
         tools:layout="@layout/fragment_crear_refugio" >
         <action
             android:id="@+id/action_crearRefugioFragment_to_item_noticias"
+            app:destination="@id/item_noticias" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarRefugioFragment"
+        android:name="com.finallabtres.animalogistics.UI.refugio.editar.EditarRefugioFragment"
+        android:label="fragment_editar_refugio"
+        tools:layout="@layout/fragment_editar_refugio" >
+        <action
+            android:id="@+id/action_editarRefugioFragment_to_item_noticias"
             app:destination="@id/item_noticias" />
     </fragment>
 

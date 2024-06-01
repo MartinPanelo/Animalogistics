@@ -99,22 +99,25 @@ listaRefugios.get(position).getBannerUrl())
 
 
 
-/*          si tipodevista es true es para los refugios de los que el usuario es dueno y si es false es para los refugios de los que el usuario es voluntario
-   itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+/*
+          si tipodevista es true es para los refugios de los que el usuario es dueno y si es false es para los refugios de los que el usuario es voluntario
+*/
+           itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                    int posicion = getAdapterPosition();
-                    Noticia noticia = listaRefugios.get(posicion);
+                        int posicion = getAdapterPosition();
+                        Refugio refugio = listaRefugios.get(posicion);
 
-                    Bundle bundle = new Bundle();
+                        Bundle bundle = new Bundle();
 
-                    bundle.putSerializable("itemnoticia", noticia);
+                        bundle.putSerializable("itemRefugio", refugio);
+                        bundle.putBoolean("TipoDeVista", TipoDeVista);
 
-                    Navigation.findNavController(view).
-                            navigate(R.id.detalleNoticiaFragment, bundle);
-                }
-            });*/
+                        Navigation.findNavController(view).
+                                navigate(R.id.editarRefugioFragment, bundle);
+                    }
+            });
 
         }
     }
