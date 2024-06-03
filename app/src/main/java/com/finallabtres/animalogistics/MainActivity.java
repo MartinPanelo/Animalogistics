@@ -46,66 +46,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        vm.getErrorM().observe(this, new Observer<String>() {
-                    @Override
-                    public void onChanged(String s) {
 
-                        Snackbar.make(findViewById(android.R.id.content), s, Snackbar.LENGTH_LONG).show();
-                    }
-                }
-        );
-        vm.getListaRefugiosM().observe(this, new Observer<List<Refugio>>() {
-            @Override
-            public void onChanged(List<Refugio> listaRefugios) {
-
-
-                GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
-
-                RecyclerView RV = binding.include2.RVRefugiosDuenoo;
-                RV.setLayoutManager(glm);
-
-                SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios, true, getApplicationContext(), getLayoutInflater()/*,getActivity()*/);
-                RV.setAdapter(sideBarAdapter);
-            }
-        });
-
-        vm.getListaRefugiosVoluntarioM().observe(this, new Observer<List<Refugio>>() {
-            @Override
-            public void onChanged(List<Refugio> listaRefugios) {
-
-
-                GridLayoutManager glm=new GridLayoutManager(getApplicationContext(),1,GridLayoutManager.VERTICAL,false);
-
-                RecyclerView RV = binding.include2.RVRefugiosVoluntario;
-                RV.setLayoutManager(glm);
-
-                SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios,false,getApplicationContext(),getLayoutInflater()/*,getActivity()*/);
-                RV.setAdapter(sideBarAdapter);
-            }
-        });
-
-        vm.getUsuarioM().observe(this, new Observer<Usuario>() {
-            @Override
-            public void onChanged(Usuario usuario) {
-                binding.include2.TVNombreUsuario.setText(usuario.getNombre() + "  " + usuario.getApellido());
-                binding.include2.TVCorreoUsuario.setText(usuario.getCorreo());
-
-                Glide.with(getApplicationContext())
-                        .load(API.URLBASE + usuario.getFotoUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .fitCenter()
-                        .override(210,238)
-                        .into(binding.include2.IMSFotoPerfilUsuario);
-
-
-
-            }
-        });
 
         vm.cargarDatosNavSide();
         vm.cargarDatosUsuario();
 
-       /* ---------------Defino la navegacion al final----------------*/
+       /* ---------------Defino la navegacion----------------*/
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
+
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
@@ -173,7 +119,74 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+     /* -------------------  los observers----------------------*/
+        vm.getErrorM().observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+
+                        Snackbar.make(findViewById(android.R.id.content), s, Snackbar.LENGTH_LONG).show();
+                    }
+                }
+        );
+        vm.getListaRefugiosM().observe(this, new Observer<List<Refugio>>() {
+            @Override
+            public void onChanged(List<Refugio> listaRefugios) {
+
+
+                GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
+
+                RecyclerView RV = binding.include2.RVRefugiosDuenoo;
+                RV.setLayoutManager(glm);
+
+                SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios,  navController, getLayoutInflater()/*,getActivity()*/);
+                RV.setAdapter(sideBarAdapter);
+            }
+        });
+
+        vm.getListaRefugiosVoluntarioM().observe(this, new Observer<List<Refugio>>() {
+            @Override
+            public void onChanged(List<Refugio> listaRefugios) {
+
+
+                GridLayoutManager glm=new GridLayoutManager(getApplicationContext(),1,GridLayoutManager.VERTICAL,false);
+
+                RecyclerView RV = binding.include2.RVRefugiosVoluntario;
+                RV.setLayoutManager(glm);
+
+                SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios,navController,getLayoutInflater()/*,getActivity()*/);
+                RV.setAdapter(sideBarAdapter);
+            }
+        });
+
+        vm.getUsuarioM().observe(this, new Observer<Usuario>() {
+            @Override
+            public void onChanged(Usuario usuario) {
+                binding.include2.TVNombreUsuario.setText(usuario.getNombre() + "  " + usuario.getApellido());
+                binding.include2.TVCorreoUsuario.setText(usuario.getCorreo());
+
+                Glide.with(getApplicationContext())
+                        .load(API.URLBASE + usuario.getFotoUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .fitCenter()
+                        .override(210,238)
+                        .into(binding.include2.IMSFotoPerfilUsuario);
+
+
+
+            }
+        });
+
+
+
+
+
+
     }
+
+
     @Override
     public boolean onSupportNavigateUp() {
 

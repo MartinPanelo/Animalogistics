@@ -187,7 +187,7 @@ public class CrearRefugioViewModel extends AndroidViewModel {
                 if (response.isSuccessful()) {
 
                 //    Navigation.findNavController(view).navigate(R.id.item_noticias);
-                    Navigation.findNavController(view).popBackStack(R.id.item_noticias, false);
+                    Navigation.findNavController(view).popBackStack(R.id.gestionRefugioFragment, true);
                     Snackbar.make(view, "Refugio registrado", Snackbar.LENGTH_LONG).show();
 
                 } else {

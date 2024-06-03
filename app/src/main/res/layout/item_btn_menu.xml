@@ -18,11 +18,15 @@
         android:background="#BFBFBF">
 
 
-        <Button
-            android:id="@+id/BTNRefugio"
+        <TextView
+            android:id="@+id/TVNombreRefugioSideBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:paddingVertical="5dp"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

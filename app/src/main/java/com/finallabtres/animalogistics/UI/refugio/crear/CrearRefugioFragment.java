@@ -63,19 +63,19 @@ public class CrearRefugioFragment extends Fragment {
 
         /*-----------------------BINDINGs----------------------------*/
 
-        binding.BTNRegistrarRefugio.setOnClickListener(new View.OnClickListener() {
+        binding.IformularioCrearRefugio.BTNRegistrarRefugio.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 if (isAdded()) {
 
                     vm.registrarRefugio(view,
-                            binding.TIETNombreRefugio.getText().toString(),
-                            binding.TIETDireccionRefugio.getText().toString(),
-                            binding.TIETTelefonoRefugio.getText().toString(),
-                            binding.TIETDescripcionRefugio.getText().toString(),
-                            binding.TIETRangoRefugio.getText().toString(),
-                            binding.IMGFotoRefugio);
+                            binding.IformularioCrearRefugio.TIETNombreRefugio.getText().toString(),
+                            binding.IformularioCrearRefugio.TIETDireccionRefugio.getText().toString(),
+                            binding.IformularioCrearRefugio.TIETTelefonoRefugio.getText().toString(),
+                            binding.IformularioCrearRefugio.TIETDescripcionRefugio.getText().toString(),
+                            binding.IformularioCrearRefugio.TIETRangoRefugio.getText().toString(),
+                            binding.IformularioCrearRefugio.IMGFotoRefugio);
 
 
                 }
@@ -84,7 +84,7 @@ public class CrearRefugioFragment extends Fragment {
 
 
         // boton para abrir la camara y capturar una imagen del animalito
-        binding.CDFotoRefugio.setOnClickListener(new View.OnClickListener() {
+        binding.IformularioCrearRefugio.CDFotoRefugio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //startActivityForResult es otra forma de iniciar una activity, pero esperando desde donde la llamé un resultado
@@ -98,11 +98,11 @@ public class CrearRefugioFragment extends Fragment {
         vm.getFoto().observe(getViewLifecycleOwner(), new Observer<Bitmap>() {
             @Override
             public void onChanged(Bitmap bitmap) {
-                binding.IMGFotoRefugio.setImageBitmap(bitmap);
+                binding.IformularioCrearRefugio.IMGFotoRefugio.setImageBitmap(bitmap);
             }
         });
 
-        binding.BTNPosicionActualParaRefugio.setOnClickListener(new View.OnClickListener() {
+        binding.IformularioCrearRefugio.BTNPosicionActualParaRefugio.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("MissingPermission")
             @Override
             public void onClick(View v) {
@@ -135,7 +135,7 @@ public class CrearRefugioFragment extends Fragment {
             }
         });
 
-        binding.transparentImage.setOnTouchListener(new View.OnTouchListener() {
+        binding.IformularioCrearRefugio.transparentImage.setOnTouchListener(new View.OnTouchListener() {
 
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -144,17 +144,17 @@ public class CrearRefugioFragment extends Fragment {
                 switch (action) {
                     case MotionEvent.ACTION_DOWN:
                         // Disallow ScrollView to intercept touch events.
-                        binding.SVRegistrarRefugio.requestDisallowInterceptTouchEvent(true);
+                        binding.IformularioCrearRefugio.SVRegistrarRefugio.requestDisallowInterceptTouchEvent(true);
                         // Disable touch on transparent view
                         return false;
 
                     case MotionEvent.ACTION_UP:
                         // Allow ScrollView to intercept touch events.
-                        binding.SVRegistrarRefugio.requestDisallowInterceptTouchEvent(false);
+                        binding.IformularioCrearRefugio.SVRegistrarRefugio.requestDisallowInterceptTouchEvent(false);
                         return true;
 
                     case MotionEvent.ACTION_MOVE:
-                        binding.SVRegistrarRefugio.requestDisallowInterceptTouchEvent(true);
+                        binding.IformularioCrearRefugio.SVRegistrarRefugio.requestDisallowInterceptTouchEvent(true);
                         return false;
 
                     default:

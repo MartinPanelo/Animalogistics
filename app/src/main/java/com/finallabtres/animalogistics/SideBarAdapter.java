@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,16 +26,14 @@ public class SideBarAdapter extends RecyclerView.Adapter<SideBarAdapter.ViewHold
 
 
     private List<Refugio> listaRefugios;
-    private Boolean TipoDeVista;
-    private Context context;
+    private NavController navController;
     private LayoutInflater li;
 
 
     // si TipoDeVista es true es para los refugios de los que el usuario es dueno y si es false es para los refugios de los que el usuario es voluntario
-    public SideBarAdapter(List<Refugio> listaRefugios,Boolean TipoDeVista, Context context, LayoutInflater li) {
+    public SideBarAdapter(List<Refugio> listaRefugios, NavController navController, LayoutInflater li) {
         this.listaRefugios = listaRefugios;
-        this.TipoDeVista = TipoDeVista;
-        this.context = context;
+        this.navController = navController;
         this.li = li;
 
 
@@ -86,36 +85,33 @@ listaRefugios.get(position).getBannerUrl())
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private Button nombreRefugio;
+        private TextView nombreRefugio;
 
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nombreRefugio = itemView.findViewById(R.id.BTNRefugio);
+            nombreRefugio = itemView.findViewById(R.id.TVNombreRefugioSideBar);
 
 
 
 
-
-/*
-          si tipodevista es true es para los refugios de los que el usuario es dueno y si es false es para los refugios de los que el usuario es voluntario
-*/
            itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         int posicion = getAdapterPosition();
-                        Refugio refugio = listaRefugios.get(posicion);
+                        int refugioId = listaRefugios.get(posicion).getId();
 
                         Bundle bundle = new Bundle();
 
-                        bundle.putSerializable("itemRefugio", refugio);
-                        bundle.putBoolean("TipoDeVista", TipoDeVista);
+                        bundle.putSerializable("itemRefugio", refugioId);
 
-                        Navigation.findNavController(view).
-                                navigate(R.id.editarRefugioFragment, bundle);
+                        navController.navigate(R.id.gestionRefugioFragment, bundle);
+
+                       /* Navigation.findNavController(view).
+                                navigate(R.id.gestionRefugioFragment, bundle);*/
                     }
             });
 
