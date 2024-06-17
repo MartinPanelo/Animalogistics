@@ -49,7 +49,12 @@ public class DetalleRefugioFragment extends Fragment {
         vm = new ViewModelProvider(this).get(DetalleRefugioViewModel.class);
 
 
-
+        binding.BTNLlamarRefugio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.LlamarRefugio(view);
+            }
+        });
 
 
         vm.getRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
@@ -100,6 +105,7 @@ public class DetalleRefugioFragment extends Fragment {
 
             }
         });
+
 
 
 

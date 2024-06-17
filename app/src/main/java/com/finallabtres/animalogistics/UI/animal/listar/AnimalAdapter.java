@@ -92,7 +92,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
                 @Override
                 public void onClick(View view) {
 
-                    Dialogos.DialogoBorrarAnimal(view, listaAnimales.get(getAdapterPosition()));
+                    Dialogos.DialogoBorrarAnimal(view, listaAnimales.get(getAdapterPosition()),R.id.listarAnimalFragment);
 
 
                 }

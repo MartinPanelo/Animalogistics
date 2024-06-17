@@ -184,7 +184,7 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
 
 
 
-        Call<Animal> call = API_A.animalEditarDeUsuario(token,Id,Nombre, Edad, Tipo, Tamano, Collar, Genero, Comentarios, GPSX, GPSY, FotoFile);
+        Call<Animal> call = API_A.animalEditar(token,Id,Nombre, Edad, Tipo, Tamano, Collar, Genero, Comentarios, GPSX, GPSY, FotoFile);
 
         call.enqueue(new Callback<Animal>() {
             @Override

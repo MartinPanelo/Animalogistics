@@ -12,15 +12,6 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp">
 
-    <!--    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/CLSideBar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">-->
-
-
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/IMSFotoPerfilUsuario"
         android:layout_width="133dp"
@@ -36,7 +27,7 @@
         android:id="@+id/TVCorreoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="8dp"
         android:paddingTop="8dp"
         android:text="soy el encabezado"
@@ -53,7 +44,7 @@
         android:text="soy el contenido"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +62,7 @@
         android:id="@+id/RVRefugiosDuenoo"
         android:layout_width="383dp"
         android:layout_height="120dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -80,7 +71,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -91,7 +82,7 @@
         android:id="@+id/RVRefugiosVoluntario"
         android:layout_width="389dp"
         android:layout_height="127dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -100,7 +91,7 @@
         android:id="@+id/BTNMisRegistros"
         android:layout_width="297dp"
         android:layout_height="64dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="Mis registros"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +117,32 @@
         app:icon="@drawable/brush"
         app:layout_constraintStart_toEndOf="@+id/IMSFotoPerfilUsuario"
         app:layout_constraintTop_toBottomOf="@+id/TVNombreUsuario" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FABOpciones"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="604dp"
+        android:clickable="true"
+        android:contentDescription="@string/app_name"
+        app:ensureMinTouchTargetSize="true"
+        app:fabCustomSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/baseline_settings_24" />
+
+    <Button
+        android:id="@+id/BTNCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="12dp"
+        android:text="Cerrar sesion"
+        app:layout_constraintStart_toEndOf="@+id/FABOpciones"
+        app:layout_constraintTop_toBottomOf="@+id/BTNMisRegistros" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

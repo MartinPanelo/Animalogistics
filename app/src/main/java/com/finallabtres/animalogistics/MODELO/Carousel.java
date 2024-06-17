@@ -25,20 +25,18 @@ public class Carousel implements Serializable {
         this.imagenes = Arrays.asList(
                 "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
                 "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
-                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
-                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg"
+                "Data/usuario/avatar_825d8925c-3670-4f12-b013-e9c34e1ae660.jpg"
         );
         this.descripciones = Arrays.asList(
                 "Noticias",
                 "Anotarse Como Voluntario",
-                "Adopciónes",
-                "Eventos"
+                "Adopciónes"
         );
         this.vistas = Arrays.asList(
-                R.id.detalleNoticiaFragment,
-                R.id.detalleNoticiaFragment,
-                R.id.detalleNoticiaFragment,
-                R.id.detalleNoticiaFragment
+                R.id.listarNoticiaPorRefugioFragment,
+                R.id.listarTareasDisponiblesPorRefugioFragment,
+                R.id.detalleAnimalPorRefugioFragment
+
         );
         this.idRefugio = idRefugio;
 

@@ -207,12 +207,6 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
             if(animal.getFotoUrl() != null){
                 Glide.with(requireContext()).load(API.URLBASE + animal.getFotoUrl()).into(binding.LYFormularioRegistrarAnimal.IMGFoto);
             }
-
-
-
-
-
-
             // Iterar sobre los RadioButtons en el RadioGroup para encontrar el que coincida con el tamaño seleccionado
             for (int i = 0; i < binding.LYFormularioRegistrarAnimal.RBTNTamano.getChildCount(); i++) {
                 View child = binding.LYFormularioRegistrarAnimal.RBTNTamano.getChildAt(i);

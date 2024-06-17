@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.tarea.ListarTareasDisponiblesPorRefugioFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/TVTituloTareas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:text="Lista de tareas disponibles en el refugio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/menuListaTareasDisponibles"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="362dp"
+            android:layout_height="74dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="asasas"
+            android:hint="Tareas disponibles"
+            android:labelFor="@id/CBGenero"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloTareas">
+
+            <AutoCompleteTextView
+                android:id="@+id/CBTareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                />
+            <!-- app:simpleItems="@array/menu_items"-->
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/MCVDetalleTarea"
+            style="?attr/materialCardViewElevatedStyle"
+            android:layout_width="317dp"
+            android:layout_height="105dp"
+            android:layout_marginTop="32dp"
+            android:clickable="false"
+            android:focusable="true"
+            android:minHeight="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:contentPadding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menuListaTareasDisponibles"
+            app:shapeAppearance="@style/Widget.Material3.CardView.Elevated">
+
+            <TextView
+                android:id="@+id/TVDetalleTarea"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ACA se describe la tareas disponible a la
+                que un usuario puede voluntariar" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <Button
+            android:id="@+id/BNTInscribirse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="151dp"
+            android:text="Inscribirse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MCVDetalleTarea" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

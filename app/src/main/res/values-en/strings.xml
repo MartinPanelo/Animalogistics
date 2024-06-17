@@ -15,7 +15,7 @@
     <string name="Noticias">News</string>
     <string name="Refugios">Shelters</string>
     <string name="RegistrarAnimal">Add Animal</string>
-    <string name="Eventos">Events</string>
     <string name="registro">Register</string>
     <string name="actualizarPerfil">Update Profile</string>
+    <string name="a_cargo_de">"Assigned to : "</string>
 </resources>

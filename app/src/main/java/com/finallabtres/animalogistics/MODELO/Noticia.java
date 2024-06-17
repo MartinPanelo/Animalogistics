@@ -7,7 +7,8 @@ import java.io.Serializable;
 public class Noticia implements Serializable {
 
     private int id;
-    private Voluntario voluntario;
+    private Usuario usuario;
+    private Refugio refugio;
     private String categoria;
     private String titulo;
     private String contenido;
@@ -16,17 +17,19 @@ public class Noticia implements Serializable {
 
     public Noticia() {};
 
-    public Noticia(int id, Voluntario voluntario, String categoria, String titulo, String contenido, String bannerUrl) {
+    public Noticia(int id, Usuario usuario, Refugio refugio, String categoria, String titulo, String contenido, String bannerUrl) {
         this.id = id;
-        this.voluntario = voluntario;
+        this.usuario = usuario;
+        this.refugio = refugio;
         this.categoria = categoria;
         this.titulo = titulo;
         this.contenido = contenido;
         this.bannerUrl = bannerUrl;
     }
 
-    public Noticia(Voluntario voluntario, String categoria, String titulo, String contenido, String bannerUrl) {
-        this.voluntario = voluntario;
+    public Noticia(Usuario usuario, Refugio refugio, String categoria, String titulo, String contenido, String bannerUrl) {
+        this.usuario = usuario;
+        this.refugio = refugio;
         this.categoria = categoria;
         this.titulo = titulo;
         this.contenido = contenido;
@@ -41,12 +44,12 @@ public class Noticia implements Serializable {
         this.id = id;
     }
 
-    public Voluntario getVoluntario() {
-        return voluntario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setVoluntario(Voluntario voluntario) {
-        this.voluntario = voluntario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getCategoria() {
@@ -79,5 +82,13 @@ public class Noticia implements Serializable {
 
     public void setBannerUrl(String bannerUrl) {
         this.bannerUrl = bannerUrl;
+    }
+
+    public Refugio getRefugio() {
+        return refugio;
+    }
+
+    public void setRefugio(Refugio refugio) {
+        this.refugio = refugio;
     }
 }

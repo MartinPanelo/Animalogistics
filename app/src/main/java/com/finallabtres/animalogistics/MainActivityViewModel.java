@@ -12,6 +12,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
+import com.finallabtres.animalogistics.MODELO.Tarea;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 
 import org.json.JSONObject;
@@ -108,10 +109,21 @@ public class MainActivityViewModel extends AndroidViewModel {
                 }else{
 
                     if (response.code() == 404) {
+                        try {
+
+                            JSONObject errorObj = new JSONObject(response.errorBody().string());
+                            String errorMessage = errorObj.getString("mensaje");
+
+
+
+                            errorM.postValue(errorMessage);
+                        } catch (Exception e) {
 
                             errorM.postValue("Hubo problemas al cargar los refugios");
                         }
-
+                    } else {
+                        errorM.postValue("Hubo problemas al cargar los refugios");
+                    }
                 }
 
 
@@ -140,6 +152,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
                 if(response.isSuccessful()){
 
+
                     listaRefugioVoluntarioM.postValue(response.body());
 
                 }else{
@@ -149,6 +162,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
                             JSONObject errorObj = new JSONObject(response.errorBody().string());
                             String errorMessage = errorObj.getString("mensaje");
+
 
 
                             errorM.postValue(errorMessage);
@@ -207,4 +221,6 @@ public class MainActivityViewModel extends AndroidViewModel {
 
 
     }
+
+
 }

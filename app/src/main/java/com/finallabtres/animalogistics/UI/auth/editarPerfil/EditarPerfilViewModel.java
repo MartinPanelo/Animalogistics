@@ -178,7 +178,6 @@ public class EditarPerfilViewModel extends AndroidViewModel {
 
         if (correo.isEmpty()) {
             CorreoM.setValue(false);
-
         }/* else if (contrasena.isEmpty()) {
             ContrasenaM.setValue(false);
         }*/

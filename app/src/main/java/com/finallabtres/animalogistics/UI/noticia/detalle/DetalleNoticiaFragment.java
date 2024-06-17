@@ -3,6 +3,7 @@ package com.finallabtres.animalogistics.UI.noticia.detalle;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -45,6 +46,7 @@ public class DetalleNoticiaFragment extends Fragment {
 
 
         vm.getNoticiaM().observe(getActivity(), new Observer<Noticia>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(Noticia noticia) {
 
@@ -57,7 +59,7 @@ public class DetalleNoticiaFragment extends Fragment {
 
                 binding.TVCategoriaNoticia.setText(noticia.getCategoria());
 
-                binding.TVAutorNoticia.setText(noticia.getVoluntario().getUsuario().getApellido()+" "+noticia.getVoluntario().getUsuario().getNombre());
+                binding.TVAutorNoticia.setText(noticia.getUsuario().getApellido()+" "+noticia.getUsuario().getNombre());
 
                 binding.TVTituloNoticia.setText(noticia.getTitulo());
 

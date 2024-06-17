@@ -3,6 +3,7 @@ package com.finallabtres.animalogistics;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,12 +22,16 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
+import com.finallabtres.animalogistics.MODELO.IdiomaUtils;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Usuario;
+import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
 import com.finallabtres.animalogistics.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import com.finallabtres.animalogistics.UI.dialogos.Dialogos;
 
 import java.util.List;
 
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.NVSideBar;
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.item_noticias, R.id.item_refugios, R.id.item_registrar_animal, R.id.item_eventos)
+                R.id.item_noticias, R.id.item_refugios, R.id.item_registrar_animal)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -70,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+
 
 
 
@@ -83,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
                 vm.cargarDatosNavSide();
-                /*vm.cargarDatosUsuario();*/
 
             }
 
@@ -95,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerStateChanged(int newState) {
 
+
             }
         });
 
@@ -103,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.listarAnimalFragment);
+                cerrarDrawer(drawer);
             }
         });
 
@@ -110,12 +120,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.editarPerfilFragment);
+                cerrarDrawer(drawer);
             }
         });
         binding.include2.BTNAgregarRefugio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.crearRefugioFragment);
+                cerrarDrawer(drawer);
             }
         });
 
@@ -135,14 +147,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Refugio> listaRefugios) {
 
-
-                GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
-
                 RecyclerView RV = binding.include2.RVRefugiosDuenoo;
-                RV.setLayoutManager(glm);
 
-                SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios,  navController, getLayoutInflater()/*,getActivity()*/);
-                RV.setAdapter(sideBarAdapter);
+                if (RV.getAdapter() == null) {
+                    GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
+                    RV.setLayoutManager(glm);
+
+                    SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios, true,drawer, navController, getLayoutInflater());// true = duenio
+                    RV.setAdapter(sideBarAdapter);
+                } else {
+                    ((SideBarAdapter) RV.getAdapter()).updateList(listaRefugios);
+                    RV.getAdapter().notifyDataSetChanged();
+                }
+
             }
         });
 
@@ -150,14 +167,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Refugio> listaRefugios) {
 
-
-                GridLayoutManager glm=new GridLayoutManager(getApplicationContext(),1,GridLayoutManager.VERTICAL,false);
-
                 RecyclerView RV = binding.include2.RVRefugiosVoluntario;
-                RV.setLayoutManager(glm);
 
-                SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios,navController,getLayoutInflater()/*,getActivity()*/);
-                RV.setAdapter(sideBarAdapter);
+                if (RV.getAdapter() == null) {
+                    GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false);
+                    RV.setLayoutManager(glm);
+
+                    SideBarAdapter sideBarAdapter = new SideBarAdapter(listaRefugios, false,drawer, navController, getLayoutInflater());// false = voluntario
+                    RV.setAdapter(sideBarAdapter);
+                } else {
+                    ((SideBarAdapter) RV.getAdapter()).updateList(listaRefugios);
+                    RV.getAdapter().notifyDataSetChanged();
+                }
+
             }
         });
 
@@ -179,13 +201,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.include2.FABOpciones.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               IdiomaUtils.mostrarOpcionesIdioma(MainActivity.this);
+           }
+        });
 
 
+
+        binding.include2.BTNCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Dialogos.DialogoSalir(MainActivity.this);
+            }
+        });
 
 
 
     }
 
+
+    public void cerrarDrawer(DrawerLayout drawer) {
+        drawer.closeDrawer(GravityCompat.START,true);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {

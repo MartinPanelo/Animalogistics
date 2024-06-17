@@ -1,5 +1,6 @@
 package com.finallabtres.animalogistics.UI.noticia.listar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -45,11 +46,12 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.titulo.setText(listaNoticias.get(position).getTitulo());
-        holder.autor.setText(listaNoticias.get(position).getCategoria());
+        holder.autor.setText(listaNoticias.get(position).getUsuario().getApellido()+", "+listaNoticias.get(position).getUsuario().getNombre());
 
 
 

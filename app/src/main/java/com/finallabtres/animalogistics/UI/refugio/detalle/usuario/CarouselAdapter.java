@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.MODELO.Carousel;
 import com.finallabtres.animalogistics.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -52,7 +53,12 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
                 .into(holder.imageView);*/
 
 
-        Glide.with(context).load( URLBASE +carousel.getImagenes().get(position)).into(holder.imageView);
+        Glide.with(context)
+                .load( URLBASE +carousel.getImagenes().get(position))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .override(150, 150) .into(holder.imageView);
+
         holder.descripcionCarousel.setText(carousel.getDescripciones().get(position));
 
 
@@ -92,16 +98,18 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
                     bundle.putSerializable("IdRefugio", String.valueOf(carousel.getIdRefugio())); // carousel.getIdRefugio());
 
 
-                    if(getAdapterPosition() == 0){
+                    Navigation.findNavController(v).navigate(carousel.getVistas().get(getAdapterPosition()), bundle);
+
+                /*    if(getAdapterPosition() == 0){
                         Navigation.findNavController(v).navigate(R.id.listarNoticiaPorRefugioFragment, bundle);
                     }
                     if(getAdapterPosition() == 1){
-                        Navigation.findNavController(v).navigate(R.id.listarVoluntariadosDisponiblesFragment, bundle);
+                        Navigation.findNavController(v).navigate(R.id.listarTareasDisponiblesPorRefugioFragment, bundle);
                     }
                     if(getAdapterPosition() == 2){
                         Navigation.findNavController(v).navigate(R.id.detalleAnimalPorRefugioFragment, bundle);
                     }
-
+*/
 
 
                 }

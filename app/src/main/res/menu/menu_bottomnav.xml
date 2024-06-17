@@ -20,9 +20,4 @@
         android:icon="@drawable/search"
         android:title="@string/RegistrarAnimal" />
 
-    <item
-        android:id="@+id/item_eventos"
-        android:enabled="true"
-        android:icon="@drawable/calendar"
-        android:title="@string/Eventos" />
 </menu>
