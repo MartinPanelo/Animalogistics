@@ -47,7 +47,7 @@ public class AgregarNoticiaFragment extends Fragment {
         vm = new ViewModelProvider(this).get(AgregarNoticiaViewModel.class);
 
 
-        binding.formularioagregarnoticia.TIETAutorNoticiaEditar.setVisibility(View.GONE);
+        binding.formularioagregarnoticia.TILAutorNoticiaEditar.setVisibility(View.GONE);
 
 
         vm.getErrorM().observe(getViewLifecycleOwner(), new Observer<String>() {

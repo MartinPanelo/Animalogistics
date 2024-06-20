@@ -121,12 +121,13 @@ public class ListarRefugioViewModel extends AndroidViewModel {
     }
     public void cargarPerfilRefugio(Marker marker) {
 
-        int posicion = parseInt(Objects.requireNonNull(marker.getTag()).toString());
+        if(marker != null){
+            int posicion = parseInt(Objects.requireNonNull(marker.getTag()).toString());
 
-        Refugio refugio = Objects.requireNonNull(listaRefugioM.getValue()).get(posicion);
+            Refugio refugio = Objects.requireNonNull(listaRefugioM.getValue()).get(posicion);
 
-        RefugioM.postValue(refugio);
-
+            RefugioM.postValue(refugio);
+        }
 
 
     }

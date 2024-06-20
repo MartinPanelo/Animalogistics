@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.databinding.FragmentListarRefugioBinding;
@@ -68,12 +69,15 @@ public class ListarRefugioFragment extends Fragment {
 
               vm.cargarPerfilRefugio(marker);
 
+
             }
         });
 
         vm.getPerfilRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
             @Override
             public void onChanged(Refugio refugio) {
+
+
 
 
                 viewperfilrefugio = LayoutInflater.from(ListarRefugioFragment.this.getContext()).inflate(R.layout.perfilrefugio, null);
@@ -88,10 +92,10 @@ public class ListarRefugioFragment extends Fragment {
 
 
                 Glide.with(requireActivity())
-                        .load(/*API.URLBASE +  refugio.getBannerUrl()*/"https://random.imagecdn.app/200/200")
+                        .load(API.URLBASE + refugio.getBannerUrl())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .fitCenter()
-                        .override(210,238)
+                        .override(380,150)
                         .into(SIVBanner);
 
                 TextView nombrerefugio = viewperfilrefugio.findViewById(R.id.TVNombreRefugio);
@@ -101,7 +105,7 @@ public class ListarRefugioFragment extends Fragment {
                 direccionrefugio.setText(refugio.getDireccion());
 
                 TextView telefonorefugio = viewperfilrefugio.findViewById(R.id.TVTelefono);
-                telefonorefugio.setText(refugio.getTelefono());
+                telefonorefugio.setText("Telefono: "+ refugio.getTelefono());
 
                 Button BTN = viewperfilrefugio.findViewById(R.id.BTNDetalleRefugio);
 
@@ -123,11 +127,12 @@ public class ListarRefugioFragment extends Fragment {
                                 navigate(R.id.detalleRefugioFragment, bundle);
                     }
                 });
-
-                if(!bottomSheetDialog.isShowing()){
+                bottomSheetDialog.show();
+               /* if(!bottomSheetDialog.isShowing()){
                     bottomSheetDialog.show();
-                }
-                   // bottomSheetDialog.show();
+                }else{
+                    bottomSheetDialog.dismiss();
+                }*/
 
             }
         });
@@ -156,5 +161,11 @@ public class ListarRefugioFragment extends Fragment {
 
         return root;
     };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 
 }

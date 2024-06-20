@@ -22,6 +22,7 @@ import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DetalleNoticiaFragment extends Fragment {
 
@@ -51,8 +52,8 @@ public class DetalleNoticiaFragment extends Fragment {
             public void onChanged(Noticia noticia) {
 
                 Glide.with(getActivity())
-                        .load(/*API.URLBASE +*/ noticia.getBannerUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .load(API.URLBASE + noticia.getBannerUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()
                         .override(300,200)
                         .into(binding.IMGFotoNoticia);
@@ -81,33 +82,23 @@ public class DetalleNoticiaFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return root;
     }
 
-/*    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DetalleNoticiaViewModel.class);
-        // TODO: Use the ViewModel
-    }*/
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.GONE);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+    }
 }

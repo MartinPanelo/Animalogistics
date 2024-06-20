@@ -129,9 +129,6 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
 
                 }
             });
-
-
-
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(posicion.getLatitude(), posicion.getLongitude()))
                     .zoom(19)

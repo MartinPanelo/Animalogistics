@@ -5,9 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/CLFormularioAnimal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp">
+    android:layout_height="match_parent">
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -174,17 +172,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/menu"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="360dp"
         android:layout_height="74dp"
         android:layout_marginTop="25dp"
+        android:contentDescription="genero del animals"
         android:hint="Genero"
+        android:labelFor="@id/CBGenero"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MaterialCardViewd"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-        android:labelFor="@id/CBGenero"
-        android:contentDescription="genero del animals"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/MaterialCardViewd">
 
         <AutoCompleteTextView
             android:id="@+id/CBGenero"

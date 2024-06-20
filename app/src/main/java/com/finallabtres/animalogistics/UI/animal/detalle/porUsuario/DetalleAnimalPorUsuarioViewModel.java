@@ -235,6 +235,7 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
             //Casteo a bitmap lo obtenido de la camara.
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
+
             //Rutina para optimizar la foto,
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);

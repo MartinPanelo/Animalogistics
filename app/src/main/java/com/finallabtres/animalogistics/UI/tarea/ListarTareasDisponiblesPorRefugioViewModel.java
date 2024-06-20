@@ -29,10 +29,6 @@ import retrofit2.Response;
 public class ListarTareasDisponiblesPorRefugioViewModel extends AndroidViewModel {
 
     private Context context;
-
-    private Refugio refugio;
-
-
     private MutableLiveData<List<Tarea>> listaTareaDisponibleM;
 
     private MutableLiveData<Tarea> TareaDisponibleM;
@@ -91,8 +87,6 @@ public class ListarTareasDisponiblesPorRefugioViewModel extends AndroidViewModel
             public void onResponse(Call<List<Tarea>> call, Response<List<Tarea>> response) {
 
                 if(response.isSuccessful()){
-
-
 
                     listaTareaDisponibleM.postValue(response.body());
 

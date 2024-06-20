@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Glide.with(getApplicationContext())
                         .load(API.URLBASE + usuario.getFotoUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()
                         .override(210,238)
                         .into(binding.include2.IMSFotoPerfilUsuario);

@@ -45,8 +45,8 @@ public class AnimalParaAdoptarPorRefugioAdapter extends RecyclerView.Adapter<Ani
         //  Glide.with(context).load(carousel.getImagenes().get(position)).into(holder.imageView);
 
         Glide.with(context)
-                .load(animales.get(position).getFotoUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .load( URLBASE + animales.get(position).getFotoUrl())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .fitCenter()
                 .override(210,238)
                 .into(holder.imageView);

@@ -28,6 +28,7 @@ import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.noticia.listar.porRefugio.ListarNoticiaPorRefugioViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentEditarPerfilBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EditarPerfilFragment extends Fragment {
 
@@ -107,7 +108,7 @@ public class EditarPerfilFragment extends Fragment {
 
                 Glide.with(root)
                         .load(API.URLBASE + usuario.getFotoUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()
                         .override(200,200)
                         .into(binding.formulario.IMGRegistro);
@@ -177,4 +178,22 @@ public class EditarPerfilFragment extends Fragment {
                     vm.respuetaDeCamara(result);
                 }
             });
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.GONE);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+    }
 }

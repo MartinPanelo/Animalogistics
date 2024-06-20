@@ -4,90 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:outlineSpotShadowColor="#B60B0B"
+    android:background="@drawable/bcuadritorojo"
     tools:context=".UI.noticia.detalle.DetalleNoticiaFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="64dp"
-        android:background="#A13131">
+        android:layout_height="match_parent">
 
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/IMGFotoNoticia"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:background="#B8B8B8"
             android:elevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/banner"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@android:drawable/ic_menu_report_image"
+            app:strokeColor="#000000"
+            app:strokeWidth="1dp" />
 
         <TextView
             android:id="@+id/TVCategoriaNoticia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="12dp"
             android:text="TextView"
             android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/IMGFotoNoticia" />
+
 
         <TextView
             android:id="@+id/TVAutorNoticia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="4dp"
             android:text="TextView"
             android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVCategoriaNoticia" />
 
         <TextView
             android:id="@+id/TVTituloNoticia"
-            android:layout_width="0dp"
-            android:layout_height="92dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="370dp"
+            android:layout_height="73dp"
+            android:layout_marginTop="4dp"
             android:gravity="center"
-            android:text="Hello"
+            android:justificationMode="none"
+            android:text="Nueva campaña de adopciones"
             android:textColor="#000000"
             android:textSize="30dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TVAutorNoticia" />
 
-        <ScrollView
-            android:layout_width="391dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="376dp"
             android:layout_height="0dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#4DFFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TVTituloNoticia">
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloNoticia"
+            app:strokeWidth="3dp">
 
-            <LinearLayout
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_margin="5dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TVTituloNoticia">
 
-                <TextView
-                    android:id="@+id/TVContenidoNoticia"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="TextView"
-                    android:textColor="#000000" />
-            </LinearLayout>
-        </ScrollView>
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TVContenidoNoticia"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:justificationMode="inter_word"
+                        android:text="TextView"
+                        android:textColor="#000000"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </ScrollView>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

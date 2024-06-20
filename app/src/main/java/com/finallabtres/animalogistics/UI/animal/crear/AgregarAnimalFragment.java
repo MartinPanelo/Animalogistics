@@ -142,7 +142,6 @@ public class AgregarAnimalFragment extends Fragment {
                                 public void onSuccess(Location location) {
                                     if (location != null) {
                                         vm.ObtenerMapa(location);
-                                        Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                                     }
                                 }
                             });
@@ -198,10 +197,7 @@ public class AgregarAnimalFragment extends Fragment {
                         @Override
                         public void onSuccess(Location location) {
                             if (location != null) {
-
-
                                 vm.ObtenerMapa(location);
-                                Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                             }
                         }
                     });

@@ -54,10 +54,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
 
 
         Glide.with(context)
-                .load( URLBASE +carousel.getImagenes().get(position))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .load( carousel.getImagenes().get(position))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .fitCenter()
-                .override(150, 150) .into(holder.imageView);
+                .override(380, 220) .into(holder.imageView);
 
         holder.descripcionCarousel.setText(carousel.getDescripciones().get(position));
 
@@ -91,8 +91,6 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
                 //    int p = getAdapterPosition();
 
                     Bundle bundle = new Bundle();
-
-                    Snackbar.make(v, String.valueOf(carousel.getIdRefugio()), Snackbar.LENGTH_LONG).show();
 
                     // DESDE ACA ME VOY A LAS VISTAS PARTICULARIZANDO LA INFORMACION A UN REFUGIO
                     bundle.putSerializable("IdRefugio", String.valueOf(carousel.getIdRefugio())); // carousel.getIdRefugio());

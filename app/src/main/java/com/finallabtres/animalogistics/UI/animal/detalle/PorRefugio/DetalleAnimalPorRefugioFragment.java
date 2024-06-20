@@ -68,12 +68,9 @@ public class DetalleAnimalPorRefugioFragment extends Fragment {
 
                CarouselLayoutManager layoutManager = new CarouselLayoutManager(new FullScreenCarouselStrategy(),RecyclerView.HORIZONTAL);
 
-
                layoutManager.setCarouselAlignment(CarouselLayoutManager.ALIGNMENT_CENTER);
 
-
                recyclerView.setLayoutManager(layoutManager);
-
 
                if (snapHelper == null) {
                    snapHelper = new CarouselSnapHelper(false);
@@ -81,9 +78,7 @@ public class DetalleAnimalPorRefugioFragment extends Fragment {
 
                snapHelper.attachToRecyclerView(recyclerView);
 
-
                AnimalParaAdoptarPorRefugioAdapter adapter = new AnimalParaAdoptarPorRefugioAdapter(getContext(),animals);
-
 
                recyclerView.setAdapter(adapter);
 

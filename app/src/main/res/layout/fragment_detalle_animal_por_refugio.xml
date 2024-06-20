@@ -16,7 +16,6 @@
             android:id="@+id/RVCarouselAnimales"
             android:layout_width="0dp"
             android:layout_height="713dp"
-            android:layout_marginTop="64dp"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"

@@ -114,7 +114,6 @@ public class CrearRefugioFragment extends Fragment {
                             public void onSuccess(Location location) {
                                 if (location != null) {
                                     vm.ObtenerMapa(location);
-                                    Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -172,7 +171,6 @@ public class CrearRefugioFragment extends Fragment {
 
 
                     vm.ObtenerMapa(location);
-                    Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                 }
             }
         });

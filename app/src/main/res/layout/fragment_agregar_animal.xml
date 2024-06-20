@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="64dp"
-    android:layout_marginBottom="80dp"
     android:layout_gravity="center"
     tools:context=".UI.animal.crear.AgregarAnimalFragment">
 
@@ -13,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="80dp">
 
         <ScrollView
             android:id="@+id/SVRegistrarAnimal"
@@ -35,9 +34,6 @@
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
 </FrameLayout>

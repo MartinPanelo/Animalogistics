@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Carousel;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
@@ -24,6 +25,7 @@ import com.finallabtres.animalogistics.databinding.FragmentDetalleRefugioBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselSnapHelper;
+import com.google.android.material.carousel.FullScreenCarouselStrategy;
 import com.google.android.material.carousel.HeroCarouselStrategy;
 
 public class DetalleRefugioFragment extends Fragment {
@@ -63,13 +65,15 @@ public class DetalleRefugioFragment extends Fragment {
 
 
                 Glide.with(getActivity())
-                        .load(/*API.URLBASE + */refugio.getBannerUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .load(API.URLBASE + refugio.getBannerUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()
-                        .override(150, 150)
+                        .override(384, 150)
                         .into(binding.shapeableImageView2);
 
                 binding.textView3.setText(refugio.getNombre());
+                binding.TVTelefonoRefugioPerfil.setText("Telefono : "+refugio.getTelefono());
+                binding.TVDireccionRefugioPerfil.setText("Dirección : "+refugio.getDireccion());
                 binding.textView4.setText(refugio.getDescripcion());
 
 
@@ -81,14 +85,15 @@ public class DetalleRefugioFragment extends Fragment {
                 CarouselLayoutManager layoutManager = new CarouselLayoutManager(new HeroCarouselStrategy(),RecyclerView.VERTICAL);
 
 
-                layoutManager.setCarouselAlignment(CarouselLayoutManager.ALIGNMENT_CENTER);
+                layoutManager.setCarouselAlignment(CarouselLayoutManager.ALIGNMENT_START);
+
 
 
                 recyclerView.setLayoutManager(layoutManager);
 
 
                 if (snapHelper == null) {
-                    snapHelper = new CarouselSnapHelper(false);
+                    snapHelper = new CarouselSnapHelper(true);
                 }
 
                 snapHelper.attachToRecyclerView(recyclerView);

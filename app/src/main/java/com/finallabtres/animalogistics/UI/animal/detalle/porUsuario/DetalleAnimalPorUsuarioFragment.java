@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.R;
@@ -128,7 +129,6 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
                             public void onSuccess(Location location) {
                                 if (location != null) {
                                     vm.ObtenerMapa(location);
-                                    Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -188,7 +188,6 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
                         location.setLongitude(animal.getGpsy());
                     }
                     vm.ObtenerMapa(location);
-                    Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                 }
             }
         });
@@ -205,7 +204,17 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
             binding.LYFormularioRegistrarAnimal.CBGenero.setText(animal.getGenero());
             binding.LYFormularioRegistrarAnimal.TIETDetalles.setText(animal.getComentarios());
             if(animal.getFotoUrl() != null){
-                Glide.with(requireContext()).load(API.URLBASE + animal.getFotoUrl()).into(binding.LYFormularioRegistrarAnimal.IMGFoto);
+
+                Glide.with(requireContext())
+                        .load(API.URLBASE + animal.getFotoUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .fitCenter()
+                        .override(300,250)
+                        .into(binding.LYFormularioRegistrarAnimal.IMGFoto);
+
+
+
+              /*  Glide.with(requireContext()).load(API.URLBASE + animal.getFotoUrl()).into(binding.LYFormularioRegistrarAnimal.IMGFoto);*/
             }
             // Iterar sobre los RadioButtons en el RadioGroup para encontrar el que coincida con el tamaño seleccionado
             for (int i = 0; i < binding.LYFormularioRegistrarAnimal.RBTNTamano.getChildCount(); i++) {

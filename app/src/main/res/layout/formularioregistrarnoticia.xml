@@ -8,15 +8,13 @@
         android:id="@+id/IMGFotoEditarNoticia"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginTop="64dp"
-        android:background="#B8B8B8"
+        android:background="@drawable/bgrefugioinfo"
         android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearance="@style/banner"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/addphoto" />
 
 
     <ScrollView

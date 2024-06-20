@@ -1,5 +1,8 @@
 package com.finallabtres.animalogistics.MODELO;
 
+
+import android.graphics.drawable.Drawable;
+
 import com.finallabtres.animalogistics.R;
 
 import java.io.Serializable;
@@ -9,13 +12,13 @@ import java.util.List;
 public class Carousel implements Serializable {
 
     private int idRefugio;
-    private List<String> imagenes;
+    private List<Integer> imagenes;
 
     private List<String> descripciones;
 
     private List<Integer> vistas;
 
-    public Carousel(List<String> imagenes, List<String> descripciones, List<Integer> vistas) {
+    public Carousel(List<Integer> imagenes, List<String> descripciones, List<Integer> vistas) {
         this.imagenes = imagenes;
         this.descripciones = descripciones;
         this.vistas = vistas;
@@ -23,14 +26,14 @@ public class Carousel implements Serializable {
 
     public Carousel(int idRefugio) {
         this.imagenes = Arrays.asList(
-                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
-                "Data/usuario/avatar_20f6a3330d-2ec7-4cd0-8cd2-ae938fb1c6f7.jpg",
-                "Data/usuario/avatar_825d8925c-3670-4f12-b013-e9c34e1ae660.jpg"
-        );
+                R.drawable.noticiasrefugio,
+                R.drawable.carouselnoticia,
+                R.drawable.adopcionesrefugio);
+
         this.descripciones = Arrays.asList(
-                "Noticias",
-                "Anotarse Como Voluntario",
-                "Adopciónes"
+                "Noticias.",
+                "Voluntariados.",
+                "Adopciónes."
         );
         this.vistas = Arrays.asList(
                 R.id.listarNoticiaPorRefugioFragment,
@@ -50,11 +53,11 @@ public class Carousel implements Serializable {
         this.idRefugio = idRefugio;
     }
 
-    public List<String> getImagenes() {
+    public List<Integer> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<String> imagenes) {
+    public void setImagenes(List<Integer> imagenes) {
         this.imagenes = imagenes;
     }
 
