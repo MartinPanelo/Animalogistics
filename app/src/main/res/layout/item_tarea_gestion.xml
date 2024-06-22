@@ -5,98 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--<com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/mtrl_card_spacing"
-        android:clickable="true"
-        android:focusable="true"
-        android:minHeight="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:paddingBottom="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1.0"
-                    android:orientation="vertical"
-                    android:paddingTop="5dp">
-
-                    <TextView
-                        style="?attr/textAppearanceHeadline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="textottttttttttt" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="texot" />
-                </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="deacription"
-                    app:backgroundTint="@color/material_on_surface_emphasis_medium"
-                    app:backgroundTintMode="add"
-                    app:srcCompat="@drawable/addphoto" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:paddingHorizontal="5dp">
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="tttttttttttttttttttt" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="tttttttttttttttt" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>-->
-
-
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:clickable="false"
+        android:elevation="1dp"
         android:focusable="true"
         android:minHeight="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,22 +26,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:paddingBottom="5dp">
+                android:paddingBottom="5dp"
+                android:baselineAligned="false">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1.0"
                     android:orientation="vertical"
-                    android:paddingTop="5dp">
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="5dp"
+                    tools:ignore="UselessParent">
 
                     <TextView
                         android:id="@+id/TVTareaAvtividad"
                         style="?attr/textAppearanceHeadline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="textottttttttttt" />
+                        android:text="@string/titulo"
+                        android:textSize="27sp" />
 
                     <TextView
                         android:id="@+id/TVTareaDescripcion"
@@ -136,7 +54,8 @@
                         android:layout_marginTop="5dp"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:text="texot" />
+                        android:text="@string/descripcion"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/TVTareaUsuario"
@@ -145,7 +64,8 @@
                         android:layout_marginTop="5dp"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:text="Nadie" />
+                        android:text="@string/usuario"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <!--     <androidx.appcompat.widget.AppCompatImageView
@@ -165,7 +85,8 @@
                 android:layout_gravity="right"
                 android:orientation="horizontal"
                 android:padding="5dp"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="5dp"
+                tools:ignore="RtlHardcoded">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/BTNTareaEditar"
@@ -174,8 +95,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="Editar"
-                    app:icon="@drawable/brush" />
+                    android:text="@string/editar"
+                    app:icon="@drawable/brush"
+                    tools:ignore="RtlHardcoded" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/BTNTareaEliminar"
@@ -183,8 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="Eliminar"
+                    android:text="@string/eliminar"
                     app:icon="@drawable/delete_icon" />
 
             </LinearLayout>

@@ -130,8 +130,8 @@ public class GestionRefugioFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                switch (tab.getText().toString()) {
-                    case "Tareas":
+                switch (tab.getPosition()) {
+                    case 0:
                         binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -143,7 +143,7 @@ public class GestionRefugioFragment extends Fragment {
                         }
 
                         break;
-                    case "Noticias":
+                    case 1:
                         binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -155,7 +155,7 @@ public class GestionRefugioFragment extends Fragment {
                         }
 
                         break;
-                    case "Animales":
+                    case 2:
                         binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -190,6 +190,15 @@ public class GestionRefugioFragment extends Fragment {
             }
         });
 
+        binding.BTNeditarRefugio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vm.editarRefugio(bundle,v);
+
+              //  Navigation.findNavController(getView()).navigate(R.id.crearRefugioFragment,bundle);
+            }
+        });
 
 
         return root;

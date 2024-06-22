@@ -27,12 +27,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.API.API;
+import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.animal.crear.AgregarAnimalViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentCrearRefugioBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -62,6 +67,8 @@ public class CrearRefugioFragment extends Fragment {
 
 
         /*-----------------------BINDINGs----------------------------*/
+
+
 
         binding.IformularioCrearRefugio.BTNRegistrarRefugio.setOnClickListener(new View.OnClickListener() {
 
@@ -113,7 +120,9 @@ public class CrearRefugioFragment extends Fragment {
                             @Override
                             public void onSuccess(Location location) {
                                 if (location != null) {
-                                    vm.ObtenerMapa(location);
+                                 //   vm.ObtenerMapa(location);
+
+                                    vm.ObtenerMapa(new LatLng(location.getLatitude(), location.getLongitude()));
                                 }
                             }
                         });
@@ -164,16 +173,59 @@ public class CrearRefugioFragment extends Fragment {
 
 
 
-        fusedLocationClient.getLastLocation().addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
+
+
+
+
+
+        /*-----------------------EDITAR----------------------------*/
+
+
+        vm.getRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
             @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
+            public void onChanged(Refugio refugio) {
+
+                binding.IformularioCrearRefugio.TIETNombreRefugio.setText(refugio.getNombre());
+               binding.IformularioCrearRefugio.TIETDireccionRefugio.setText(refugio.getDireccion());
+                binding.IformularioCrearRefugio.TIETTelefonoRefugio.setText(refugio.getTelefono());
+                binding.IformularioCrearRefugio.TIETDescripcionRefugio.setText(refugio.getDescripcion());
+                binding.IformularioCrearRefugio.TIETRangoRefugio.setText(String.valueOf(refugio.getRango()));
 
 
-                    vm.ObtenerMapa(location);
-                }
+
+                Glide.with(root)
+                        .load(API.URLBASE + refugio.getBannerUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .fitCenter()
+                        .override(200,200)
+                        .into(binding.IformularioCrearRefugio.IMGFotoRefugio);
+
+                vm.ObtenerMapa(new LatLng(refugio.getGpsx(), refugio.getGpsy()));
+
+
             }
         });
+
+
+
+        Bundle bundle = this.getArguments();
+
+        if(bundle != null){
+
+            vm.editarRefugio(bundle);
+
+        }else{
+            fusedLocationClient.getLastLocation().addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+
+
+                        vm.ObtenerMapa(new LatLng(location.getLatitude(), location.getLongitude()));
+                    }
+                }
+            });
+        }
 
 
         return root;

@@ -23,13 +23,13 @@ public class IdiomaUtils {
         bottomSheetDialog.setContentView(view1);
         bottomSheetDialog.show();
 
-        TableRow MBEspañol = view1.findViewById(R.id.TREspañol);
+        TableRow MBEspañol = view1.findViewById(R.id.TREspaniol);
         TableRow MBEnglish = view1.findViewById(R.id.TREnglish);
 
         MBEspañol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveLocale(context, "es");
+             //   saveLocale(context, "es");
                 FijarIdioma("es");
             }
         });
@@ -37,19 +37,19 @@ public class IdiomaUtils {
         MBEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveLocale(context, "en");
+              //  saveLocale(context, "en");
                 FijarIdioma("en");
             }
         });
     }
 
     // Método para guardar el idioma en SharedPreferences
-    public static void saveLocale(Context context, String languageCode) {
+/*    public static void saveLocale(Context context, String languageCode) {
         SharedPreferences preferences = context.getSharedPreferences("SP", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("idioma", languageCode);
         editor.apply();
-    }
+    }*/
 
     // Método para fijar el idioma
     public static void FijarIdioma(String idioma) {
@@ -57,8 +57,8 @@ public class IdiomaUtils {
     }
 
     // Método para obtener el idioma guardado en SharedPreferences
-    public static String getSavedLocale(Context context) {
+/*    public static String getSavedLocale(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("SP", Context.MODE_PRIVATE);
         return preferences.getString("idioma", Locale.getDefault().getLanguage());
-    }
+    }*/
 }

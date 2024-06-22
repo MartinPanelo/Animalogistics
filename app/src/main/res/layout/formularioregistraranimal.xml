@@ -12,13 +12,13 @@
         android:id="@+id/TILNombreAnimal"
         android:layout_width="360dp"
         android:layout_height="85dp"
-        android:hint="Nombre"
+        android:hint="@string/nombre"
         app:errorEnabled="true"
         app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconContentDescription="@string/app_name"
+
         app:startIconDrawable="@drawable/id_svgrepo_com">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:singleLine="true"
-            android:text="SOYNOMBRE" />
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -36,13 +36,13 @@
         android:layout_width="360dp"
         android:layout_height="85dp"
         android:layout_marginTop="10dp"
-        android:hint="Tipo De Animal"
+        android:hint="@string/tipo_de_animal"
         app:errorEnabled="true"
         app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TILNombreAnimal"
-        app:startIconContentDescription="@string/app_name"
+
         app:startIconDrawable="@drawable/pets">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:singleLine="true"
-            android:text="SOYTIPO" />
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -59,7 +59,7 @@
         android:layout_width="360dp"
         android:layout_height="85dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="edad"
+        android:contentDescription="@string/es_un_slider_para_definir_la_edad_del_animal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,8 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:gravity="left"
-            android:text="Edad"
+
+            android:text="@string/edad"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="200dp" />
 
@@ -80,7 +80,7 @@
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:contentDescription="edad"
+            android:contentDescription="@string/es_un_slider_para_definir_la_edad_del_animal"
             android:stepSize="1.0"
             android:valueFrom="0.0"
             android:valueTo="10.0"
@@ -96,7 +96,7 @@
         android:layout_width="360dp"
         android:layout_height="80dp"
         android:layout_marginTop="25dp"
-        android:contentDescription="tamanio"
+        android:contentDescription="@string/un_grupo_de_opciones_para_el_tama_o_del_animal_peque_o_mediano_grande"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MaterialCardViewD">
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="tamaño" />
+            android:text="@string/tamano" />
 
         <RadioGroup
             android:id="@+id/RBTNTamano"
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Pequeño" />
+                android:text="@string/pequeno" />
 
             <RadioButton
 
@@ -131,7 +131,7 @@
                 android:layout_gravity="center|top"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginBottom="5dp"
-                android:text="Mediano" />
+                android:text="@string/mediano" />
 
             <RadioButton
                 android:id="@+id/Grande"
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|top"
                 android:layout_marginBottom="5dp"
-                android:text="Grande" />
+                android:text="@string/grande" />
 
         </RadioGroup>
 
@@ -153,7 +153,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:contentDescription="collar"
+        android:contentDescription="@string/un_switch_para_definir_si_el_animal_tiene_collar_o_no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MaterialCardView">
 
@@ -164,9 +164,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start|bottom"
             android:checked="true"
-            android:contentDescription="collar"
+            android:contentDescription="@string/un_switch_para_definir_si_el_animal_tiene_collar_o_no"
             android:paddingHorizontal="5dp"
-            android:text="Collar" />
+            android:text="@string/collar" />
     </com.google.android.material.card.MaterialCardView>
 
 
@@ -176,8 +176,7 @@
         android:layout_width="360dp"
         android:layout_height="74dp"
         android:layout_marginTop="25dp"
-        android:contentDescription="genero del animals"
-        android:hint="Genero"
+        android:hint="@string/genero"
         android:labelFor="@id/CBGenero"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -192,74 +191,26 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <!--  <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/MaterialCardViewdda"
-                    android:layout_width="360dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="start|top"
-                    android:layout_marginTop="25dp"
-                    android:contentDescription="tamanio"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/MaterialCardView">-->
-
-    <!--   <TextView
-                        android:id="@+id/textView84"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Comentarios" />-->
-
-    <!--<com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/TIETNombreAnimadlLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="">-->
-
-    <!--  <EditText
-                            android:layout_width="match_parent"
-                            android:inputType="textImeMultiLine|textMultiLine"
-                            android:layout_height="wrap_content"
-                            android:hint="HINT"
-                            android:textColorHint="@color/orange"
-                            android:ems="10"
-                            android:imeOptions="actionDone"
-                            android:id="@+id/message_input"
-
-                            android:layout_gravity="start|center"
-                           />-->
-
-    <!--  </com.google.android.material.textfield.TextInputLayout>-->
-
-
-    <!--   </com.google.android.material.card.MaterialCardView>-->
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TILNombrsdfeAnimal"
         android:layout_width="360dp"
         android:layout_height="0dp"
         android:layout_marginTop="61dp"
-        android:hint="Detalles"
+        android:hint="@string/detalles"
         app:errorEnabled="true"
         app:helperTextEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu"
-        app:startIconContentDescription="@string/app_name">
+        app:layout_constraintTop_toBottomOf="@+id/menu">
 
         <com.google.android.material.textfield.TextInputEditText
-
-
             android:id="@+id/TIETDetalles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center"
-
             android:ems="10"
             android:imeOptions="actionDone"
             android:inputType="textImeMultiLine|textMultiLine"
-            android:text="ES una Nutria salvaje"
             android:textColorHint="@color/orange" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -268,7 +219,7 @@
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_marginTop="28dp"
-        android:contentDescription="tamanio"
+        android:contentDescription=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -279,7 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:text="Foto" />
+            android:text="@string/foto" />
 
         <ImageView
             android:id="@+id/IMGFoto"
@@ -287,7 +238,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="25dp"
-            android:src="@drawable/addphoto" />
+            android:src="@drawable/addphoto"
+            android:contentDescription="@string/imagen_del_animal" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -296,7 +248,7 @@
         android:layout_width="350dp"
         android:layout_height="500dp"
         android:layout_marginTop="32dp"
-        android:contentDescription="tamanio"
+        android:contentDescription="@string/mapa_para_definir_la_ubicacion_del_animal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
@@ -307,7 +259,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:text="Posicion GPS" />
+            android:text="@string/posicion_gps" />
 
 
         <Button
@@ -317,7 +269,7 @@
             android:layout_gravity="fill"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:text="Mi posicion actual"
+            android:text="@string/mi_posicion_actual"
             android:textColor="#000000"
             android:tooltipText="Mi Posicion Actual"
             app:icon="@drawable/pin"
@@ -346,7 +298,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no" />
 
 
     </com.google.android.material.card.MaterialCardView>
@@ -356,7 +309,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
-        android:text="Guardar"
+        android:text="@string/guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CDFoto" />

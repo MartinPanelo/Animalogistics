@@ -29,9 +29,10 @@
                 android:paddingBottom="5dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1.0"
                     android:orientation="vertical"
                     android:paddingTop="5dp">
@@ -41,7 +42,7 @@
                         style="?attr/textAppearanceHeadline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="textottttttttttt" />
+                        android:text="@string/titulo" />
 
                     <TextView
                         android:id="@+id/TVNoticiaAutor"
@@ -50,11 +51,12 @@
                         android:layout_marginTop="5dp"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:text="texot" />
+                        android:text="@string/autor"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/TVNoticiaContenido"
-                        android:layout_width="255dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:ellipsize="end"
@@ -63,8 +65,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/IMGNoticiaFoto"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
 
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +82,8 @@
                 android:layout_gravity="right"
                 android:orientation="horizontal"
                 android:padding="5dp"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="5dp"
+                tools:ignore="RtlHardcoded">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/BTNNoticiaEditar"
@@ -89,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="Editar"
+                    android:text="@string/editar"
                     app:icon="@drawable/brush" />
 
                 <com.google.android.material.button.MaterialButton
@@ -99,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="Eliminar"
+                    android:text="@string/eliminar"
                     app:icon="@drawable/delete_icon" />
 
             </LinearLayout>

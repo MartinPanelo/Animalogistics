@@ -2,7 +2,7 @@ package com.finallabtres.animalogistics.API;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.Image;
+
 
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Noticia;
@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
-import java.util.UUID;
+
 
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -201,7 +201,18 @@ public class API {
                                      @Part MultipartBody.Part FotoFile);
 
 
-
+        @Multipart
+        @PUT("ControllerRefugio/refugioEditarPerfil")
+        Call<Refugio> refugioEditarPerfil(@Header("Authorization") String token,
+                                          @Part("Id") RequestBody Id,
+                                          @Part("Nombre") RequestBody Nombre,
+                                          @Part("Direccion") RequestBody Direccion,
+                                          @Part("Telefono") RequestBody Telefono,
+                                          @Part("Descripcion") RequestBody Descripcion,
+                                          @Part("GPSRango") RequestBody GPSRango,
+                                          @Part("GPSX") RequestBody GPSX,
+                                          @Part("GPSY") RequestBody GPSY,
+                                          @Part MultipartBody.Part FotoFile);
 
 
         /*---------------------ANIMAL---------------------*/
@@ -335,7 +346,7 @@ public class API {
         SharedPreferences.Editor editor = sp.edit();
 
         editor.putString("token", token);
-        editor.commit();
+        editor.apply();
     }
 
 

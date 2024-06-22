@@ -22,6 +22,9 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
+/*
+import com.finallabtres.animalogistics.MODELO.IdiomaUtils;
+*/
 import com.finallabtres.animalogistics.MODELO.IdiomaUtils;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Usuario;

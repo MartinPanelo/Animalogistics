@@ -30,9 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:text="@string/nombre_del_refugio"
             android:textColor="#000000"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -47,7 +47,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:text="TextView"
+            android:text="@string/descripcion_del_refugio"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:layout_marginTop="12dp"
-            android:text="Llamar"
+            android:text="@string/llamar"
             app:icon="@android:drawable/stat_sys_phone_call"
             app:layout_constraintStart_toEndOf="@+id/TVTelefonoRefugioPerfil"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -85,21 +85,49 @@
             android:id="@+id/TVTelefonoRefugioPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:text="Telefono : "
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/telefono"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTelefonoRefugio"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/TVDireccionRefugioPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="32dp"
-            android:text="Direccion"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="52dp"
+            android:text="@string/direccion"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVDescripcionRefugio"
             app:layout_constraintTop_toBottomOf="@+id/TVTelefonoRefugioPerfil" />
+
+        <TextView
+            android:id="@+id/TVTelefonoRefugio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/telefono_"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/TVDescripcionRefugio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="52dp"
+            android:text="@string/direccion"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVTelefonoRefugio" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

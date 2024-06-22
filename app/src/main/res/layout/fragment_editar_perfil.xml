@@ -24,7 +24,8 @@
             android:layout_height="@dimen/_2408px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fondoregistro" />
+            app:srcCompat="@drawable/fondoregistro"
+            android:contentDescription="@string/editar_el_perfil_del_usuario" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbarlayout"
@@ -34,80 +35,7 @@
             android:fitsSystemWindows="true"
             android:textAlignment="center">
 
-          <!--  <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsingtoolbarlayout"
-                style="?attr/collapsingToolbarLayoutLargeStyle"
-                android:layout_width="match_parent"
-                android:layout_height="309dp"
-                android:background="#00FFFFFF"
-                app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Display2"
-                app:collapsedTitleTextColor="@color/black"
-                app:contentScrim="@drawable/navbarregistro"
-                app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
-                app:expandedTitleTextColor="#00000000"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                app:statusBarScrim="@drawable/login">
 
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/shapeableImageView"
-                    android:layout_width="400dp"
-                    android:layout_height="400dp"
-                    android:background="#00FFFFFF"
-                    android:scaleType="fitStart"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/bannerregistro" />
-
-
-                &lt;!&ndash;            <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:navigationIcon="@drawable/baseline_settings_24">
-
-                    <Button
-                        android:id="@+id/button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button"
-                        app:layout_collapseMode="pin" />
-
-                </androidx.appcompat.widget.Toolbar>&ndash;&gt;
-
-                <TextView
-                    android:id="@+id/TVTituloRegistro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="180dp"
-                    android:layout_marginLeft="100dp"
-                    android:background="#00FFFFFF"
-                    android:clickable="false"
-                    android:text="Mi perfil"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/black"
-
-                    android:textStyle="bold"
-                    android:textSize="50sp" />
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    style="?attr/toolbarStyle"
-                    android:layout_width="300dp"
-                    android:layout_height="?attr/actionBarSize"
-                    android:elevation="5dp"
-
-                    android:translationX="90dp"
-                    app:buttonGravity="top"
-                    app:layout_collapseMode="pin"
-                    app:title="Registro"
-
-                    >
-
-
-                </androidx.appcompat.widget.Toolbar>
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>-->
         </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -122,8 +50,6 @@
             <include
                 android:id="@+id/formulario"
                 layout="@layout/formularioregistro" />
-
-            <!--    <include layout="@layout/cat_topappbar_filler_text_view"/>-->
         </androidx.core.widget.NestedScrollView>
 
 

@@ -62,7 +62,7 @@ public class AnimalGestionAdapter extends RecyclerView.Adapter<AnimalGestionAdap
 
         Glide.with(context)
                 .load(API.URLBASE + listaAnimales.get(position).getFotoUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .fitCenter()
                 .override(150, 150)
                 .into(holder.imagen);

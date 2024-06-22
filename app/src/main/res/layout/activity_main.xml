@@ -13,15 +13,20 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:theme="@style/Theme.Animalogistics.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="0dp"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Animalogistics.PopupOverlay" />
+            android:background="@android:color/holo_green_dark"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            app:popupTheme="@style/Theme.Animalogistics.PopupOverlay"
+            app:titleTextColor="#000000" />
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -81,7 +86,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginBottom="30dp"
         android:fitsSystemWindows="true"
         android:isScrollContainer="false"
         android:scrollbarAlwaysDrawVerticalTrack="false"

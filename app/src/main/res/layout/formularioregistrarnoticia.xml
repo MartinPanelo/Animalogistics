@@ -28,7 +28,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -37,11 +37,10 @@
                 android:layout_height="85dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="0dp"
-                android:hint="Autor"
+                android:hint="@string/autor"
                 app:errorEnabled="true"
                 app:helperTextEnabled="true"
-                app:startIconContentDescription="@string/app_name"
-                app:startIconDrawable="@drawable/id_svgrepo_com">
+                app:startIconDrawable="@drawable/baseline_account_box_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIETAutorNoticiaEditar"
@@ -53,7 +52,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="none"
                     android:singleLine="true"
-                    android:text="SOYNOMBRE" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -62,11 +61,10 @@
                 android:layout_height="85dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
-                android:hint="Categoria"
+                android:hint="@string/categoria"
                 app:errorEnabled="true"
                 app:helperTextEnabled="true"
-                app:startIconContentDescription="@string/app_name"
-                app:startIconDrawable="@drawable/id_svgrepo_com">
+                app:startIconDrawable="@drawable/tipo">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIETCategoriaNoticiaEditar"
@@ -74,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
-                    android:text="SOYNOMBRE" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -82,12 +80,10 @@
                 android:layout_width="360dp"
                 android:layout_height="85dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="28dp"
-                android:hint="Titulo"
+                android:hint="@string/titulo"
                 app:errorEnabled="true"
                 app:helperTextEnabled="true"
-                app:startIconContentDescription="@string/app_name"
-                app:startIconDrawable="@drawable/id_svgrepo_com">
+                app:startIconDrawable="@drawable/newspaper">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TIETTituloNoticiaEditar"
@@ -95,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
-                    android:text="SOYNOMBRE" />
+                   />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,24 +100,21 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
-                android:hint="Contenido"
+                android:hint="@string/contenido"
                 app:errorEnabled="true"
                 app:helperTextEnabled="true"
-                app:startIconContentDescription="@string/app_name">
+                app:startIconDrawable="@drawable/post">
 
                 <com.google.android.material.textfield.TextInputEditText
-
-
                     android:id="@+id/TIETContenidoNOticiaEditar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center"
-
                     android:ems="10"
                     android:imeOptions="actionDone"
                     android:inputType="textImeMultiLine|textMultiLine"
-                    android:text="ES una Nutria salvaje"
-                    android:textColorHint="@color/orange" />
+                    android:textColorHint="@color/orange"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -133,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="6dp"
-        android:text="Guardar"
+        android:text="@string/guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />

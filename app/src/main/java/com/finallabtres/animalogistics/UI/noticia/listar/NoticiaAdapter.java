@@ -53,8 +53,8 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
         holder.titulo.setText(listaNoticias.get(position).getTitulo());
         holder.autor.setText(listaNoticias.get(position).getUsuario().getApellido()+", "+listaNoticias.get(position).getUsuario().getNombre());
 
-        if(listaNoticias.get(position).getContenido().length()>90){
-            holder.contenido.setText(listaNoticias.get(position).getContenido().substring(0,90)+"...");
+        if(listaNoticias.get(position).getContenido().length()>80){
+            holder.contenido.setText(listaNoticias.get(position).getContenido().substring(0,80)+"...");
         }else{
             holder.contenido.setText(listaNoticias.get(position).getContenido());
         }
@@ -62,7 +62,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
 
         Glide.with(context)
                 .load(API.URLBASE + listaNoticias.get(position).getBannerUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .fitCenter()
                 .override(150, 150)
                 .into(holder.imagen);

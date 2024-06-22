@@ -1,32 +1,27 @@
 package com.finallabtres.animalogistics.UI.auth.login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.os.LocaleListCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TableRow;
 
 import com.finallabtres.animalogistics.MODELO.IdiomaUtils;
-import com.finallabtres.animalogistics.MainActivityViewModel;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.databinding.ActivityLoginBinding;
-import com.finallabtres.animalogistics.databinding.ActivityMainBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.button.MaterialButton;
 
 import android.content.pm.PackageManager;
-import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -82,26 +77,27 @@ public class LoginActivity extends AppCompatActivity {
         /*-------------------------opcionesSheet-------------------------------*/
 
         binding.FABOpciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+           @Override
+           public void onClick(View v) {
 
-                IdiomaUtils.mostrarOpcionesIdioma(LoginActivity.this);
+               IdiomaUtils.mostrarOpcionesIdioma(LoginActivity.this);
+           }
+       });
+/*
 
-
-               /* BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(LoginActivity.this);
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(LoginActivity.this);
                 View view1 = LayoutInflater.from(LoginActivity.this).inflate(R.layout.opcionessheet, null);
                 bottomSheetDialog.setContentView(view1);
                 bottomSheetDialog.show();
 
 
-                TableRow MBEspañol = view1.findViewById(R.id.TREspañol);
+                TableRow MBEspanol = view1.findViewById(R.id.TREspaniol);
                 TableRow MBEnglish = view1.findViewById(R.id.TREnglish);
 
-                MBEspañol.setOnClickListener(new View.OnClickListener() {
+                MBEspanol.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         saveLocale("es");
-
                         FijarIdioma("es");
                     }
                 });
@@ -113,14 +109,14 @@ public class LoginActivity extends AppCompatActivity {
                         saveLocale("en");
                         FijarIdioma("en");
                     }
-                });*/
+                });
 
-            }
-        });
-
+            }*/
 
 
-        permisos();
+                permisos();
+
+
     }
 
 
@@ -143,7 +139,8 @@ public class LoginActivity extends AppCompatActivity {
     private void FijarIdioma(String Idioma){
 
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(Idioma));
-    }*/
+    }
+*/
 
 
 

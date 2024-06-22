@@ -72,8 +72,8 @@ public class DetalleRefugioFragment extends Fragment {
                         .into(binding.shapeableImageView2);
 
                 binding.textView3.setText(refugio.getNombre());
-                binding.TVTelefonoRefugioPerfil.setText("Telefono : "+refugio.getTelefono());
-                binding.TVDireccionRefugioPerfil.setText("Dirección : "+refugio.getDireccion());
+                binding.TVTelefonoRefugioPerfil.setText(refugio.getTelefono());
+                binding.TVDireccionRefugioPerfil.setText(refugio.getDireccion());
                 binding.textView4.setText(refugio.getDescripcion());
 
 

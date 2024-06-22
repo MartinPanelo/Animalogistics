@@ -2,6 +2,8 @@ package com.finallabtres.animalogistics.UI.refugio.crear;
 
 import static android.app.Activity.RESULT_OK;
 
+import static java.lang.Integer.parseInt;
+
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -24,6 +26,7 @@ import androidx.navigation.Navigation;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Refugio;
+import com.finallabtres.animalogistics.MODELO.Tarea;
 import com.finallabtres.animalogistics.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -41,6 +44,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.List;
 import java.util.Locale;
 
 import okhttp3.MediaType;
@@ -58,7 +62,12 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<MapaActual> MAMutable;
 
-    private Location posicion;
+   // private Location posicion;
+
+    private LatLng posicion;
+    private MutableLiveData<String> errorM;
+
+    private MutableLiveData<Refugio> RefugioM;
 
 
     // Crear instancia de DecimalFormatSymbols y establecer la coma como separador decimal
@@ -74,7 +83,21 @@ public class CrearRefugioViewModel extends AndroidViewModel {
         formato = new DecimalFormat("#.######", simbolos);
     }
 
+    public LiveData<String> getErrorM(){
+        if(errorM==null){
 
+            errorM=new MutableLiveData<>();
+        }
+        return errorM;
+
+    }
+
+    public MutableLiveData<Refugio> getRefugioM(){
+        if(RefugioM==null){
+            RefugioM = new MutableLiveData<>();
+        }
+        return RefugioM;
+    }
     public LiveData<Bitmap> getFoto() {
         if (foto == null) {
             foto = new MutableLiveData<>();
@@ -90,10 +113,17 @@ public class CrearRefugioViewModel extends AndroidViewModel {
     }
 
 
-    public void ObtenerMapa(Location posicion) {
+    public void ObtenerMapa(LatLng posicion) {
         this.posicion = posicion;
         MapaActual MA = new MapaActual();
         MAMutable.setValue(MA);
+    }
+
+    public void editarRefugio(Bundle bundle) {
+
+
+        RefugioM.setValue((Refugio) bundle.getSerializable("ItemRefugio"));
+
     }
 
 
@@ -106,8 +136,8 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
             googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(posicion.getLatitude(), posicion.getLongitude())).title("Posicion Actual"));
-
+         //   googleMap.addMarker(new MarkerOptions().position(new LatLng(posicion.getLatitude(), posicion.getLongitude())).title("Posicion Actual"));
+            googleMap.addMarker(new MarkerOptions().position(posicion).title("Posicion Actual"));
 
             googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
@@ -118,16 +148,25 @@ public class CrearRefugioViewModel extends AndroidViewModel {
                     MarkerOptions marker = new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("Ubicación del Refugio");
                     googleMap.addMarker(marker);
 
-                    posicion.setLatitude(point.latitude);
-                    posicion.setLongitude(point.longitude);
+                   /* posicion.setLatitude(point.latitude);
+                    posicion.setLongitude(point.longitude);*/
+
+                    posicion = new LatLng(point.latitude, point.longitude);
 
                 }
             });
 
 
 
-            CameraPosition cameraPosition = new CameraPosition.Builder()
+          /*  CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(posicion.getLatitude(), posicion.getLongitude()))
+                    .zoom(19)
+                    .bearing(45)
+                    .tilt(70)
+                    .build();*/
+
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(posicion)
                     .zoom(19)
                     .bearing(45)
                     .tilt(70)
@@ -160,8 +199,12 @@ public class CrearRefugioViewModel extends AndroidViewModel {
         RequestBody Telefono = RequestBody.create(MediaType.parse("application/json"), telefono);
         RequestBody Descripcion = RequestBody.create(MediaType.parse("application/json"), descripcion);
         RequestBody GPSRango = RequestBody.create(MediaType.parse("application/json"), gpsRango);
-        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLatitude()));
-        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLongitude()));
+     /*   RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLatitude()));
+        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLongitude()));*/
+        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.latitude));
+        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.longitude));
+
+
 
         MultipartBody.Part FotoFile = null; // Inicializa como null
 
@@ -177,9 +220,17 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
         }
 
+        Call<Refugio> call;
+        if(RefugioM.getValue()!=null){
+
+            RequestBody Id = RequestBody.create(MediaType.parse("application/json"), String.valueOf(RefugioM.getValue().getId()));
+
+            call = API_A.refugioEditarPerfil(token,Id,Nombre, Direccion, Telefono, Descripcion, GPSRango, GPSX, GPSY, FotoFile);
+        }else{
+            call = API_A.refugioAgregar(token,Nombre, Direccion, Telefono, Descripcion, GPSRango, GPSX, GPSY, FotoFile);
+        }
 
 
-        Call<Refugio> call = API_A.refugioAgregar(token,Nombre, Direccion, Telefono, Descripcion, GPSRango, GPSX, GPSY, FotoFile);
 
         call.enqueue(new Callback<Refugio>() {
             @Override
@@ -187,8 +238,8 @@ public class CrearRefugioViewModel extends AndroidViewModel {
                 if (response.isSuccessful()) {
 
                 //    Navigation.findNavController(view).navigate(R.id.item_noticias);
-                    Navigation.findNavController(view).popBackStack(R.id.gestionRefugioFragment, true);
-                    Snackbar.make(view, "Refugio registrado", Snackbar.LENGTH_LONG).show();
+                 //   Navigation.findNavController(view).popBackStack(R.id.refugio, true);
+                    Snackbar.make(view, "Operación exitosa", Snackbar.LENGTH_LONG).show();
 
                 } else {
 
