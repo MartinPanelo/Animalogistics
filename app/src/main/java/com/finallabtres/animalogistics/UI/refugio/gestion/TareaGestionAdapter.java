@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.dialogos.Dialogos;
 import com.google.android.material.button.MaterialButton;
@@ -141,11 +142,12 @@ public class TareaGestionAdapter extends RecyclerView.Adapter<TareaGestionAdapte
 
                                 if (response.code() == 404) {
 
-                                        Snackbar.make(view, "No puede editar esta tarea", Snackbar.LENGTH_LONG).show();
+                                    ToastUtils.showToast(context, context.getString(R.string.no_puede_editar_esta_tarea), R.color.toast_error,R.drawable.error);
 
                                 } else {
 
-                                    Snackbar.make(view, "Se produjo el siguiente fallo: " + response.code(), Snackbar.LENGTH_LONG).show();
+                                    ToastUtils.showToast(context, context.getString(R.string.se_prudujo_un_error) + response.code(), R.color.toast_error,R.drawable.error);
+
                                 }
                             }
 

@@ -64,8 +64,8 @@ public class AgregarNoticiaViewModel extends AndroidViewModel {
 
 
         RequestBody RefugioId = RequestBody.create(MediaType.parse("application/json"), String.valueOf(idRefugio));
-        RequestBody Categoria = RequestBody.create(MediaType.parse("application/json"), categoria);
-        RequestBody Titulo = RequestBody.create(MediaType.parse("application/json"), titulo);
+        RequestBody Categoria = RequestBody.create(MediaType.parse("application/json"), categoria.substring(0,1).toUpperCase() + categoria.substring(1).toLowerCase());
+        RequestBody Titulo = RequestBody.create(MediaType.parse("application/json"), titulo.substring(0,1).toUpperCase() + titulo.substring(1).toLowerCase());
         RequestBody Contenido = RequestBody.create(MediaType.parse("application/json"), contenido);
 
         MultipartBody.Part BannerFile = null; // Inicializa como null

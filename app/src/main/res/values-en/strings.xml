@@ -97,5 +97,11 @@
     <string name="voluntariados">Volunteering</string>
     <string name="mis_refugios">My shelters</string>
     <string name="editar_refugio">Edit shelter</string>
+    <string name="registro_exitoso">Registration successful</string>
+    <string name="registro_fallido_intentelo_de_nuevo">Registration failed. Please try again</string>
+    <string name="perfil_actualizado">Profile updated</string>
+    <string name="error_actualizando_perfil">Error updating profile</string>
+    <string name="animal_registrado_correctamente">Animal registered correctly</string>
+    <string name="problema_al_registrar">Error registering</string>
 
 </resources>

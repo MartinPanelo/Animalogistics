@@ -3,6 +3,8 @@ package com.finallabtres.animalogistics.UI.refugio.listar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,8 +24,11 @@ import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.databinding.FragmentListarRefugioBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
@@ -39,6 +44,7 @@ public class ListarRefugioFragment extends Fragment {
 
     BottomSheetDialog bottomSheetDialog;
 
+    @SuppressLint("MissingPermission")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -47,6 +53,7 @@ public class ListarRefugioFragment extends Fragment {
         View root = binding.getRoot();
 
         vm = new ViewModelProvider(this).get(ListarRefugioViewModel.class);
+
 
 
 
@@ -150,7 +157,22 @@ public class ListarRefugioFragment extends Fragment {
         vm.getListaRefugioM().observe(getViewLifecycleOwner(), new Observer<List<Refugio>>() {
             @Override
             public void onChanged(List<Refugio> refugios) {
-                vm.ObtenerMapa();
+
+
+                // Inicializar FusedLocationProviderClient
+                FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+                fusedLocationClient.getLastLocation().addOnSuccessListener( requireActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                          //  vm.SetPosicion(location);
+                            vm.ObtenerMapa(location);
+                        }
+                    }
+                });
+
+
+
             }
         });
 

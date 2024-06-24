@@ -21,8 +21,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.finallabtres.animalogistics.API.API;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.finallabtres.animalogistics.MainActivity;
+import com.finallabtres.animalogistics.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -238,7 +240,10 @@ public class EditarPerfilViewModel extends AndroidViewModel {
 
                         UsuarioM.postValue(response.body());
 
-                        Toast.makeText( context, "Se actualizo el perfil", Toast.LENGTH_LONG).show();
+                        ToastUtils.showToast(context, context.getString(R.string.perfil_actualizado), R.color.toast_success,R.drawable.check);
+
+
+
 
                     }else{
 
@@ -293,7 +298,9 @@ public class EditarPerfilViewModel extends AndroidViewModel {
                                 TelefonoM.postValue(true);
                                 DNIM.postValue(true);
 
-                                Toast.makeText(context, errorResponse, Toast.LENGTH_LONG).show();
+                                ToastUtils.showToast(context, context.getString(R.string.error_actualizando_perfil), R.color.toast_error,R.drawable.error);
+
+
 
                             }
 
@@ -308,7 +315,7 @@ public class EditarPerfilViewModel extends AndroidViewModel {
 
                 @Override
                 public void onFailure(Call<Usuario> call, Throwable t) {
-                    Toast.makeText(context,t.getMessage(), Toast.LENGTH_LONG).show();
+                    ToastUtils.showToast(context, context.getString(R.string.error_actualizando_perfil), R.color.toast_error,R.drawable.error);
                 }
             });
         }

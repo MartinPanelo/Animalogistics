@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Region;
+import android.location.Location;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,9 +64,7 @@ public class ListarRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<Refugio> RefugioM;
 
-
-
-    private GoogleMap googleMap;
+    private LatLng miPosicion;
     private Marker myMarker;
 
     public ListarRefugioViewModel(@NonNull Application application) {
@@ -107,7 +106,8 @@ public class ListarRefugioViewModel extends AndroidViewModel {
         return markerM;
     }
 
-    public void ObtenerMapa() {
+    public void ObtenerMapa(Location location) {
+        this.miPosicion = new LatLng(location.getLatitude(), location.getLongitude());
         MapaActual MA = new MapaActual();
         MAMutable.setValue(MA);
     }
@@ -219,17 +219,15 @@ public class ListarRefugioViewModel extends AndroidViewModel {
                                 }
                             });
 
-                            CameraPosition cameraPosition = new CameraPosition.Builder()
-                                    .target(dire)
-                                    .zoom(19)
-                                    .bearing(45)
-                                    .tilt(70)
-                                    .build();
-                            CameraUpdate Cupdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                            googleMap.animateCamera(Cupdate);
+
 
                         }
-
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(miPosicion)
+                    .zoom(13)
+                    .build();
+            CameraUpdate Cupdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+            googleMap.animateCamera(Cupdate);
 
 
 

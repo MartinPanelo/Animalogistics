@@ -2,9 +2,13 @@ package com.finallabtres.animalogistics.UI.auth.registro;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -15,10 +19,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
+import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
 import com.finallabtres.animalogistics.databinding.ActivityLoginBinding;
 import com.finallabtres.animalogistics.databinding.ActivityRegistroBinding;
 import com.finallabtres.animalogistics.databinding.FormularioregistroBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -77,13 +84,35 @@ public class RegistroActivity extends AppCompatActivity {
         });
 
 
+        vm.getNavLoginM().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean s) {
+
+                if(s){
+                    ToastUtils.showToast(binding.getRoot().getContext(), getString(R.string.registro_exitoso), R.color.toast_success,R.drawable.check);
+                    Intent intent = new Intent(binding.getRoot().getContext(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    binding.getRoot().getContext().startActivity(intent);
+                }else{
+                    ToastUtils.showToast(binding.getRoot().getContext(), getString(R.string.registro_fallido_intentelo_de_nuevo), R.color.toast_error,R.drawable.error);
+                }
+
+
+
+
+
+            }
+        });
+
+
+
        /* -----------------------------*/
         FormularioBinding.BTNRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // TODO: implementar el registro
-                vm.RegistrarUsuario(view,
+                vm.RegistrarUsuario(
                         FormularioBinding.TILCorreo.getEditText().getText().toString(),
                         FormularioBinding.TILContrasena.getEditText().getText().toString(),
                         FormularioBinding.TILNombre.getEditText().getText().toString(),

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/mtrl_card_spacing"
     android:clickable="true"
     android:focusable="true">
 
@@ -24,15 +24,12 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:contentDescription="Descripcion"
-                app:srcCompat="@drawable/calendar" />
+                app:srcCompat="@drawable/id_svgrepo_com" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
@@ -41,33 +38,38 @@
                     style="?attr/textAppearanceHeadline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SOY EN TITULO" />
+                    android:text="@string/nombre" />
 
                 <TextView
+                    android:id="@+id/TVDetalles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="SOY COMO EL PIE DE TITULO" />
+                    android:text="@string/detalles" />
             </LinearLayout>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ACIVImagen"
             android:layout_width="match_parent"
-            android:layout_height="194dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="SOY LA DESCRIPOCON"
+            android:layout_height="200dp"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/imagen_del_animal"
+            android:scaleType="centerCrop"
             app:backgroundTint="@color/material_on_surface_emphasis_medium"
             app:backgroundTintMode="add"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal_background" />
+            app:srcCompat="@drawable/addphoto" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/TVComentarios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
+            android:ellipsize="end"
             android:maxLines="2"
-            android:text="SOY WL TEXTO QUE DESCRIBE AL ANIMALITO" />
+            android:text="@string/descripcion" />
 
 
         <LinearLayout
@@ -75,7 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:padding="5dp"
+            tools:ignore="RtlHardcoded">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/BTNBorrarRegistroAnimal"
@@ -83,8 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="Borrar"
+                android:text="@string/eliminar"
                 app:icon="@drawable/delete_icon" />
 
         </LinearLayout>

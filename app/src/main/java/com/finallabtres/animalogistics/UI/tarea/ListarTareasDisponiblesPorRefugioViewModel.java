@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 
 import org.json.JSONObject;
@@ -152,6 +153,9 @@ public class ListarTareasDisponiblesPorRefugioViewModel extends AndroidViewModel
             public void onResponse(Call<Tarea> call, Response<Tarea> response) {
 
                 if(response.isSuccessful()){
+
+
+                    ToastUtils.showToast(context, context.getString(R.string.Operacion_exitosa), R.color.toast_success,R.drawable.check);
 
                     Navigation.findNavController(view).popBackStack(R.id.detalleRefugioFragment, true);
 

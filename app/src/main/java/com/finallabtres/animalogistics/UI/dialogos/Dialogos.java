@@ -19,6 +19,7 @@ import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -60,7 +61,8 @@ public class Dialogos {
 
 
                                         // aca si salio tudo nice
-                                        Toast.makeText(view.getContext(),"Registro borrado exitosamente", Toast.LENGTH_SHORT).show();
+                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.registro_borrado_exitosamente), R.color.toast_success,R.drawable.check);
+
                                         Navigation.findNavController(view).popBackStack(viewNavigation, true);
 
 
@@ -80,7 +82,7 @@ public class Dialogos {
 
                                 }else{
 
-
+                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_se_pudo_borrar_el_registro), R.color.toast_error,R.drawable.error);
                                     Toast.makeText(view.getContext(),"No se pudo borrar el registro", Toast.LENGTH_SHORT).show();
                                 }
 
@@ -100,7 +102,7 @@ public class Dialogos {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(),"Operacion cancelada", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.operacion_cancelada), R.color.yellow,R.drawable.baseline_warning_24);
                     }
                 })
                 .show();
@@ -135,7 +137,9 @@ public class Dialogos {
 
 
                                   // aca si salio tudo nice
-                                    Snackbar.make(view, "Tarea borrado exitosamente", Snackbar.LENGTH_LONG).show();
+                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.Tarea_borrada_exitosamente), R.color.toast_success,R.drawable.check);
+
+
 
                                     Navigation.findNavController(view).popBackStack(R.id.gestionRefugioFragment, true);
 
@@ -164,10 +168,12 @@ public class Dialogos {
                                        JSONObject jsonObject = new JSONObject(errorResponse);
                                        if (jsonObject.has("errors")) {
                                            JSONObject errors = jsonObject.getJSONObject("errors");
-                                           if (errors.has("mensaje")) {
-                                               errorMessage = errors.getJSONArray("mensaje").getString(0);
+                                           if (errors.has("permiso")) {
+                                               errorMessage = errors.getJSONArray("permiso").getString(0);
 
-                                               Toast.makeText(view.getContext(),"No tiene permisos para borrar esta tarea.", Toast.LENGTH_SHORT).show();
+                                               ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_tiene_permisos), R.color.yellow,R.drawable.baseline_warning_24);
+
+
 
                                            }
                                        }
@@ -200,7 +206,7 @@ public class Dialogos {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(),"Operacion cancelada", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.operacion_cancelada), R.color.yellow,R.drawable.baseline_warning_24);
                     }
                 })
                 .show();
@@ -238,7 +244,8 @@ public class Dialogos {
 
 
                                     // aca si salio tudo nice
-                                    Snackbar.make(view, "Noticia borrado exitosamente", Snackbar.LENGTH_LONG).show();
+                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.noticia_borrada_exitosamente), R.color.toast_success,R.drawable.check);
+
 
                                     Navigation.findNavController(view).popBackStack(R.id.gestionRefugioFragment, true);
 
@@ -256,8 +263,8 @@ public class Dialogos {
 
                                 }else{
 
+                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_se_pudo_borrar_la_noticia), R.color.toast_error,R.drawable.error);
 
-                                    Toast.makeText(view.getContext(),"No se pudo borrar la tarea", Toast.LENGTH_SHORT).show();
                                 }
 
 
@@ -276,7 +283,7 @@ public class Dialogos {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(),"Operacion cancelada", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.operacion_cancelada), R.color.yellow,R.drawable.baseline_warning_24);
                     }
                 })
                 .show();

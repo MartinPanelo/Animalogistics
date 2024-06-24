@@ -12,7 +12,7 @@
     <string name="campo_obligatorio_Apellido">El apellido es obligatorio</string>
     <string name="campo_obligatorio_Nombre">El nombre es obligatorio</string>
     <string name="campo_obligatorio_Telefono">El telefono es obligatorio</string>
-    <string name="campo_obligatorio_DNI">El DNI es obligatorio</string>
+    <string name="campo_obligatorio_DNI">El DNI es obligatorio, 8 digitos</string>
     <string name="Refugios">Refugios</string>
     <string name="RegistrarAnimal">Agregar Animal</string>
     <string name="registro">Registro</string>
@@ -96,7 +96,24 @@
     <string name="voluntariados">Voluntariados</string>
     <string name="mis_refugios">Mis Refugios</string>
     <string name="editar_refugio">Editar refugio</string>
-
+    <string name="registro_exitoso">Registro exitoso.</string>
+    <string name="registro_fallido_intentelo_de_nuevo">Registro fallido.</string>
+    <string name="perfil_actualizado">Perfil actualizado</string>
+    <string name="error_actualizando_perfil">Error al actualizar perfil</string>
+    <string name="animal_registrado_correctamente">Animal registrado correctamente.</string>
+    <string name="problema_al_registrar">Problema al registrar</string>
+    <string name="problema_al_editar">Problemas al editar</string>
+    <string name="editado_correctamente">Editado correctamente</string>
+    <string name="Operacion_exitosa">Operacion exitosa.</string>
+    <string name="no_puede_editar_esta_tarea">No puede Editar Esta Tarea</string>
+    <string name="se_prudujo_un_error">"Se prudujo un error : "</string>
+    <string name="registro_borrado_exitosamente">Registro borrado exitosamente</string>
+    <string name="no_se_pudo_borrar_el_registro">No se pudo borrar el registro</string>
+    <string name="operacion_cancelada">Operacion cancelada</string>
+    <string name="Tarea_borrada_exitosamente">Tarea borrada exitosamente</string>
+    <string name="no_tiene_permisos">no tiene permiso</string>
+    <string name="noticia_borrada_exitosamente">Noticia borrada exitosamente</string>
+    <string name="no_se_pudo_borrar_la_noticia">No se pudo borrar la noticia</string>
 
 </resources>
 

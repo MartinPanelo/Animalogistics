@@ -25,6 +25,7 @@ import androidx.navigation.Navigation;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Noticia;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -194,6 +195,8 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
 
 
                  //   Navigation.findNavController(view).navigate(R.id.listarAnimalFragment);
+
+                    ToastUtils.showToast(context, context.getString(R.string.editado_correctamente), R.color.toast_success,R.drawable.check);
                     Navigation.findNavController(view).popBackStack(R.id.listarAnimalFragment, false);
 
 
@@ -207,14 +210,14 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
                             JSONObject jsonObject = new JSONObject(errorResponse);
                             if (jsonObject.has("errors")) {
 
-                                Toast.makeText(context, "Problema al registrar : ", Toast.LENGTH_SHORT).show();
+                                ToastUtils.showToast(context, context.getString(R.string.problema_al_editar), R.color.toast_error,R.drawable.error);
                             }
                         } catch (JSONException e) {
                             // Si no se pudo analizar como JSON, el mensaje de error es la respuesta tal cual
                             errorMessage = errorResponse;
                         }
+                        ToastUtils.showToast(context, errorMessage, R.color.toast_error,R.drawable.error);
 
-                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

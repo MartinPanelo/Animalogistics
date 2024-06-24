@@ -22,6 +22,7 @@ import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.finallabtres.animalogistics.MainActivity;
 import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,6 +51,8 @@ public class RegistroActivityViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> ApellidoM;
     private MutableLiveData<Boolean> TelefonoM;
     private MutableLiveData<Boolean> DNIM;
+
+    private MutableLiveData<Boolean>navLoginM;
 
 
     public RegistroActivityViewModel(@NonNull Application application) {
@@ -98,6 +101,13 @@ public class RegistroActivityViewModel extends AndroidViewModel {
             foto = new MutableLiveData<>();
         }
         return foto;
+    }
+
+    public LiveData<Boolean> getNavLoginM() {
+        if (navLoginM == null) {
+            navLoginM = new MutableLiveData<>();
+        }
+        return navLoginM;
     }
 
     public void respuetaDeCamara(ActivityResult result) {
@@ -151,7 +161,7 @@ public class RegistroActivityViewModel extends AndroidViewModel {
     }
 
 
-    public void RegistrarUsuario(View view, String correo, String contrasena, String nombre, String apellido, String telefono, String dni, ImageView IMG) {
+    public void RegistrarUsuario(String correo, String contrasena, String nombre, String apellido, String telefono, String dni, ImageView IMG) {
 
 
 
@@ -205,65 +215,64 @@ public class RegistroActivityViewModel extends AndroidViewModel {
                     if(response.isSuccessful()){
 
 
+                        navLoginM.postValue(true);
 
-                        Intent intent = new Intent(context, LoginActivity.class);
 
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
 
                     }else{
 
                         try {
                             String errorResponse = response.errorBody().string();
-                            String errorMessage = "";
+
 
                             try {
                                 JSONObject jsonObject = new JSONObject(errorResponse);
                                 if (jsonObject.has("errors")) {
                                     JSONObject errors = jsonObject.getJSONObject("errors");
                                     if (errors.has("Correo")) {
-                                        errorMessage = errors.getJSONArray("Correo").getString(0);
+
                                         CorreoM.postValue(false);
                                     }else{
                                         CorreoM.postValue(true);
                                     }
 
                                     if (errors.has("Contrasena")) {
-                                        errorMessage = errors.getJSONArray("Contrasena").getString(0);
+
                                         ContrasenaM.postValue(false);
                                     }else{
                                         ContrasenaM.postValue(true);
                                     }
 
                                     if (errors.has("Nombre")) {
-                                        errorMessage = errors.getJSONArray("Nombre").getString(0);
+
                                         NombreM.postValue(false);
                                     }else{
                                         NombreM.postValue(true);
                                     }
                                     if (errors.has("Apellido")) {
-                                        errorMessage = errors.getJSONArray("Apellido").getString(0);
+
                                         ApellidoM.postValue(false);
                                     }else{
                                         ApellidoM.postValue(true);
                                     }
                                     if (errors.has("Telefono")) {
-                                        errorMessage = errors.getJSONArray("Telefono").getString(0);
+
                                         TelefonoM.postValue(false);
                                     }else{
                                         TelefonoM.postValue(true);
                                     }
                                     if (errors.has("DNI")) {
-                                        errorMessage = errors.getJSONArray("DNI").getString(0);
+
                                         DNIM.postValue(false);
                                     }else{
                                         DNIM.postValue(true);
                                     }
                                 }
 
+
                             } catch (JSONException e) {
-                                // Si no se pudo analizar como JSON, el mensaje de error es la respuesta tal cual
-                                errorMessage = errorResponse;
+
+
                                 // NO HAY ERROR En LOS DATOS PERO EL SERVIDOR TUVO UN ERROR
                                 CorreoM.postValue(true);
                                 ContrasenaM.postValue(true);
@@ -272,7 +281,10 @@ public class RegistroActivityViewModel extends AndroidViewModel {
                                 TelefonoM.postValue(true);
                                 DNIM.postValue(true);
 
-                                Toast.makeText(context, errorResponse, Toast.LENGTH_LONG).show();
+                                // Si no se pudo analizar como JSON, el mensaje de error es la respuesta tal cual
+
+                                navLoginM.postValue(false);
+                                //Toast.makeText(context, errorResponse, Toast.LENGTH_LONG).show();
 
                             }
 
@@ -287,7 +299,8 @@ public class RegistroActivityViewModel extends AndroidViewModel {
 
                 @Override
                 public void onFailure(Call<Usuario> call, Throwable t) {
-                    Toast.makeText(context,t.getMessage(), Toast.LENGTH_LONG).show();
+                    navLoginM.postValue(false);
+                   // Toast.makeText(context,t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         }

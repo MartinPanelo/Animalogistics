@@ -9,14 +9,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.dialogos.Dialogos;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 
 
 import java.util.List;
@@ -48,18 +53,24 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull AnimalAdapter.ViewHolder holder, int position) {
 
-        holder.titulo.setText(listaAnimales.get(position).getNombre());
+        if (listaAnimales.get(position).getNombre() != null && !listaAnimales.get(position).getNombre().isEmpty()) {
+            holder.titulo.setText(listaAnimales.get(position).getNombre());
+        }
+        if(listaAnimales.get(position).getTamano() != null && !listaAnimales.get(position).getTamano().isEmpty()) {
+            holder.detalles.setText(listaAnimales.get(position).getTipo() + " - " + listaAnimales.get(position).getTamano());
+        }
+        if(listaAnimales.get(position).getComentarios() != null && !listaAnimales.get(position).getComentarios().isEmpty()) {
+            holder.comentarios.setText(listaAnimales.get(position).getComentarios());
+        }
 
 
 
-
-/*
         Glide.with(context)
-                .load(*//*API.URLBASE + *//*listaNoticias.get(position).getBannerUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .load(API.URLBASE + listaAnimales.get(position).getFotoUrl())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .fitCenter()
                 .override(150, 150)
-                .into(holder.imagen);*/
+                .into(holder.imagen);
 
     }
 
@@ -77,12 +88,25 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
 
         private TextView titulo;
 
+        private TextView detalles;
+
+        private TextView comentarios;
+
+        private  ShapeableImageView imagen;
+
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             titulo = itemView.findViewById(R.id.TVTitulo);
+
+            detalles = itemView.findViewById(R.id.TVDetalles);
+
+            comentarios = itemView.findViewById(R.id.TVComentarios);
+
+
+            imagen = itemView.findViewById(R.id.ACIVImagen);
 
 
             MaterialButton BTNBorrar = itemView.findViewById(R.id.BTNBorrarRegistroAnimal);
