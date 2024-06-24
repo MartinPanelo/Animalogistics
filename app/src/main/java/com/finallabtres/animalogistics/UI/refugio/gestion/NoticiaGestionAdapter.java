@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.dialogos.Dialogos;
 import com.google.android.material.button.MaterialButton;
@@ -149,7 +150,9 @@ public class NoticiaGestionAdapter extends RecyclerView.Adapter<NoticiaGestionAd
 
                                 if (response.code() == 404) {
 
-                                    Snackbar.make(view, "No puede editar esta noticia", Snackbar.LENGTH_LONG).show();
+                                    ToastUtils.showToast(context, context.getString(R.string.no_puede_editar_esta_noticia), R.color.toast_error,R.drawable.error);
+
+                                  /*  Snackbar.make(view, "No puede editar esta noticia", Snackbar.LENGTH_LONG).show();*/
 
                                 } else {
 

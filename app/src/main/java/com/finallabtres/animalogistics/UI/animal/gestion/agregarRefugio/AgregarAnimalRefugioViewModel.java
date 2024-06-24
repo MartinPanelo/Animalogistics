@@ -140,16 +140,18 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
     public void CargarDatos(Bundle bundle) {
 
-        String IdRefugio = bundle.getString("refugioId");
+        Refugio refugio = (Refugio) bundle.getSerializable("ItemRefugio");
 
         CargarAnimales();
 
-        CargarRefugio(IdRefugio);
+        RefugioM.postValue(refugio);
+
+       // CargarRefugio(refugio.getId());
 
 
     }
 
-    public void CargarRefugio(String IdRefugio) {
+  /*  public void CargarRefugio(int IdRefugio) {
 
 
         String token = API.LeerToken(context);
@@ -157,7 +159,7 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
         API.ApiAnimalogistics API_A = API.getApi();
 
 
-        Call<Refugio> call = API_A.refugioPorId(token, parseInt(IdRefugio));
+        Call<Refugio> call = API_A.refugioPorId(token, IdRefugio);
 
 
         call.enqueue(new Callback<Refugio>() {
@@ -185,7 +187,7 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
         });
 
 
-    }
+    }*/
 
     public void CargarAnimales() {
 
@@ -243,6 +245,8 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
                     Snackbar.make(view, "Animal Registrado Correctamente", Snackbar.LENGTH_LONG).show();
                     Navigation.findNavController(view).popBackStack(R.id.agregarAnimalRefugioFragment, true);
+
+                    
                 }
 
                 else {

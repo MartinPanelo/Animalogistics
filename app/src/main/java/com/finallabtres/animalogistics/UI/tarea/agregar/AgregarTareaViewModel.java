@@ -75,29 +75,7 @@ public class AgregarTareaViewModel extends AndroidViewModel {
 
                 }else{
 
-                    try {
-                        String errorResponse = response.errorBody().string();
-                        String errorMessage = "";
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(errorResponse);
-                            if (jsonObject.has("errors")) {
-                                JSONObject errors = jsonObject.getJSONObject("errors");
-                                if (errors.has("mensaje")) {
-                                    errorMessage = errors.getJSONArray("mensaje").getString(0);
-                                    errorM.postValue(errorMessage);
-                                }
-                            }
-
-                        } catch (JSONException e) {
-                            Toast.makeText(context, errorResponse, Toast.LENGTH_LONG).show();
-
-                        }
-
-
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    errorM.postValue( context.getString(R.string.no_tiene_permisos));
 
                 }
 
@@ -113,7 +91,7 @@ public class AgregarTareaViewModel extends AndroidViewModel {
 
     public void setIdRefugioTarea(Bundle bundle) {
 
-        idRefugio = Integer.parseInt( bundle.getString("refugioId") ); // bundle.getString("refugioId");
+        idRefugio = Integer.parseInt( bundle.getString("refugioId") );
     }
 }
 

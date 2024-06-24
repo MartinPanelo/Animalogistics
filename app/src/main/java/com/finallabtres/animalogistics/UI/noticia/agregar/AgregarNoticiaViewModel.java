@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
@@ -93,7 +94,8 @@ public class AgregarNoticiaViewModel extends AndroidViewModel {
             public void onResponse(Call<Noticia> call, Response<Noticia> response) {
                 if(response.isSuccessful()){
 
-                    Snackbar.make(view, "Noticia Creada Correctamente", Snackbar.LENGTH_LONG).show();
+                    /*Snackbar.make(view, "Noticia Creada Correctamente", Snackbar.LENGTH_LONG).show();*/
+                    ToastUtils.showToast(context, context.getString(R.string.noticia_creada_exitosamente), R.color.toast_success,R.drawable.check);
                     Navigation.findNavController(view).popBackStack(R.id.agregarNoticiaFragment, true);
 
                 }else{

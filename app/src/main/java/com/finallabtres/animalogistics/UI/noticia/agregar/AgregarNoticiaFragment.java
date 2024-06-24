@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.noticia.editar.EditarNoticiaViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentAgregarNoticiaBinding;
@@ -95,7 +96,13 @@ public class AgregarNoticiaFragment extends Fragment {
                             // photo picker.
                             if (uri != null) {
                                 Log.d("PhotoPicker", "Selected URI: " + uri);
-                                binding.formularioagregarnoticia.IMGFotoEditarNoticia.setImageURI(uri);
+                               // binding.formularioagregarnoticia.IMGFotoEditarNoticia.setImageURI(uri);
+                                // Cargar la imagen con Glide
+                                Glide.with(this)
+                                        .load(uri)
+                                        .override(300, 200) // Ajusta el tamaño según sea necesario
+                                        .into(binding.formularioagregarnoticia.IMGFotoEditarNoticia);
+
                             } else {
                                 Log.d("PhotoPicker", "No media selected");
                             }

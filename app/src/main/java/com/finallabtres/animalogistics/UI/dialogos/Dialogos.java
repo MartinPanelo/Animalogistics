@@ -163,19 +163,17 @@ public class Dialogos {
 
                                    try {
                                         String errorResponse = response.errorBody().string();
-                                        String errorMessage = "";
+                                      /*  String errorMessage = "";*/
 
                                        JSONObject jsonObject = new JSONObject(errorResponse);
-                                       if (jsonObject.has("errors")) {
-                                           JSONObject errors = jsonObject.getJSONObject("errors");
-                                           if (errors.has("permiso")) {
-                                               errorMessage = errors.getJSONArray("permiso").getString(0);
+                                       if (jsonObject.has("permiso")) {
+                                           /*errorMessage = jsonObject.getString("permiso");*/
 
                                                ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_tiene_permisos), R.color.yellow,R.drawable.baseline_warning_24);
 
 
 
-                                           }
+
                                        }
 
 
@@ -263,7 +261,7 @@ public class Dialogos {
 
                                 }else{
 
-                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_se_pudo_borrar_la_noticia), R.color.toast_error,R.drawable.error);
+                                    ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_puede_borrar_esta_noticia), R.color.toast_error,R.drawable.error);
 
                                 }
 

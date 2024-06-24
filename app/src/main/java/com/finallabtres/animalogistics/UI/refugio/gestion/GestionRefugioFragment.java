@@ -18,7 +18,9 @@ import android.view.ViewGroup;
 
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Noticia;
+import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.databinding.FragmentGestionRefugioBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -58,7 +60,8 @@ public class GestionRefugioFragment extends Fragment {
             @Override
             public void onChanged(String error) {
 
-                Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();
+                ToastUtils.showToast(getContext(), error, R.color.toast_error,R.drawable.error);
+               // Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -118,7 +121,6 @@ public class GestionRefugioFragment extends Fragment {
 
 
 
-
         // por defecto primero se cargan los voluntariados
         Bundle bundle = this.getArguments();
 
@@ -159,7 +161,9 @@ public class GestionRefugioFragment extends Fragment {
                         binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Navigation.findNavController(getView()).navigate(R.id.agregarAnimalRefugioFragment,bundle);
+
+                                vm.irAGestionAnimales(bundle,v);
+                              //  Navigation.findNavController(getView()).navigate(R.id.agregarAnimalRefugioFragment,bundle);
                             }
                         });
                         if(bundle != null) {
@@ -183,10 +187,12 @@ public class GestionRefugioFragment extends Fragment {
             }
         });
 
+
+
         binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getView()).navigate(R.id.agregarTareaFragment,bundle);
+                Navigation.findNavController(v).navigate(R.id.agregarTareaFragment,bundle);
             }
         });
 

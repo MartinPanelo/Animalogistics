@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.refugio.gestion.GestionRefugioViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentAgregarTareaBinding;
@@ -48,7 +49,8 @@ public class AgregarTareaFragment extends Fragment {
                     @Override
                     public void onChanged(String error) {
 
-                        Snackbar.make(root, error, Snackbar.LENGTH_SHORT).show();
+                        ToastUtils.showToast(root.getContext(), error, R.color.toast_error,R.drawable.error);
+
                     }
                 });
 

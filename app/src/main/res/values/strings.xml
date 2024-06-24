@@ -37,7 +37,7 @@
     <string name="fragment_detalle_animal_por_usuario">Detalles del animal</string>
     <string name="fragment_editar_perfil">Editar perfil</string>
     <string name="fragment_detalle_animal_por_refugio">Detalles del animal</string>
-    <string name="fragment_crear_refugio">Registrar refugio</string>
+    <string name="fragment_crear_refugio">Datos del refugio</string>
     <string name="fragment_gestion_refugio">Gestion del refugio</string>
     <string name="fragment_listar_tareas_disponibles_por_refugio">Tareas disponibles</string>
     <string name="fragment_editar_tarea">Editar tarea</string>
@@ -113,7 +113,11 @@
     <string name="Tarea_borrada_exitosamente">Tarea borrada exitosamente</string>
     <string name="no_tiene_permisos">no tiene permiso</string>
     <string name="noticia_borrada_exitosamente">Noticia borrada exitosamente</string>
-    <string name="no_se_pudo_borrar_la_noticia">No se pudo borrar la noticia</string>
+    <string name="no_puede_editar_un_refugio_que_no_le_pertenece">No puede editar un refugio que no le pertenece</string>
+    <string name="no_puede_editar_esta_noticia">No se puede editar esta noticia</string>
+    <string name="no_puede_borrar_esta_noticia">No se puede borrar esta noticia</string>
+    <string name="noticia_creada_exitosamente">Noticia creada exitosamente</string>
+    <string name="operacion_exitosa">Operacion exitosa</string>
 
 </resources>
 

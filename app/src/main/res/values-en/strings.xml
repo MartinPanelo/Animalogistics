@@ -38,7 +38,6 @@
     <string name="fragment_detalle_animal_por_usuario">Animal Details</string>
     <string name="fragment_editar_perfil">Edit Profile</string>
     <string name="fragment_detalle_animal_por_refugio">Animal Details</string>
-    <string name="fragment_crear_refugio">Register Shelter</string>
     <string name="fragment_gestion_refugio">Shelter Management</string>
     <string name="fragment_listar_tareas_disponibles_por_refugio">Available Tasks</string>
     <string name="fragment_editar_tarea">Edit Task</string>

@@ -69,6 +69,8 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<Refugio> RefugioM;
 
+    private MutableLiveData<Refugio> navegarArefugioM;
+
 
     // Crear instancia de DecimalFormatSymbols y establecer la coma como separador decimal
 
@@ -97,6 +99,12 @@ public class CrearRefugioViewModel extends AndroidViewModel {
             RefugioM = new MutableLiveData<>();
         }
         return RefugioM;
+    }
+    public MutableLiveData<Refugio> getnavegarArefugioM(){
+        if(navegarArefugioM==null){
+            navegarArefugioM = new MutableLiveData<>();
+        }
+        return navegarArefugioM;
     }
     public LiveData<Bitmap> getFoto() {
         if (foto == null) {
@@ -239,7 +247,7 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
                 //    Navigation.findNavController(view).navigate(R.id.item_noticias);
                  //   Navigation.findNavController(view).popBackStack(R.id.refugio, true);
-                    Snackbar.make(view, "Operación exitosa", Snackbar.LENGTH_LONG).show();
+                   navegarArefugioM.postValue(response.body());
 
                 } else {
 

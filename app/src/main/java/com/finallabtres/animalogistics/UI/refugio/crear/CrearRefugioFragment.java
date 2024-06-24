@@ -19,6 +19,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -31,6 +33,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Refugio;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.animal.crear.AgregarAnimalViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentCrearRefugioBinding;
@@ -207,6 +210,22 @@ public class CrearRefugioFragment extends Fragment {
         });
 
 
+        vm.getnavegarArefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
+            @Override
+            public void onChanged(Refugio refugio) {
+
+                ToastUtils.showToast(getContext(), getString(R.string.operacion_exitosa), R.color.toast_success,R.drawable.check);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("refugioId", String.valueOf(refugio.getId()));
+                bundle.putBoolean("TipoDeVista", true); // para que la vista se adapte a gestion de duenio
+                Navigation.findNavController(root).popBackStack(R.id.crearRefugioFragment, true);
+
+
+                Navigation.findNavController(root).navigate(R.id.gestionRefugioFragment,bundle);
+            }
+        });
+
 
         Bundle bundle = this.getArguments();
 
@@ -226,6 +245,9 @@ public class CrearRefugioFragment extends Fragment {
                 }
             });
         }
+
+
+
 
 
         return root;
