@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Refugio;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.refugio.listar.ListarRefugioViewModel;
 import com.google.android.gms.maps.CameraUpdate;
@@ -243,10 +244,9 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
                 if (response.isSuccessful() && response.body() != null) {
 
-                    Snackbar.make(view, "Animal Registrado Correctamente", Snackbar.LENGTH_LONG).show();
-                    Navigation.findNavController(view).popBackStack(R.id.agregarAnimalRefugioFragment, true);
 
-                    
+                    ToastUtils.showToast(context, context.getString(R.string.animal_registrado_correctamente), R.color.toast_success,R.drawable.check);
+                    Navigation.findNavController(view).popBackStack(R.id.agregarAnimalRefugioFragment, true);
                 }
 
                 else {

@@ -37,7 +37,7 @@ public class GestionRefugioFragment extends Fragment {
     private FragmentGestionRefugioBinding binding;
 
     private Boolean TipoDeVista=false;
-    private int idRefugio=0;
+/*    private int idRefugio=0;*/
 
 
     public static GestionRefugioFragment newInstance() {
@@ -120,7 +120,6 @@ public class GestionRefugioFragment extends Fragment {
 
 
 
-
         // por defecto primero se cargan los voluntariados
         Bundle bundle = this.getArguments();
 
@@ -163,7 +162,6 @@ public class GestionRefugioFragment extends Fragment {
                             public void onClick(View v) {
 
                                 vm.irAGestionAnimales(bundle,v);
-                              //  Navigation.findNavController(getView()).navigate(R.id.agregarAnimalRefugioFragment,bundle);
                             }
                         });
                         if(bundle != null) {
@@ -201,8 +199,7 @@ public class GestionRefugioFragment extends Fragment {
             public void onClick(View v) {
 
                 vm.editarRefugio(bundle,v);
-
-              //  Navigation.findNavController(getView()).navigate(R.id.crearRefugioFragment,bundle);
+                
             }
         });
 

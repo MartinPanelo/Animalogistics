@@ -91,10 +91,11 @@ public class GestionRefugioViewModel extends AndroidViewModel {
         return TipoDeVistaM;
 
     }
+
+
     public void cargarDatosDeVoluntariados(Bundle bundle) {
 
         TipoDeVistaM.postValue(bundle.getBoolean("TipoDeVista"));
-
 
         String IdRefugio = bundle.getString("refugioId");
 
@@ -340,6 +341,7 @@ public class GestionRefugioViewModel extends AndroidViewModel {
     }
 
 
+    public void cargarDatos(Bundle bundle) {
 
 
 
@@ -351,21 +353,5 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
