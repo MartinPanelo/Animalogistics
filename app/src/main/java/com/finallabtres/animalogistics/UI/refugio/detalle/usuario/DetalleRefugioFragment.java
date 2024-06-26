@@ -54,7 +54,7 @@ public class DetalleRefugioFragment extends Fragment {
         binding.BTNLlamarRefugio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vm.LlamarRefugio(view);
+                vm.LlamarRefugio();
             }
         });
 
@@ -64,7 +64,7 @@ public class DetalleRefugioFragment extends Fragment {
             public void onChanged(Refugio refugio) {
 
 
-                Glide.with(getActivity())
+                Glide.with(root)
                         .load(API.URLBASE + refugio.getBannerUrl())
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()

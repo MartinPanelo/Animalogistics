@@ -8,7 +8,7 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.location.Location;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,13 +20,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.navigation.Navigation;
 
 import com.finallabtres.animalogistics.API.API;
-import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Refugio;
-import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,7 +32,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +40,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.List;
 import java.util.Locale;
 
 import okhttp3.MediaType;
@@ -58,7 +53,7 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
     private Context context;
 
-    private MutableLiveData<Bitmap> foto;
+    private MutableLiveData<Drawable> foto;
 
     private MutableLiveData<MapaActual> MAMutable;
 
@@ -69,7 +64,7 @@ public class CrearRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<Refugio> RefugioM;
 
-    private MutableLiveData<Refugio> navegarArefugioM;
+    private MutableLiveData<Bundle> navegarArefugioM;
 
 
     // Crear instancia de DecimalFormatSymbols y establecer la coma como separador decimal
@@ -100,13 +95,14 @@ public class CrearRefugioViewModel extends AndroidViewModel {
         }
         return RefugioM;
     }
-    public MutableLiveData<Refugio> getnavegarArefugioM(){
+    public MutableLiveData<Bundle> getnavegarArefugioM(){
         if(navegarArefugioM==null){
             navegarArefugioM = new MutableLiveData<>();
         }
         return navegarArefugioM;
     }
-    public LiveData<Bitmap> getFoto() {
+
+    public LiveData<Drawable> getFoto() {
         if (foto == null) {
             foto = new MutableLiveData<>();
         }
@@ -130,7 +126,46 @@ public class CrearRefugioViewModel extends AndroidViewModel {
     public void editarRefugio(Bundle bundle) {
 
 
-        RefugioM.setValue((Refugio) bundle.getSerializable("ItemRefugio"));
+
+
+
+        String IdRefugio = bundle.getString("refugioId");
+
+        String token = API.LeerToken(context);
+
+        API.ApiAnimalogistics API_A = API.getApi();
+
+
+        Call<Refugio> call = API_A.refugioPorId(token, parseInt(IdRefugio));
+
+
+        call.enqueue(new Callback<Refugio>() {
+            @Override
+            public void onResponse(Call<Refugio> call, Response<Refugio> response) {
+
+                if (response.isSuccessful()) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("ItemRefugio", response.body());
+
+
+                    RefugioM.setValue(response.body());
+                }
+
+                else {
+
+                    errorM.postValue( context.getString(R.string.no_puede_editar_un_refugio_que_no_le_pertenece));
+                    Log.d("ERRORMORTAL", response.message());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                errorM.postValue("Se produjo el siguiente fallo: " + t.getMessage());
+                Log.d("ERRORMORTAL", t.getMessage());
+            }
+        });
 
     }
 
@@ -193,7 +228,7 @@ public class CrearRefugioViewModel extends AndroidViewModel {
     }
 
 
-    public void registrarRefugio(View view, String nombre, String direccion, String telefono, String descripcion,String gpsRango, ImageView foto) {
+    public void registrarRefugio( String nombre, String direccion, String telefono, String descripcion,String gpsRango, ImageView foto) {
 
         API.ApiAnimalogistics API_A = API.getApi();
 
@@ -245,9 +280,13 @@ public class CrearRefugioViewModel extends AndroidViewModel {
             public void onResponse(Call<Refugio> call, Response<Refugio> response) {
                 if (response.isSuccessful()) {
 
-                //    Navigation.findNavController(view).navigate(R.id.item_noticias);
-                 //   Navigation.findNavController(view).popBackStack(R.id.refugio, true);
-                   navegarArefugioM.postValue(response.body());
+                    ToastUtils.showToast(context,  context.getString(R.string.operacion_exitosa), R.color.toast_success,R.drawable.check);
+                    Refugio refugio = response.body();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("refugioId", String.valueOf(refugio.getId()));
+                    bundle.putBoolean("TipoDeVista", true); // para que la vista se adapte a gestion de duenio
+
+                   navegarArefugioM.postValue(bundle);
 
                 } else {
 
@@ -294,7 +333,10 @@ public class CrearRefugioViewModel extends AndroidViewModel {
             //Rutina para optimizar la foto,
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            foto.setValue(imageBitmap);
+
+            // Convierto el Bitmap a un Drawable.
+            Drawable drawable = new BitmapDrawable(context.getResources(), imageBitmap);
+            foto.setValue(drawable);
         }
 
     }

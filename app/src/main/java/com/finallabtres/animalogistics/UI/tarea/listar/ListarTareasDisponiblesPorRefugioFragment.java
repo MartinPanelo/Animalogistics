@@ -1,4 +1,4 @@
-package com.finallabtres.animalogistics.UI.tarea;
+package com.finallabtres.animalogistics.UI.tarea.listar;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,7 +74,7 @@ public class ListarTareasDisponiblesPorRefugioFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                vm.inscribirse(v,selectedPosition);
+                vm.inscribirse(selectedPosition);
             }
         });
 
@@ -88,6 +89,17 @@ public class ListarTareasDisponiblesPorRefugioFragment extends Fragment {
             @Override
             public void onChanged(String error) {
                 Toast.makeText( getActivity(), error, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        vm.getOperationSuccessful().observe(getViewLifecycleOwner(), new Observer<Bundle>() {
+            @Override
+            public void onChanged(Bundle bundle) {
+
+                Navigation.findNavController(root).popBackStack(R.id.item_refugios, true);
+                
+                Navigation.findNavController(root).navigate(R.id.gestionRefugioFragment,bundle);
+
             }
         });
 

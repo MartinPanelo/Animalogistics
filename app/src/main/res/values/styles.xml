@@ -20,6 +20,12 @@
         <item name="cornerSize">5%</item>
     </style>
 
+    <style name="infomapa" parent="">
+        <item name="cornerSizeBottomLeft">40%</item>
+        <item name="cornerSizeTopLeft">40%</item>
+
+    </style>
+
     <style name="toastcustom" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

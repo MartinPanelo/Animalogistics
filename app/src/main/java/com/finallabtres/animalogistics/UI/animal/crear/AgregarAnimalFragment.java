@@ -74,6 +74,8 @@ public class AgregarAnimalFragment extends Fragment {
 
         vm = new ViewModelProvider(this).get(AgregarAnimalViewModel.class);
 
+        binding.LYFormularioRegistrarAnimal.menuEstado.setVisibility(View.GONE);
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
 

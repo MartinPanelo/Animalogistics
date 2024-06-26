@@ -38,9 +38,9 @@ public class Dialogos {
     public static void DialogoBorrarAnimal(View view, Animal animal,int viewNavigation){
 
         new AlertDialog.Builder(view.getContext())
-                .setTitle("Borrar Registro")
-                .setMessage("Esta seguro que desea borrar el registro de :" + animal.getNombre())
-                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.borrar_registro)
+                .setMessage(view.getContext().getString(R.string.esta_seguro_que_desea_borrar_el_registro_de) + animal.getNombre())
+                .setPositiveButton(R.string.borrar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -83,7 +83,7 @@ public class Dialogos {
                                 }else{
 
                                     ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.no_se_pudo_borrar_el_registro), R.color.toast_error,R.drawable.error);
-                                    Toast.makeText(view.getContext(),"No se pudo borrar el registro", Toast.LENGTH_SHORT).show();
+
                                 }
 
 
@@ -99,7 +99,7 @@ public class Dialogos {
 
                     }
                 })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.operacion_cancelada), R.color.yellow,R.drawable.baseline_warning_24);
@@ -112,9 +112,9 @@ public class Dialogos {
 
 
         new AlertDialog.Builder(view.getContext())
-                .setTitle("Borrar Tarea")
-                .setMessage("Esta seguro que desea borrar la tarea :" + tarea.getActividad())
-                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.borrar_tarea)
+                .setMessage(view.getContext().getString(R.string.esta_seguro_que_desea_borrar_la_tarea) + tarea.getActividad())
+                .setPositiveButton(R.string.borrar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -201,7 +201,7 @@ public class Dialogos {
 
                     }
                 })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.operacion_cancelada), R.color.yellow,R.drawable.baseline_warning_24);
@@ -217,9 +217,9 @@ public class Dialogos {
 
 
         new AlertDialog.Builder(view.getContext())
-                .setTitle("Borrar Noticia")
-                .setMessage("Esta seguro que desea borrar la noticia :" + noticia.getTitulo())
-                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.borrar_noticia)
+                .setMessage( view.getContext().getString(R.string.esta_seguro_que_desea_borrar_la_noticia) + noticia.getTitulo())
+                .setPositiveButton(R.string.borrar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -278,7 +278,7 @@ public class Dialogos {
 
                     }
                 })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ToastUtils.showToast(view.getContext(), view.getContext().getString(R.string.operacion_cancelada), R.color.yellow,R.drawable.baseline_warning_24);
@@ -293,8 +293,8 @@ public class Dialogos {
     public static void DialogoSalir(Activity activity){
 
         new AlertDialog.Builder(activity)
-                .setTitle("Salir de la aplicacion")
-                .setMessage("Esta seguro que quiere salir?")
+                .setTitle(R.string.salir_de_la_aplicacion)
+                .setMessage(R.string.esta_seguro_que_quiere_salir)
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -311,7 +311,10 @@ public class Dialogos {
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(activity,"Continua la aplicacion", Toast.LENGTH_SHORT).show();
+
+                        ToastUtils.showToast(activity, activity.getString(R.string.operacion_cancelada), R.color.magenta,R.drawable.pets);
+
+
                     }
                 })
                 .show();

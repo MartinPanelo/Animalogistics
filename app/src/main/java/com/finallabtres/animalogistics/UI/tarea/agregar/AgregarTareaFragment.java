@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,16 +55,26 @@ public class AgregarTareaFragment extends Fragment {
                     }
                 });
 
+        vm.getOperationSuccessful().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean b) {
+
+                Navigation.findNavController(root).popBackStack(R.id.agregarTareaFragment, true);
+
+            }
+        });
+
         binding.IFormularioTarea.BTNGuardarTarea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 vm.AgregarTarea(
-                        v,
                         binding.IFormularioTarea.TILActividadTarea.getEditText().getText().toString(),
                         binding.IFormularioTarea.TILDescripcionTarea.getEditText().getText().toString());
             }
         });
+
+
 
 
         Bundle bundle = this.getArguments();

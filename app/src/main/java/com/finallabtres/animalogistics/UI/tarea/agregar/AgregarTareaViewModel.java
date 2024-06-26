@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.MODELO.Usuario;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
@@ -39,10 +40,21 @@ public class AgregarTareaViewModel extends AndroidViewModel {
     private MutableLiveData<String> errorM;
     private int idRefugio;
 
+    private MutableLiveData<Boolean> operationSuccessful;
+
+
+
 
     public AgregarTareaViewModel(@NonNull Application application) {
         super(application);
         this.context = application.getApplicationContext();
+    }
+
+    public LiveData<Boolean> getOperationSuccessful(){
+        if(operationSuccessful==null){
+            operationSuccessful=new MutableLiveData<>();
+        }
+        return operationSuccessful;
     }
 
     public LiveData<String> getErrorM(){
@@ -53,7 +65,7 @@ public class AgregarTareaViewModel extends AndroidViewModel {
         return errorM;
 
     }
-    public void AgregarTarea(View view, String actividad, String descripcion) {
+    public void AgregarTarea(String actividad, String descripcion) {
 
         RequestBody RefugioId = RequestBody.create(MediaType.parse("application/json"), String.valueOf(idRefugio));
         RequestBody Actividad = RequestBody.create(MediaType.parse("application/json"), actividad);
@@ -70,8 +82,12 @@ public class AgregarTareaViewModel extends AndroidViewModel {
             public void onResponse(Call<Tarea> call, Response<Tarea> response) {
                 if(response.isSuccessful()){
 
-                    Snackbar.make(view, "Tarea Creada Correctamente", Snackbar.LENGTH_LONG).show();
-                    Navigation.findNavController(view).popBackStack(R.id.agregarTareaFragment, true);
+
+                    ToastUtils.showToast(context, context.getString(R.string.Operacion_exitosa), R.color.toast_success,R.drawable.check);
+                    operationSuccessful.postValue(true);
+
+
+
 
                 }else{
 

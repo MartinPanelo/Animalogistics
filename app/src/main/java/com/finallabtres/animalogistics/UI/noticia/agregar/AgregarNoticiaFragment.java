@@ -11,6 +11,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,13 +60,22 @@ public class AgregarNoticiaFragment extends Fragment {
             }
         });
 
+        vm.getOperationSuccessful().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean success) {
+                if(success){
+                    Navigation.findNavController(root).popBackStack(R.id.agregarNoticiaFragment, true);
+                }
+            }
+        });
+
+
 
         binding.formularioagregarnoticia.BTNGuardarNoticia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 vm.AgregarNoticia(
-                        v,
                         binding.formularioagregarnoticia.TILCategoriaNoticiaEditar.getEditText().getText().toString(),
                         binding.formularioagregarnoticia.TILTituloNoticiaEditar.getEditText().getText().toString(),
                         binding.formularioagregarnoticia.TILContenidoNOticiaEditar.getEditText().getText().toString(),

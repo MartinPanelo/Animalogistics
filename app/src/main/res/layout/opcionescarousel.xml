@@ -36,8 +36,8 @@
             android:textColor="#000000"
             android:textSize="30dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/IMGMenuRefugio"
+            app:layout_constraintStart_toStartOf="@+id/IMGMenuRefugio"
             app:layout_constraintTop_toTopOf="@+id/IMGMenuRefugio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/listarTareasDisponiblesPorRefugioFragment"
-        android:name="com.finallabtres.animalogistics.UI.tarea.ListarTareasDisponiblesPorRefugioFragment"
+        android:name="com.finallabtres.animalogistics.UI.tarea.listar.ListarTareasDisponiblesPorRefugioFragment"
         android:label="@string/fragment_listar_tareas_disponibles_por_refugio"
         tools:layout="@layout/fragment_listar_tareas_disponibles_por_refugio" >
         <action
@@ -163,11 +163,6 @@
         android:name="com.finallabtres.animalogistics.UI.animal.gestion.agregarRefugio.AgregarAnimalRefugioFragment"
         android:label="@string/fragment_agregar_animal_refugio"
         tools:layout="@layout/fragment_agregar_animal_refugio" />
-    <fragment
-        android:id="@+id/editarAnimalRefugioFragment"
-        android:name="com.finallabtres.animalogistics.UI.animal.gestion.editar.EditarAnimalRefugioFragment"
-        android:label="fragment_editar_animal_refugio"
-        tools:layout="@layout/fragment_editar_animal_refugio" />
     <fragment android:id="@+id/placeholder" />
 
     <!--

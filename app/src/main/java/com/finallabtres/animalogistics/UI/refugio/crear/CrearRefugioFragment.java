@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -79,7 +80,7 @@ public class CrearRefugioFragment extends Fragment {
             public void onClick(View view) {
                 if (isAdded()) {
 
-                    vm.registrarRefugio(view,
+                    vm.registrarRefugio(
                             binding.IformularioCrearRefugio.TIETNombreRefugio.getText().toString(),
                             binding.IformularioCrearRefugio.TIETDireccionRefugio.getText().toString(),
                             binding.IformularioCrearRefugio.TIETTelefonoRefugio.getText().toString(),
@@ -93,7 +94,7 @@ public class CrearRefugioFragment extends Fragment {
         });
 
 
-        // boton para abrir la camara y capturar una imagen del animalito
+        // boton para abrir la camara y capturar una imagen del refugio
         binding.IformularioCrearRefugio.CDFotoRefugio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,12 +106,8 @@ public class CrearRefugioFragment extends Fragment {
 
             }
         });
-        vm.getFoto().observe(getViewLifecycleOwner(), new Observer<Bitmap>() {
-            @Override
-            public void onChanged(Bitmap bitmap) {
-                binding.IformularioCrearRefugio.IMGFotoRefugio.setImageBitmap(bitmap);
-            }
-        });
+
+
 
         binding.IformularioCrearRefugio.BTNPosicionActualParaRefugio.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("MissingPermission")
@@ -175,7 +172,20 @@ public class CrearRefugioFragment extends Fragment {
         });
 
 
+        vm.getFoto().observe(getViewLifecycleOwner(), new Observer<Drawable>() {
+            @Override
+            public void onChanged(Drawable Drawable) {
 
+                Glide.with(root)
+                        .load(Drawable)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .fitCenter()
+                        .override(200,200)
+                        .into(binding.IformularioCrearRefugio.IMGFotoRefugio);
+
+             //   binding.IformularioCrearRefugio.IMGFotoRefugio.setImageBitmap(bitmap);
+            }
+        });
 
 
 
@@ -210,17 +220,13 @@ public class CrearRefugioFragment extends Fragment {
         });
 
 
-        vm.getnavegarArefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
+        vm.getnavegarArefugioM().observe(getViewLifecycleOwner(), new Observer<Bundle>() {
             @Override
-            public void onChanged(Refugio refugio) {
+            public void onChanged(Bundle bundle) {
 
-                ToastUtils.showToast(getContext(), getString(R.string.operacion_exitosa), R.color.toast_success,R.drawable.check);
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("refugioId", String.valueOf(refugio.getId()));
-                bundle.putBoolean("TipoDeVista", true); // para que la vista se adapte a gestion de duenio
+
                 Navigation.findNavController(root).popBackStack(R.id.crearRefugioFragment, true);
-
 
                 Navigation.findNavController(root).navigate(R.id.gestionRefugioFragment,bundle);
             }

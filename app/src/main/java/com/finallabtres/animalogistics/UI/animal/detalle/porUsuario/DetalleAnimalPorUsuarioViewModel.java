@@ -147,7 +147,7 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
 
     }
 
-    public void editarAnimal(View view, int IdAnimal, String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String comentarios, ImageView foto) {
+    public void editarAnimal(int IdAnimal, String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String estado, String comentarios, ImageView foto) {
 
         API.ApiAnimalogistics API_A = API.getApi();
 
@@ -165,6 +165,7 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
         RequestBody Tamano = RequestBody.create(MediaType.parse("application/json"), tamanoCheckedRadioButton);
         RequestBody Collar = RequestBody.create(MediaType.parse("application/json"), String.valueOf(collarChecked));
         RequestBody Genero = RequestBody.create(MediaType.parse("application/json"), genero);
+        RequestBody Estado = RequestBody.create(MediaType.parse("application/json"), estado);
         RequestBody Comentarios = RequestBody.create(MediaType.parse("application/json"), comentarios);
         RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLatitude()));
         RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLongitude()));
@@ -185,7 +186,7 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
 
 
 
-        Call<Animal> call = API_A.animalEditar(token,Id,Nombre, Edad, Tipo, Tamano, Collar, Genero, Comentarios, GPSX, GPSY, FotoFile);
+        Call<Animal> call = API_A.animalEditar(token,Id,Nombre, Edad, Tipo, Tamano, Collar, Genero, Estado, Comentarios, GPSX, GPSY, FotoFile);
 
         call.enqueue(new Callback<Animal>() {
             @Override
@@ -197,7 +198,7 @@ public class DetalleAnimalPorUsuarioViewModel extends AndroidViewModel {
                  //   Navigation.findNavController(view).navigate(R.id.listarAnimalFragment);
 
                     ToastUtils.showToast(context, context.getString(R.string.editado_correctamente), R.color.toast_success,R.drawable.check);
-                    Navigation.findNavController(view).popBackStack(R.id.listarAnimalFragment, false);
+                 //   Navigation.findNavController(view).popBackStack(R.id.listarAnimalFragment, false);
 
 
                 } else {

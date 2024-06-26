@@ -56,6 +56,8 @@ public class GestionRefugioFragment extends Fragment {
         vm = new ViewModelProvider(this).get(GestionRefugioViewModel.class);
 
 
+
+
         vm.getErrorM().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String error) {
@@ -64,6 +66,8 @@ public class GestionRefugioFragment extends Fragment {
                // Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();
             }
         });
+
+
 
 
         // duenio o veterinario
@@ -85,6 +89,10 @@ public class GestionRefugioFragment extends Fragment {
 
                 TareaGestionAdapter tareaGestionAdapter=new TareaGestionAdapter(listaTareas,TipoDeVista,getContext(),getLayoutInflater()/*,getActivity()*/);
                 binding.RVTNARefugio.setAdapter(tareaGestionAdapter);
+
+              /*  if (getActivity() != null) {
+                    getActivity().setTitle();
+                }*/
             }
         });
 
@@ -119,13 +127,15 @@ public class GestionRefugioFragment extends Fragment {
 
 
 
-
         // por defecto primero se cargan los voluntariados
         Bundle bundle = this.getArguments();
 
         if(bundle != null){
             vm.cargarDatosDeVoluntariados(bundle);
         }
+
+
+
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -161,7 +171,14 @@ public class GestionRefugioFragment extends Fragment {
                             @Override
                             public void onClick(View v) {
 
-                                vm.irAGestionAnimales(bundle,v);
+                                if(TipoDeVista){
+                                    Navigation.findNavController(root).navigate(R.id.agregarAnimalRefugioFragment,bundle);
+                                }else{
+                                    ToastUtils.showToast(getContext(), getContext().getString(R.string.no_tiene_permisos), R.color.yellow,R.drawable.tipo);
+                                }
+
+
+
                             }
                         });
                         if(bundle != null) {
@@ -198,7 +215,15 @@ public class GestionRefugioFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                vm.editarRefugio(bundle,v);
+
+                if(TipoDeVista){
+                    Navigation.findNavController(root).navigate(R.id.crearRefugioFragment,bundle);
+                }else{
+                    ToastUtils.showToast(getContext(), getContext().getString(R.string.no_tiene_permisos), R.color.yellow,R.drawable.tipo);
+                }
+
+
+             //   vm.editarRefugio(bundle);
                 
             }
         });
@@ -206,6 +231,9 @@ public class GestionRefugioFragment extends Fragment {
 
         return root;
     }
+
+
+
 
     @Override
     public void onResume(){

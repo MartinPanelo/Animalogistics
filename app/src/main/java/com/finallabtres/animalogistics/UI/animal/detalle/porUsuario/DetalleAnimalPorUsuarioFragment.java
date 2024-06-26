@@ -82,13 +82,14 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
                         // Obtén el texto del RadioButton seleccionado
                         tamanoSeleccionado = radioButton.getText().toString();
                     }
-                    vm.editarAnimal(view, animal.getId(),
+                    vm.editarAnimal(animal.getId(),
                             binding.LYFormularioRegistrarAnimal.TIETNombreAnimal.getText().toString(),
                             binding.LYFormularioRegistrarAnimal.TIETTipoAnimal.getText().toString(),
                             binding.LYFormularioRegistrarAnimal.SLREdad.getValue(),
                             tamanoSeleccionado,
                             binding.LYFormularioRegistrarAnimal.SWTCollar.isChecked(),
                             binding.LYFormularioRegistrarAnimal.CBGenero.getText().toString(),
+                            binding.LYFormularioRegistrarAnimal.CBEstado.getText().toString(),
                             binding.LYFormularioRegistrarAnimal.TIETDetalles.getText().toString(),
                             binding.LYFormularioRegistrarAnimal.IMGFoto);
 
@@ -201,8 +202,9 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
             binding.LYFormularioRegistrarAnimal.TIETTipoAnimal.setText(animal.getTipo());
             binding.LYFormularioRegistrarAnimal.SLREdad.setValue(Float.parseFloat(animal.getEdad()));
             binding.LYFormularioRegistrarAnimal.SWTCollar.setChecked(animal.getCollar());
-            binding.LYFormularioRegistrarAnimal.CBGenero.setText(animal.getGenero());
+            binding.LYFormularioRegistrarAnimal.CBGenero.setText(animal.getGenero(),false);
             binding.LYFormularioRegistrarAnimal.TIETDetalles.setText(animal.getComentarios());
+            binding.LYFormularioRegistrarAnimal.CBEstado.setText(animal.getEstado(),false);
             if(animal.getFotoUrl() != null){
 
                 Glide.with(requireContext())

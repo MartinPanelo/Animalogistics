@@ -134,10 +134,6 @@ public class API {
         Call<List<Noticia>> noticiaListarPorRefugioPorCategoria(@Header("Authorization") String token, @Query("categoria") String categoria, @Query("refugioId") String refugioId);
 
 
-        @GET("ControllerNoticia/noticiaListarPorRefugioGestion")
-        Call<List<Noticia>> noticiaListarPorRefugioGestion(@Header("Authorization") String token, @Query("refugioId") String refugioId);
-
-
         @DELETE("ControllerNoticia/noticiaEliminar")
         Call<Noticia> noticiaEliminar(@Header("Authorization") String token, @Query("noticiaId") int noticiaId);
 
@@ -242,6 +238,7 @@ public class API {
                                            @Part("Tamano") RequestBody Tamano,
                                            @Part("Collar") RequestBody Collar,
                                            @Part("Genero") RequestBody Genero,
+                                           @Part("Estado") RequestBody Estado,
                                            @Part("Comentarios") RequestBody Comentarios,
                                            @Part("GPSX") RequestBody GPSX,
                                            @Part("GPSY") RequestBody GPSY,

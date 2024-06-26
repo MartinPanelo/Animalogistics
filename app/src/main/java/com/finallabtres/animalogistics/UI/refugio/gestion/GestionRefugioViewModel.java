@@ -43,11 +43,14 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<Boolean> TipoDeVistaM;
 
+  //  private MutableLiveData<Bundle> operationSuccessful;
+
 
     public GestionRefugioViewModel(@NonNull Application application) {
         super(application);
         this.context=application.getApplicationContext();
     }
+
 
     public LiveData<List<Tarea>> getlistaTareasM(){
         if(listaTareasM==null){
@@ -118,6 +121,8 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
 
                     listaTareasM.postValue(response.body());
+
+
 
                 }else{
 
@@ -253,105 +258,11 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
     }
 
-    public void editarRefugio(Bundle bundle, View view) {
-
-
-        String IdRefugio = bundle.getString("refugioId");
-
-        String token = API.LeerToken(context);
-
-        API.ApiAnimalogistics API_A = API.getApi();
-
-
-        Call<Refugio> call = API_A.refugioPorId(token, parseInt(IdRefugio));
-
-
-        call.enqueue(new Callback<Refugio>() {
-            @Override
-            public void onResponse(Call<Refugio> call, Response<Refugio> response) {
-
-                if (response.isSuccessful()) {
-
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("ItemRefugio", response.body());
-
-                    Navigation.findNavController(view).navigate(R.id.crearRefugioFragment,bundle);
-
-                }
-
-                else {
-
-                    errorM.postValue( context.getString(R.string.no_puede_editar_un_refugio_que_no_le_pertenece));
-                    Log.d("ERRORMORTAL", response.message());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                errorM.postValue("Se produjo el siguiente fallo: " + t.getMessage());
-                Log.d("ERRORMORTAL", t.getMessage());
-            }
-        });
-    }
-
-    public void irAGestionAnimales(Bundle bundle,View view) {
-
-        String IdRefugio = bundle.getString("refugioId");
-
-        String token = API.LeerToken(context);
-
-        API.ApiAnimalogistics API_A = API.getApi();
-
-
-        Call<Refugio> call = API_A.refugioPorId(token, parseInt(IdRefugio));
-
-
-        call.enqueue(new Callback<Refugio>() {
-            @Override
-            public void onResponse(Call<Refugio> call, Response<Refugio> response) {
-
-                if (response.isSuccessful()) {
-
-
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("ItemRefugio", response.body());
-
-                    Navigation.findNavController(view).navigate(R.id.agregarAnimalRefugioFragment,bundle);
-
-                }
-
-                else {
-
-                    errorM.postValue("No se puede acceder al refugio");
-                    Log.d("ERRORMORTAL", response.message());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                errorM.postValue("Se produjo el siguiente fallo: " + t.getMessage());
-                Log.d("ERRORMORTAL", t.getMessage());
-            }
-        });
-
-
-
-    }
-
-
-    public void cargarDatos(Bundle bundle) {
+/*    public void irAGestionAnimales(Bundle bundle,View view) {
 
 
 
 
+    }*/
 
-
-
-
-
-
-
-    }
 }

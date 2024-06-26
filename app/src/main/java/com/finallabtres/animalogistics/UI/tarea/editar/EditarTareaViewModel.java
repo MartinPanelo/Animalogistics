@@ -14,7 +14,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Tarea;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.MODELO.Usuario;
+import com.finallabtres.animalogistics.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -125,9 +127,7 @@ public class EditarTareaViewModel extends AndroidViewModel {
 
                     TareaM.postValue(response.body());
 
-
-
-                    Toast.makeText( context, "Se actualizo la tarea", Toast.LENGTH_LONG).show();
+                    ToastUtils.showToast(context, context.getString(R.string.se_actualizo_la_tarea), R.color.toast_success,R.drawable.check);
 
                 }else{
 

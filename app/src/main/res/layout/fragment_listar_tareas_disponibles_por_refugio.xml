@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bgfondotareas"
     app:circularflow_radiusInDP="50dp"
-    tools:context=".UI.tarea.ListarTareasDisponiblesPorRefugioFragment">
+    tools:context=".UI.tarea.listar.ListarTareasDisponiblesPorRefugioFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:text="ACA se describe la tareas disponible a la  que un usuario puede voluntariar"
+                android:text="@string/Detalles_de_la_tarea"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 android:textStyle="bold" />

@@ -9,18 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.finallabtres.animalogistics.MODELO.Tarea;
 import com.finallabtres.animalogistics.R;
-import com.finallabtres.animalogistics.UI.refugio.gestion.GestionRefugioViewModel;
-import com.finallabtres.animalogistics.UI.tarea.ListarTareasDisponiblesPorRefugioViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentEditarTareaBinding;
-import com.finallabtres.animalogistics.databinding.FragmentGestionRefugioBinding;
-import com.finallabtres.animalogistics.databinding.FragmentListarTareasDisponiblesPorRefugioBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 

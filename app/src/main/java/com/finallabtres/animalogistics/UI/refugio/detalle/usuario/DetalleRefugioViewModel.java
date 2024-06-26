@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
+import com.finallabtres.animalogistics.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class DetalleRefugioViewModel extends AndroidViewModel {
@@ -48,7 +50,7 @@ public class DetalleRefugioViewModel extends AndroidViewModel {
 
     }
 
-    public void LlamarRefugio(View view) {
+    public void LlamarRefugio() {
 
 
         if(refugio.getTelefono() != null){
@@ -61,7 +63,8 @@ public class DetalleRefugioViewModel extends AndroidViewModel {
             context.startActivity(intent);
 
         }else{
-            Snackbar.make(view, "Refugio sin Telefono", Snackbar.LENGTH_LONG).show();
+            ToastUtils.showToast(context, context.getString(R.string.refugio_sin_telefono), R.color.yellow, R.drawable.phone_svgrepo_com);
+
         }
 
 

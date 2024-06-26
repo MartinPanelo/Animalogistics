@@ -15,7 +15,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/toastBg"
         android:layout_width="350dp"
-        android:layout_height="40dp"
+        android:layout_height="0dp"
         android:background="#3AFF3A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,20 +29,23 @@
         android:layout_height="40dp"
         android:importantForAccessibility="no"
         android:src="@drawable/check"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/toast_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="10dp"
+        android:maxLines="2"
         android:text="@string/titulo"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toastBg"
         app:layout_constraintStart_toEndOf="@+id/toast_image"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

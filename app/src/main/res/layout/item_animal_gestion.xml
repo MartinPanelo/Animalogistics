@@ -32,6 +32,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1.0"
                     android:orientation="vertical"
@@ -91,7 +92,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
+                    android:background="@color/white"
                     android:text="@string/editar"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#431F9D"
                     app:icon="@drawable/brush" />
 
                 <com.google.android.material.button.MaterialButton
@@ -101,7 +105,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
+                    android:background="@color/white"
                     android:text="@string/eliminar"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#431F9D"
                     app:icon="@drawable/delete_icon" />
 
             </LinearLayout>

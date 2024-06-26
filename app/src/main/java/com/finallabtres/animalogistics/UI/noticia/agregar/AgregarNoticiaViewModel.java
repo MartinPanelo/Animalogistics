@@ -42,6 +42,8 @@ public class AgregarNoticiaViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> errorM;
     private int idRefugio;
+
+    private MutableLiveData<Boolean> operationSuccessful;
     public AgregarNoticiaViewModel(@NonNull Application application) {
         super(application);
         this.context=application.getApplicationContext();
@@ -55,13 +57,20 @@ public class AgregarNoticiaViewModel extends AndroidViewModel {
         return errorM;
 
     }
+
+    public LiveData<Boolean> getOperationSuccessful(){
+        if(operationSuccessful==null){
+            operationSuccessful=new MutableLiveData<>();
+        }
+        return operationSuccessful;
+    }
     public void setIdRefugioNoticia(Bundle bundle) {
 
         idRefugio = Integer.parseInt( bundle.getString("refugioId") ); // bundle.getString("refugioId");
     }
 
 
-    public void AgregarNoticia(View view, String categoria, String titulo, String contenido, ShapeableImageView banner) {
+    public void AgregarNoticia(String categoria, String titulo, String contenido, ShapeableImageView banner) {
 
 
         RequestBody RefugioId = RequestBody.create(MediaType.parse("application/json"), String.valueOf(idRefugio));
@@ -94,9 +103,12 @@ public class AgregarNoticiaViewModel extends AndroidViewModel {
             public void onResponse(Call<Noticia> call, Response<Noticia> response) {
                 if(response.isSuccessful()){
 
-                    /*Snackbar.make(view, "Noticia Creada Correctamente", Snackbar.LENGTH_LONG).show();*/
+
                     ToastUtils.showToast(context, context.getString(R.string.noticia_creada_exitosamente), R.color.toast_success,R.drawable.check);
-                    Navigation.findNavController(view).popBackStack(R.id.agregarNoticiaFragment, true);
+
+                    operationSuccessful.postValue(true);
+
+
 
                 }else{
 

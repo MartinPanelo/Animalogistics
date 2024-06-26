@@ -17,6 +17,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.MODELO.Refugio;
@@ -33,6 +35,7 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -59,8 +62,7 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<Refugio> RefugioM;
 
- /*   String IdRefugio;*/
-
+    private MutableLiveData<Boolean> operationSuccessful;
     private Marker myMarker;
 
     public AgregarAnimalRefugioViewModel(@NonNull Application application) {
@@ -70,14 +72,12 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
     }
 
-/*    public LiveData<List<Animal>> getListaAnimalM() {
-        if (listaAnimalM == null) {
-
-            listaAnimalM = new MutableLiveData<>();
+    public LiveData<Boolean> getOperationSuccessful() {
+        if (operationSuccessful == null) {
+            operationSuccessful = new MutableLiveData<>();
         }
-        return listaAnimalM;
-
-    }*/
+        return operationSuccessful;
+    }
 
     public LiveData<String> getErrorM() {
         if (errorM == null) {
@@ -141,26 +141,20 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
     public void CargarDatos(Bundle bundle) {
 
-        Refugio refugio = (Refugio) bundle.getSerializable("ItemRefugio");
+      //  Refugio refugio = (Refugio) bundle.getSerializable("ItemRefugio");
 
         CargarAnimales();
 
-        RefugioM.postValue(refugio);
-
-       // CargarRefugio(refugio.getId());
 
 
-    }
-
-  /*  public void CargarRefugio(int IdRefugio) {
-
+        String IdRefugio = bundle.getString("refugioId");
 
         String token = API.LeerToken(context);
 
         API.ApiAnimalogistics API_A = API.getApi();
 
 
-        Call<Refugio> call = API_A.refugioPorId(token, IdRefugio);
+        Call<Refugio> call = API_A.refugioPorId(token, parseInt(IdRefugio));
 
 
         call.enqueue(new Callback<Refugio>() {
@@ -169,12 +163,14 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
                 if (response.isSuccessful()) {
 
+
                     RefugioM.postValue(response.body());
+
                 }
 
                 else {
 
-                    errorM.postValue("Hubo problemas al cargar el refugio");
+                    errorM.postValue("Hubo problemas al cargar los datos");
                     Log.d("ERRORMORTAL", response.message());
                 }
 
@@ -188,7 +184,8 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
         });
 
 
-    }*/
+
+    }
 
     public void CargarAnimales() {
 
@@ -228,7 +225,7 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
         });
     }
 
-    public void agregarAnimalRefugio(View view, Animal animal) {
+    public void agregarAnimalRefugio(Animal animal) {
 
         String token = API.LeerToken(context);
 
@@ -246,7 +243,10 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
 
                     ToastUtils.showToast(context, context.getString(R.string.animal_registrado_correctamente), R.color.toast_success,R.drawable.check);
-                    Navigation.findNavController(view).popBackStack(R.id.agregarAnimalRefugioFragment, true);
+
+                    operationSuccessful.postValue(true);
+
+                //    Navigation.findNavController(view).popBackStack(R.id.agregarAnimalRefugioFragment, true);
                 }
 
                 else {
@@ -389,9 +389,17 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
 
                     TextView title = infoWindow.findViewById(R.id.title);
                     TextView snippet = infoWindow.findViewById(R.id.snippet);
+                    ShapeableImageView SIVBanner = infoWindow.findViewById(R.id.IMGrefugio);
 
                     title.setText(marker.getTitle());
                     snippet.setText(marker.getSnippet());
+
+                    Glide.with(context)
+                            .load(API.URLBASE + RefugioM.getValue().getBannerUrl())
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                            .centerCrop()
+                            .override(500,500)
+                            .into(SIVBanner);
 
                     return infoWindow;
                 }

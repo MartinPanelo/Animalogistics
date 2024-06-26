@@ -130,7 +130,7 @@ public class AgregarAnimalRefugioFragment extends Fragment {
 
                         bottomSheetDialog.dismiss();
 
-                       vm.agregarAnimalRefugio(root,animal);
+                       vm.agregarAnimalRefugio(animal);
                     }
                 });
 
@@ -155,6 +155,13 @@ public class AgregarAnimalRefugioFragment extends Fragment {
             @Override
             public void onChanged(Refugio refugio) {
                 vm.ObtenerMapa();
+            }
+        });
+
+        vm.getOperationSuccessful().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean b) {
+                Navigation.findNavController(root).popBackStack(R.id.agregarAnimalRefugioFragment, true);
             }
         });
 

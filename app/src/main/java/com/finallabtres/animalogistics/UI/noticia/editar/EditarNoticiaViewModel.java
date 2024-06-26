@@ -15,6 +15,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Noticia;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
+import com.finallabtres.animalogistics.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -78,14 +80,17 @@ public class EditarNoticiaViewModel extends AndroidViewModel {
         RequestBody Categoria = RequestBody.create(MediaType.parse("application/json"), categoria);
         RequestBody Contenido = RequestBody.create(MediaType.parse("application/json"), contenido);
 
-        // Preparamos la imagen del usuario
-        Bitmap bitmap = ((BitmapDrawable) IMG.getDrawable()).getBitmap();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), byteArrayOutputStream.toByteArray());
-        // Creo una parte multipart con el RequestBody.
-        MultipartBody.Part BannerFile = MultipartBody.Part.createFormData("BannerFile", "image.jpg", requestFile);
+        MultipartBody.Part BannerFile = null; // Inicializa como null
 
+        if(IMG.getDrawable() instanceof BitmapDrawable) {
+            // Preparamos la imagen de la noticia
+            Bitmap bitmap = ((BitmapDrawable) IMG.getDrawable()).getBitmap();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), byteArrayOutputStream.toByteArray());
+            // Creo una parte multipart con el RequestBody.
+            BannerFile = MultipartBody.Part.createFormData("BannerFile", "image.jpg", requestFile);
+        }
 
 
         Call<Noticia> call = API_A.noticiaEditar(token, Id, Titulo, Categoria, Contenido, BannerFile);
@@ -99,9 +104,9 @@ public class EditarNoticiaViewModel extends AndroidViewModel {
 
                     NoticiaM.postValue(response.body());
 
+                    ToastUtils.showToast(context, context.getString(R.string.noticia_actualizada_exitosamente), R.color.toast_success,R.drawable.check);
 
-
-                    Toast.makeText( context, "Se actualizo la noticia", Toast.LENGTH_LONG).show();
+                /*    Toast.makeText( context, "Se actualizo la noticia", Toast.LENGTH_LONG).show();*/
 
                 }else{
 

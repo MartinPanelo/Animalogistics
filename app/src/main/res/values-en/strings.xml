@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Animalogistics</string>
 
-    <!-- login -->
     <string name="usuario">User</string>
     <string name="contrasena">Password</string>
     <string name="ingresar">Sign in</string>
@@ -38,6 +37,7 @@
     <string name="fragment_detalle_animal_por_usuario">Animal Details</string>
     <string name="fragment_editar_perfil">Edit Profile</string>
     <string name="fragment_detalle_animal_por_refugio">Animal Details</string>
+    <string name="fragment_crear_refugio">Shelter details</string>
     <string name="fragment_gestion_refugio">Shelter Management</string>
     <string name="fragment_listar_tareas_disponibles_por_refugio">Available Tasks</string>
     <string name="fragment_editar_tarea">Edit Task</string>
@@ -102,5 +102,35 @@
     <string name="error_actualizando_perfil">Error updating profile</string>
     <string name="animal_registrado_correctamente">Animal registered correctly</string>
     <string name="problema_al_registrar">Error registering</string>
+    <string name="problema_al_editar">Problems editing</string>
+    <string name="editado_correctamente">Edited successfully</string>
+    <string name="Operacion_exitosa">Operation successful</string>
+    <string name="no_puede_editar_esta_tarea">You cannot edit this task</string>
+    <string name="se_prudujo_un_error">An error occurred:</string>
+    <string name="registro_borrado_exitosamente">Record deleted successfully</string>
+    <string name="no_se_pudo_borrar_el_registro">Could not delete the record</string>
+    <string name="operacion_cancelada">Operation canceled</string>
+    <string name="Tarea_borrada_exitosamente">Task deleted successfully</string>
+    <string name="no_tiene_permisos">You do not have permission</string>
+    <string name="noticia_borrada_exitosamente">News deleted successfully</string>
+    <string name="no_puede_editar_un_refugio_que_no_le_pertenece">You cannot edit a shelter that does not belong to you</string>
+    <string name="no_puede_editar_esta_noticia">You cannot edit this news</string>
+    <string name="no_puede_borrar_esta_noticia">You cannot delete this news</string>
+    <string name="noticia_creada_exitosamente">News created successfully</string>
+    <string name="operacion_exitosa">Operation successful</string>
+    <string name="Detalles_de_la_tarea">Task details</string>
+    <string name="se_actualizo_la_tarea">Task updated</string>
+    <string name="refugio_sin_telefono">Shelter without phone</string>
+    <string name="noticia_actualizada_exitosamente">News updated successfully</string>
+    <string name="borrar_registro">Delete record</string>
+    <string name="esta_seguro_que_desea_borrar_el_registro_de">Are you sure you want to delete the record of:</string>
+    <string name="borrar">Delete</string>
+    <string name="borrar_tarea">Delete task</string>
+    <string name="esta_seguro_que_desea_borrar_la_tarea">Are you sure you want to delete the task:</string>
+    <string name="cancelar">Cancel</string>
+    <string name="borrar_noticia">Delete news</string>
+    <string name="esta_seguro_que_desea_borrar_la_noticia">Are you sure you want to delete the news:</string>
+    <string name="salir_de_la_aplicacion">Exit application</string>
+    <string name="esta_seguro_que_quiere_salir">Are you sure you want to exit?</string>
 
 </resources>

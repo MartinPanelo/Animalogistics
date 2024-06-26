@@ -1,4 +1,4 @@
-package com.finallabtres.animalogistics.UI.tarea;
+package com.finallabtres.animalogistics.UI.tarea.listar;
 
 import android.app.Application;
 import android.content.Context;
@@ -35,12 +35,20 @@ public class ListarTareasDisponiblesPorRefugioViewModel extends AndroidViewModel
     private MutableLiveData<Tarea> TareaDisponibleM;
     private MutableLiveData<String> errorM;
 
+    private MutableLiveData<Bundle> operationSuccessful;
 
     public ListarTareasDisponiblesPorRefugioViewModel(@NonNull Application application) {
         super(application);
         this.context = application.getApplicationContext();
 
 
+    }
+
+    public LiveData<Bundle> getOperationSuccessful(){
+        if(operationSuccessful==null){
+            operationSuccessful=new MutableLiveData<>();
+        }
+        return operationSuccessful;
     }
 
     public LiveData<List<Tarea>> getlistaTareasDisponibleM(){
@@ -130,7 +138,7 @@ public class ListarTareasDisponiblesPorRefugioViewModel extends AndroidViewModel
 
     }
 
-    public void inscribirse(View view, int selectedPosition) {
+    public void inscribirse(int selectedPosition) {
 
         //   aca llega el id de la tarea al que el usuario va a inscribirse
 
@@ -157,15 +165,18 @@ public class ListarTareasDisponiblesPorRefugioViewModel extends AndroidViewModel
 
                     ToastUtils.showToast(context, context.getString(R.string.Operacion_exitosa), R.color.toast_success,R.drawable.check);
 
-                    Navigation.findNavController(view).popBackStack(R.id.detalleRefugioFragment, true);
-
-
                     Tarea tarea = response.body();
-
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("itemrefugio", tarea.getRefugio());
-                    Navigation.findNavController(view).navigate(R.id.detalleRefugioFragment, bundle);
 
+                    bundle.putSerializable("refugioId", String.valueOf(tarea.getRefugio().getId()));
+
+                    if(tarea.getRefugio().getUsuario().getId() == tarea.getUsuario().getId()){
+
+                        bundle.putBoolean("TipoDeVista", true); // para que la vista se adapte a gestion de refugio
+                    }
+
+
+                    operationSuccessful.postValue(bundle);
 
 
                 }else{
