@@ -37,7 +37,7 @@ public class GestionRefugioFragment extends Fragment {
     private FragmentGestionRefugioBinding binding;
 
     private Boolean TipoDeVista=false;
-/*    private int idRefugio=0;*/
+
 
 
     public static GestionRefugioFragment newInstance() {
@@ -63,7 +63,6 @@ public class GestionRefugioFragment extends Fragment {
             public void onChanged(String error) {
 
                 ToastUtils.showToast(getContext(), error, R.color.toast_error,R.drawable.error);
-               // Snackbar.make(root, error, Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -222,9 +221,6 @@ public class GestionRefugioFragment extends Fragment {
                     ToastUtils.showToast(getContext(), getContext().getString(R.string.no_tiene_permisos), R.color.yellow,R.drawable.tipo);
                 }
 
-
-             //   vm.editarRefugio(bundle);
-                
             }
         });
 

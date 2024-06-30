@@ -193,7 +193,10 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
                 if (response.isSuccessful()) {
 
                     ToastUtils.showToast(context, context.getString(R.string.animal_registrado_correctamente), R.color.toast_success,R.drawable.check);
-                    Navigation.findNavController(view).navigate(R.id.item_registrar_animal);
+
+                    Navigation.findNavController(view).popBackStack(R.id.item_registrar_animal, true);
+
+                    Navigation.findNavController(view).navigate(R.id.listarAnimalFragment);
 
                 } else {
 

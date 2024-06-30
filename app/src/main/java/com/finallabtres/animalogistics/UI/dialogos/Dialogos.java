@@ -65,18 +65,14 @@ public class Dialogos {
 
                                         Navigation.findNavController(view).popBackStack(viewNavigation, true);
 
-
-
-                                        Bundle bundle = new Bundle();
-
                                         if(viewNavigation == R.id.gestionRefugioFragment){
+                                            Bundle bundle = new Bundle();
                                             bundle.putSerializable("refugioId", String.valueOf(animal.getRefugio().getId()));
+                                            bundle.putBoolean("TipoDeVista", true); //si borro es por es dueno o redacto la noticia
+                                            Navigation.findNavController(view).navigate(viewNavigation,bundle);
+                                        }else{
+                                            Navigation.findNavController(view).navigate(viewNavigation);
                                         }
-                                        Navigation.findNavController(view).navigate(viewNavigation,bundle);
-
-
-
-
 
 
 
@@ -147,6 +143,7 @@ public class Dialogos {
 
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("refugioId", String.valueOf(tarea.getRefugio().getId()));
+                                    bundle.putBoolean("TipoDeVista", true); //si borro es por es dueno o redacto la noticia
                                     Navigation.findNavController(view).navigate(R.id.gestionRefugioFragment,bundle);
 
 
@@ -248,9 +245,9 @@ public class Dialogos {
                                     Navigation.findNavController(view).popBackStack(R.id.gestionRefugioFragment, true);
 
 
-
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("refugioId", String.valueOf(noticia.getRefugio().getId()));
+                                    bundle.putBoolean("TipoDeVista", true); //si borro es por es dueno o redacto la noticia
                                     Navigation.findNavController(view).navigate(R.id.gestionRefugioFragment,bundle);
 
 
