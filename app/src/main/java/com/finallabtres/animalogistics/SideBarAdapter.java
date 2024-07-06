@@ -1,6 +1,7 @@
 package com.finallabtres.animalogistics;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -106,6 +107,11 @@ public class SideBarAdapter extends RecyclerView.Adapter<SideBarAdapter.ViewHold
 
                         bundle.putSerializable("refugioId", String.valueOf(refugioId));
                         bundle.putBoolean("TipoDeVista", TipoDeVista);
+
+                        SharedPreferences StateViewGestionRefugio = li.getContext().getSharedPreferences("StateViewGestionRefugio.xml", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = StateViewGestionRefugio.edit();
+                        editor.putInt("TabSelected", 0);
+                        editor.apply();
 
                         navController.navigate(R.id.gestionRefugioFragment, bundle);
 

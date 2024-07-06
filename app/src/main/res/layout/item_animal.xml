@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:clickable="true"
     android:focusable="true">
 
@@ -87,7 +88,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:text="@string/eliminar"
-                app:icon="@drawable/delete_icon" />
+                app:icon="@drawable/delete_icon"
+                app:strokeColor="#FF8A8A"
+                app:strokeWidth="1dp" />
 
         </LinearLayout>
 

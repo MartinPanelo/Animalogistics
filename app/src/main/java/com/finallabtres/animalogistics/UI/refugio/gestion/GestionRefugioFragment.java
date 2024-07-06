@@ -89,9 +89,7 @@ public class GestionRefugioFragment extends Fragment {
                 TareaGestionAdapter tareaGestionAdapter=new TareaGestionAdapter(listaTareas,TipoDeVista,getContext(),getLayoutInflater()/*,getActivity()*/);
                 binding.RVTNARefugio.setAdapter(tareaGestionAdapter);
 
-              /*  if (getActivity() != null) {
-                    getActivity().setTitle();
-                }*/
+
             }
         });
 
@@ -130,8 +128,31 @@ public class GestionRefugioFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         if(bundle != null){
-            vm.cargarDatosDeVoluntariados(bundle);
+            vm.CargarDatos(bundle);
+            binding.tabLayout.selectTab(binding.tabLayout.getTabAt(vm.getSP()));
+           // vm.cargarDatosDeVoluntariados(bundle);
+
+            binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                        if(vm.getSP()==0){
+
+                            Navigation.findNavController(v).navigate(R.id.agregarTareaFragment,bundle);
+                        } else if (vm.getSP()==1){
+
+                            Navigation.findNavController(v).navigate(R.id.agregarNoticiaFragment,bundle);
+                        } else if(vm.getSP()==2){
+
+                            Navigation.findNavController(v).navigate(R.id.agregarAnimalRefugioFragment,bundle);
+                        }
+
+
+
+                }
+            });
         }
+
 
 
 
@@ -148,9 +169,7 @@ public class GestionRefugioFragment extends Fragment {
                                 Navigation.findNavController(getView()).navigate(R.id.agregarTareaFragment,bundle);
                             }
                         });
-                        if(bundle != null) {
-                            vm.cargarDatosDeVoluntariados(bundle);
-                        }
+                        vm.CargarDatosTab(0);
 
                         break;
                     case 1:
@@ -160,9 +179,7 @@ public class GestionRefugioFragment extends Fragment {
                                 Navigation.findNavController(getView()).navigate(R.id.agregarNoticiaFragment,bundle);
                             }
                         });
-                        if(bundle != null) {
-                            vm.cargarDatosDeNoticias(bundle);
-                        }
+                        vm.CargarDatosTab(1);
 
                         break;
                     case 2:
@@ -180,9 +197,7 @@ public class GestionRefugioFragment extends Fragment {
 
                             }
                         });
-                        if(bundle != null) {
-                            vm.cargarDatosDeAnimales(bundle);
-                        }
+                        vm.CargarDatosTab(2);
 
                         break;
                     default:
@@ -203,12 +218,6 @@ public class GestionRefugioFragment extends Fragment {
 
 
 
-        binding.BTNAgregarVNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.agregarTareaFragment,bundle);
-            }
-        });
 
         binding.BTNeditarRefugio.setOnClickListener(new View.OnClickListener() {
             @Override

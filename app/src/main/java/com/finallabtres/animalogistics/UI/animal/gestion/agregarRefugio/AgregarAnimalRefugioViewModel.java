@@ -398,7 +398,7 @@ public class AgregarAnimalRefugioViewModel extends AndroidViewModel {
                             .load(API.URLBASE + RefugioM.getValue().getBannerUrl())
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .centerCrop()
-                            .override(500,500)
+                            .override(100,100)
                             .into(SIVBanner);
 
                     return infoWindow;

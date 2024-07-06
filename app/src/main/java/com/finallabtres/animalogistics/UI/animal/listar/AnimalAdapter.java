@@ -134,6 +134,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.ViewHolder
                     Bundle bundle = new Bundle();
 
                     bundle.putSerializable("itemAnimal", animal);
+                    bundle.putBoolean("MisRegistros", true);
 
 
 

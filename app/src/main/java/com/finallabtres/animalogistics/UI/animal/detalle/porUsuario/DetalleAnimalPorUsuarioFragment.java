@@ -63,6 +63,7 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
 
 
 
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
 
@@ -196,6 +197,12 @@ public class DetalleAnimalPorUsuarioFragment extends Fragment {
         Bundle bundle = getArguments();
 
         if(bundle != null){
+
+            //puedo llegar desde: mis registros, detalle animal desde mi refugio
+            if(bundle.getBoolean("MisRegistros")){
+                binding.LYFormularioRegistrarAnimal.menuEstado.setVisibility(View.GONE);
+            }
+
             animal = (Animal) bundle.getSerializable("itemAnimal");
 
             binding.LYFormularioRegistrarAnimal.TIETNombreAnimal.setText(animal.getNombre());

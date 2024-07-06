@@ -4,6 +4,7 @@ import static java.lang.Integer.parseInt;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,8 +44,9 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
     private MutableLiveData<Boolean> TipoDeVistaM;
 
-  //  private MutableLiveData<Bundle> operationSuccessful;
+   private String IdRefugio;
 
+   private SharedPreferences SP;
 
     public GestionRefugioViewModel(@NonNull Application application) {
         super(application);
@@ -96,11 +98,11 @@ public class GestionRefugioViewModel extends AndroidViewModel {
     }
 
 
-    public void cargarDatosDeVoluntariados(Bundle bundle) {
+    public void cargarDatosDeVoluntariados(/*Bundle bundle*/) {
 
-        TipoDeVistaM.postValue(bundle.getBoolean("TipoDeVista"));
+      //  TipoDeVistaM.postValue(bundle.getBoolean("TipoDeVista"));
 
-        String IdRefugio = bundle.getString("refugioId");
+       // String IdRefugio = bundle.getString("refugioId");
 
 
 
@@ -154,8 +156,8 @@ public class GestionRefugioViewModel extends AndroidViewModel {
         });
 
     }
-    public void cargarDatosDeNoticias(Bundle bundle) {
-        String IdRefugio = bundle.getString("refugioId");
+    public void cargarDatosDeNoticias(/*Bundle bundle*/) {
+        //String IdRefugio = bundle.getString("refugioId");
 
         String token = API.LeerToken(context);
 
@@ -206,8 +208,8 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
     }
 
-    public void cargarDatosDeAnimales(Bundle bundle) {
-        String IdRefugio = bundle.getString("refugioId");
+    public void cargarDatosDeAnimales(/*Bundle bundle*/) {
+        //IdRefugio = bundle.getString("refugioId");
 
         String token = API.LeerToken(context);
 
@@ -258,11 +260,41 @@ public class GestionRefugioViewModel extends AndroidViewModel {
 
     }
 
-/*    public void irAGestionAnimales(Bundle bundle,View view) {
+    public void CargarDatos(Bundle bundle) {
 
+        IdRefugio = bundle.getString("refugioId");
 
+        TipoDeVistaM.postValue(bundle.getBoolean("TipoDeVista"));
 
+        CargarDatosTab(getSP());
 
-    }*/
+    }
+
+    public void CargarDatosTab(int tab) {
+
+        setSP(tab);
+
+        if(tab == 0){
+            cargarDatosDeVoluntariados();
+        }else if(tab == 1){
+            cargarDatosDeNoticias();
+        }else if(tab == 2){
+            cargarDatosDeAnimales();
+        }
+
+    }
+
+    public void setSP(int tabSelected){
+        SP = context.getSharedPreferences("StateViewGestionRefugio.xml", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = SP.edit();
+        editor.putInt("TabSelected", tabSelected);
+        editor.apply();
+    }
+
+    public int getSP(){
+        SP = context.getSharedPreferences("StateViewGestionRefugio.xml", Context.MODE_PRIVATE);
+        return SP.getInt("TabSelected", 0);
+    }
+
 
 }
