@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="10dp"
+    tools:context=".UI.refugio.crear.CrearRefugioFragment">
+
+
+    <include
+        android:id="@+id/IformularioCrearRefugio"
+        layout="@layout/formulariocrearrefugio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</FrameLayout>
+
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLFormularioAnimal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="80dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <ScrollView
+            android:id="@+id/SVRegistrarRefugio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteY="84dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILNombreRefugio"
+                    android:layout_width="360dp"
+                    android:layout_height="85dp"
+                    android:hint="Nombre del refugio"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconContentDescription="@string/app_name"
+                    app:startIconDrawable="@drawable/id_svgrepo_com">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/TIETNombreRefugio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:text="SOYNOMBRE" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILDireccionRefugio"
+                    android:layout_width="360dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Direccion"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TILNombreAnimal"
+                    app:startIconContentDescription="@string/app_name"
+                    app:startIconDrawable="@drawable/pets">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/TIETDireccionRefugio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:text="SOYTIPO" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILTelefonoRefugio"
+                    android:layout_width="360dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Telefono"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TILNombreAnimal"
+                    app:startIconContentDescription="@string/app_name"
+                    app:startIconDrawable="@drawable/pets">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/TIETTelefonoRefugio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:text="SOYTIPO" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILDescripcionRefugio"
+                    android:layout_width="360dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:hint="Descripcion"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu"
+                    app:startIconContentDescription="@string/app_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+
+                        android:id="@+id/TIETDescripcionRefugio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center"
+
+                        android:ems="10"
+                        android:imeOptions="actionDone"
+                        android:inputType="textImeMultiLine|textMultiLine"
+                        android:text="ES una Nutria salvaje"
+
+                        android:textColorHint="@color/orange" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/CDFotoRefugio"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="28dp"
+                    android:contentDescription="tamanio"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.494"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/CDPosicion">
+
+                    <TextView
+                        android:id="@+id/textVieasdwwer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|top"
+                        android:text="Foto" />
+
+                    <ImageView
+                        android:id="@+id/IMGFotoRefugio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_margin="25dp"
+                        android:src="@drawable/addphoto" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/CDPosicionRefugio"
+                    android:layout_width="350dp"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="tamanio"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.487"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TILNombrsdfeAnimal">
+
+                    <TextView
+                        android:id="@+id/textVieasdw84"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|top"
+                        android:text="Posicion GPS" />
+
+
+                    <Button
+                        android:id="@+id/BTNPosicionActualParaRefugio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_gravity="fill"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Mi posicion actual"
+                        android:textColor="#000000"
+                        android:tooltipText="Mi Posicion Actual"
+                        app:icon="@drawable/pin"
+                        app:iconSize="25dp"
+                        app:iconTint="#000000" />
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/mapaRegistroRefugio"
+                        class="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="422dp"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/transparent_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="422dp"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="10dp"
+                        android:src="#000E0404"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILRangoRefugio"
+                    android:layout_width="360dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Rango de accion en metros"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconContentDescription="@string/app_name"
+                    app:startIconDrawable="@drawable/id_svgrepo_com">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/TIETRangoRefugio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:text="SOYNOMBRE" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/BTNRegistrarRefugio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="33dp"
+                    android:text="Crear refugio"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/CDFoto" />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+-->
+

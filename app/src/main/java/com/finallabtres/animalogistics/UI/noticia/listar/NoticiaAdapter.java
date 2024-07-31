@@ -1,5 +1,6 @@
 package com.finallabtres.animalogistics.UI.noticia.listar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -45,18 +46,23 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.titulo.setText(listaNoticias.get(position).getTitulo());
-        holder.autor.setText(listaNoticias.get(position).getCategoria());
+        holder.autor.setText(listaNoticias.get(position).getUsuario().getApellido()+", "+listaNoticias.get(position).getUsuario().getNombre());
 
-
+        if(listaNoticias.get(position).getContenido().length()>80){
+            holder.contenido.setText(listaNoticias.get(position).getContenido().substring(0,80)+"...");
+        }else{
+            holder.contenido.setText(listaNoticias.get(position).getContenido());
+        }
 
 
         Glide.with(context)
-                .load(/*API.URLBASE + */listaNoticias.get(position).getBannerUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .load(API.URLBASE + listaNoticias.get(position).getBannerUrl())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .fitCenter()
                 .override(150, 150)
                 .into(holder.imagen);
@@ -78,6 +84,8 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
         private TextView titulo;
         private TextView autor;
 
+        private TextView contenido;
+
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -86,6 +94,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
             imagen = itemView.findViewById(R.id.IMGFotoNoticia);
             titulo = itemView.findViewById(R.id.TVTitulo);
             autor = itemView.findViewById(R.id.TVAutor);
+            contenido = itemView.findViewById(R.id.TVContenidoNoticiaitem);
 
 
 

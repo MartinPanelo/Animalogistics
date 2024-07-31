@@ -1,5 +1,8 @@
 package com.finallabtres.animalogistics.MODELO;
 
+
+import android.graphics.drawable.Drawable;
+
 import com.finallabtres.animalogistics.R;
 
 import java.io.Serializable;
@@ -9,13 +12,13 @@ import java.util.List;
 public class Carousel implements Serializable {
 
     private int idRefugio;
-    private List<String> imagenes;
+    private List<Integer> imagenes;
 
     private List<String> descripciones;
 
     private List<Integer> vistas;
 
-    public Carousel(List<String> imagenes, List<String> descripciones, List<Integer> vistas) {
+    public Carousel(List<Integer> imagenes, List<String> descripciones, List<Integer> vistas) {
         this.imagenes = imagenes;
         this.descripciones = descripciones;
         this.vistas = vistas;
@@ -23,22 +26,20 @@ public class Carousel implements Serializable {
 
     public Carousel(int idRefugio) {
         this.imagenes = Arrays.asList(
-                "https://random.imagecdn.app/201/200",
-                "https://random.imagecdn.app/202/200",
-                "https://random.imagecdn.app/203/200",
-                "https://random.imagecdn.app/204/200"
-        );
+                R.drawable.noticiasrefugio,
+                R.drawable.carouselnoticia,
+                R.drawable.adopcionesrefugio);
+
         this.descripciones = Arrays.asList(
-                "Noticias",
-                "Anotarse Como Voluntario",
-                "Adopciónes",
-                "Eventos"
+                "Noticias.",
+                "Voluntariados.",
+                "Adopciónes."
         );
         this.vistas = Arrays.asList(
-                R.id.detalleNoticiaFragment,
-                R.id.detalleNoticiaFragment,
-                R.id.detalleNoticiaFragment,
-                R.id.detalleNoticiaFragment
+                R.id.listarNoticiaPorRefugioFragment,
+                R.id.listarTareasDisponiblesPorRefugioFragment,
+                R.id.detalleAnimalPorRefugioFragment
+
         );
         this.idRefugio = idRefugio;
 
@@ -52,11 +53,11 @@ public class Carousel implements Serializable {
         this.idRefugio = idRefugio;
     }
 
-    public List<String> getImagenes() {
+    public List<Integer> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<String> imagenes) {
+    public void setImagenes(List<Integer> imagenes) {
         this.imagenes = imagenes;
     }
 

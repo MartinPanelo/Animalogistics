@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/IMGFotoEditarNoticia"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@drawable/bgrefugioinfo"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/banner"
+        app:srcCompat="@drawable/addphoto" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="391dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IMGFotoEditarNoticia">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILAutorNoticiaEditar"
+                android:layout_width="360dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:hint="@string/autor"
+                app:errorEnabled="true"
+                app:helperTextEnabled="true"
+                app:startIconDrawable="@drawable/baseline_account_box_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TIETAutorNoticiaEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:imeOptions="actionNext"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILCategoriaNoticiaEditar"
+                android:layout_width="360dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:hint="@string/categoria"
+                app:errorEnabled="true"
+                app:helperTextEnabled="true"
+                app:startIconDrawable="@drawable/tipo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TIETCategoriaNoticiaEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILTituloNoticiaEditar"
+                android:layout_width="360dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                android:hint="@string/titulo"
+                app:errorEnabled="true"
+                app:helperTextEnabled="true"
+                app:startIconDrawable="@drawable/newspaper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TIETTituloNoticiaEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                   />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TILContenidoNOticiaEditar"
+                android:layout_width="360dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:hint="@string/contenido"
+                app:errorEnabled="true"
+                app:helperTextEnabled="true"
+                app:startIconDrawable="@drawable/post">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TIETContenidoNOticiaEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="textImeMultiLine|textMultiLine"
+                    android:textColorHint="@color/orange"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/BTNGuardarNoticia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="6dp"
+        android:text="@string/guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

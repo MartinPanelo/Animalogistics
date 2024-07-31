@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.carousel.MaskableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="0dp"
+    android:layout_marginVertical="0dp"
+    app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/IMGAnimalParaAdoptar"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:transitionName="image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/fotopuntacortada" />
+
+        <TextView
+            android:id="@+id/TVNombreAnimal"
+            android:layout_width="195dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="8dp"
+            android:text="HOLA MUNDO"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IMGAnimalParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVComentarioAnimal"
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="12dp"
+            android:justificationMode="inter_word"
+            android:text="TextView"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVNombreAnimal" />
+
+        <TextView
+            android:id="@+id/TVTituloEdadParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/edad"
+            android:gravity="center_vertical"
+            android:text="@string/edad"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVComentarioAnimal" />
+
+        <TextView
+            android:id="@+id/TVTituloGeneroParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/genero"
+            android:gravity="center_vertical"
+            android:text="@string/genero"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVEdadParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVTituloCollarParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/collar"
+            android:gravity="center_vertical"
+            android:text="@string/collar"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTituloGeneroParaAdoptar"
+            app:layout_constraintTop_toBottomOf="@+id/TVTamanoParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVTituloTipoParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/tipo"
+            android:gravity="center_vertical"
+            android:text="@string/tipo_de_animal"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTituloEstadoParaAdoptar"
+            app:layout_constraintTop_toBottomOf="@+id/TVCollarParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVTituloEstadoParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/estado"
+            android:gravity="center_vertical"
+            android:text="@string/estado"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVGeneroParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVTituloTamanoParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/tamano"
+            android:gravity="center_vertical"
+            android:text="@string/tamano"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTituloEdadParaAdoptar"
+            app:layout_constraintTop_toBottomOf="@+id/TVComentarioAnimal" />
+
+        <TextView
+            android:id="@+id/TVEdadParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloEdadParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVTamanoParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTituloEdadParaAdoptar"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloTamanoParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVGeneroParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloGeneroParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVCollarParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTituloGeneroParaAdoptar"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloCollarParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVEstadoParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloEstadoParaAdoptar" />
+
+        <TextView
+            android:id="@+id/TVTipoParaAdoptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTituloEstadoParaAdoptar"
+            app:layout_constraintTop_toBottomOf="@+id/TVTituloTipoParaAdoptar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.carousel.MaskableFrameLayout>

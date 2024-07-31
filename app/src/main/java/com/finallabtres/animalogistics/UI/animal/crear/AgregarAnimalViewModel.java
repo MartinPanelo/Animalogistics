@@ -30,6 +30,7 @@ import androidx.navigation.Navigation;
 
 import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Animal;
+import com.finallabtres.animalogistics.MODELO.ToastUtils;
 import com.finallabtres.animalogistics.MainActivity;
 import com.finallabtres.animalogistics.R;
 import com.google.android.gms.maps.CameraUpdate;
@@ -45,6 +46,9 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -65,10 +69,18 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
     private Location posicion;
 
 
+    // Crear instancia de DecimalFormatSymbols y establecer la coma como separador decimal
+
+    DecimalFormatSymbols simbolos = new DecimalFormatSymbols(Locale.getDefault());
+    DecimalFormat formato;
+
 
     public AgregarAnimalViewModel(@NonNull Application application) {
         super(application);
         this.context=application.getApplicationContext();
+
+        simbolos.setDecimalSeparator(',');
+        formato = new DecimalFormat("#.######", simbolos);
     }
     public LiveData<Bitmap> getFoto() {
         if (foto == null) {
@@ -113,11 +125,11 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
                     MarkerOptions marker = new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("Ubicación del Avistamiento");
                     googleMap.addMarker(marker);
 
+                    posicion.setLatitude(point.latitude);
+                    posicion.setLongitude(point.longitude);
+
                 }
             });
-
-
-
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(posicion.getLatitude(), posicion.getLongitude()))
                     .zoom(19)
@@ -138,7 +150,7 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
     }
 
 
-    public void registrarAnimal(View view, String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String comentarios, ImageView foto) {
+    public void registrarAnimal(View view,  String nombre, String tipo, float edad, String tamanoCheckedRadioButton, boolean collarChecked, String genero, String comentarios, ImageView foto) {
 
         API.ApiAnimalogistics API_A = API.getApi();
 
@@ -154,8 +166,8 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
         RequestBody Collar = RequestBody.create(MediaType.parse("application/json"), String.valueOf(collarChecked));
         RequestBody Genero = RequestBody.create(MediaType.parse("application/json"), genero);
         RequestBody Comentarios = RequestBody.create(MediaType.parse("application/json"), comentarios);
-        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), String.valueOf(posicion.getLatitude()));
-        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), String.valueOf(posicion.getLongitude()));
+        RequestBody GPSX = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLatitude()));
+        RequestBody GPSY = RequestBody.create(MediaType.parse("application/json"), formato.format(posicion.getLongitude()));
 
         MultipartBody.Part FotoFile = null; // Inicializa como null
 
@@ -180,7 +192,11 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
             public void onResponse(Call<Animal> call, Response<Animal> response) {
                 if (response.isSuccessful()) {
 
-                    Navigation.findNavController(view).navigate(R.id.item_registrar_animal);
+                    ToastUtils.showToast(context, context.getString(R.string.animal_registrado_correctamente), R.color.toast_success,R.drawable.check);
+
+                    Navigation.findNavController(view).popBackStack(R.id.item_registrar_animal, true);
+
+                    Navigation.findNavController(view).navigate(R.id.listarAnimalFragment);
 
                 } else {
 
@@ -192,14 +208,15 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
                             JSONObject jsonObject = new JSONObject(errorResponse);
                             if (jsonObject.has("errors")) {
 
-                                Toast.makeText(context, "Problema al registrar : ", Toast.LENGTH_SHORT).show();
+                                ToastUtils.showToast(context, context.getString(R.string.problema_al_registrar), R.color.toast_error,R.drawable.error);
+
                             }
                         } catch (JSONException e) {
                             // Si no se pudo analizar como JSON, el mensaje de error es la respuesta tal cual
                             errorMessage = errorResponse;
                         }
+                        ToastUtils.showToast(context, errorMessage, R.color.toast_error,R.drawable.error);
 
-                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -211,6 +228,10 @@ public class AgregarAnimalViewModel extends AndroidViewModel {
         });
 
     }
+
+
+
+
 
     public void respuetaDeCamara(ActivityResult result) {
 

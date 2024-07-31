@@ -11,16 +11,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TableRow;
 
-import com.finallabtres.animalogistics.MainActivityViewModel;
+import com.finallabtres.animalogistics.MODELO.IdiomaUtils;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.databinding.ActivityLoginBinding;
-import com.finallabtres.animalogistics.databinding.ActivityMainBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.button.MaterialButton;
 
 import android.content.pm.PackageManager;
 
@@ -31,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private LoginActivityViewModel vm;
+    private static final int REQUEST_PERMISSION = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,22 +77,27 @@ public class LoginActivity extends AppCompatActivity {
         /*-------------------------opcionesSheet-------------------------------*/
 
         binding.FABOpciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+           @Override
+           public void onClick(View v) {
+
+               IdiomaUtils.mostrarOpcionesIdioma(LoginActivity.this);
+           }
+       });
+/*
+
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(LoginActivity.this);
                 View view1 = LayoutInflater.from(LoginActivity.this).inflate(R.layout.opcionessheet, null);
                 bottomSheetDialog.setContentView(view1);
                 bottomSheetDialog.show();
 
 
-                TableRow MBEspañol = view1.findViewById(R.id.TREspañol);
+                TableRow MBEspanol = view1.findViewById(R.id.TREspaniol);
                 TableRow MBEnglish = view1.findViewById(R.id.TREnglish);
 
-                MBEspañol.setOnClickListener(new View.OnClickListener() {
+                MBEspanol.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         saveLocale("es");
-
                         FijarIdioma("es");
                     }
                 });
@@ -106,15 +111,16 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-            }
-        });
+            }*/
 
 
-        permisos();
+                permisos();
+
+
     }
 
 
-
+/*
     // Método para obtener el idioma guardado en SharedPreferences
     private String getSavedLocale() {
         SharedPreferences preferences = getSharedPreferences("SP", Context.MODE_PRIVATE);
@@ -133,15 +139,8 @@ public class LoginActivity extends AppCompatActivity {
     private void FijarIdioma(String Idioma){
 
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(Idioma));
-
-        //  LocaleListCompat localeListCompat =LocaleListCompat.forLanguageTags(Idioma);
-        //   setApplicationLocales(localeListCompat);
-
-
     }
-
-
-
+*/
 
 
 
@@ -149,10 +148,12 @@ public class LoginActivity extends AppCompatActivity {
     private void permisos() {
         // Verificar si los permisos no están otorgados
         if ((checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) ||
-                (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                        checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+                (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
+                (checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
+                (checkSelfPermission(android.Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) ||
+                (checkSelfPermission(android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)){
 
-            // Si no están otorgados, mostrar un único diálogo solicitando ambos permisos
+            // Si no están otorgados, mostrar un único diálogo solicitando todos los permisos necesarios
             AlertDialog.Builder dialogo = new AlertDialog.Builder(LoginActivity.this);
             dialogo.setTitle("Permisos Desactivados");
             dialogo.setMessage("Debe aceptar los permisos para el correcto funcionamiento de la App");
@@ -160,8 +161,14 @@ public class LoginActivity extends AppCompatActivity {
             dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    // Solicitar permisos de cámara y ubicación
-                    requestPermissions(new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                    // Solicitar permisos de cámara, ubicación y almacenamiento externo
+                    requestPermissions(new String[]{
+                            android.Manifest.permission.CAMERA,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION,
+                            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                            android.Manifest.permission.READ_MEDIA_IMAGES,
+                            android.Manifest.permission.CALL_PHONE
+                    }, REQUEST_PERMISSION);
                 }
             });
 

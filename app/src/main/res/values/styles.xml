@@ -20,11 +20,35 @@
         <item name="cornerSize">5%</item>
     </style>
 
+    <style name="infomapa" parent="">
+        <item name="cornerSizeBottomLeft">40%</item>
+        <item name="cornerSizeTopLeft">40%</item>
+
+    </style>
+
+    <style name="toastcustom" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+    <style name="fotoperfil" parent="">
+        <item name="cornerSizeBottomRight">50dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">50dp</item>
+    </style>
+
     <style name="fotopuntaredonda" parent="">
         <item name="cornerSizeBottomRight">20dp</item>
         <item name="cornerSizeBottomLeft">50dp</item>
         <item name="cornerSizeTopLeft">20dp</item>
         <item name="cornerSizeTopRight">20dp</item>
+    </style>
+
+    <style name="fotopuntaredondanoticia" parent="">
+        <item name="cornerSizeBottomLeft">16dp</item>
+        <item name="cornerSizeTopRight">50dp</item>
     </style>
 
     <style name="banner" parent="">
@@ -35,10 +59,20 @@
     </style>
 
 
+
+    <style name="BTNInscribirse" parent="">
+        <item name="cornerSizeBottomRight">30dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">5dp</item>
+    </style>
+
+
     <style name="Chip" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipStrokeColor">#C11526</item>
         <item name="chipStrokeWidth">5dp</item>
     </style>
+
 
 
 </resources>

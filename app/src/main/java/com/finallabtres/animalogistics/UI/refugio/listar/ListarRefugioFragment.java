@@ -3,7 +3,8 @@ package com.finallabtres.animalogistics.UI.refugio.listar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,35 +12,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.finallabtres.animalogistics.API.API;
-import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
-import com.finallabtres.animalogistics.UI.auth.login.LoginActivity;
-import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
-import com.finallabtres.animalogistics.UI.refugio.detalle.DetalleRefugioFragment;
-import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarRefugioBinding;
-import com.finallabtres.animalogistics.databinding.PerfilrefugioBinding;
-import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ListarRefugioFragment extends Fragment {
 
@@ -50,6 +44,7 @@ public class ListarRefugioFragment extends Fragment {
 
     BottomSheetDialog bottomSheetDialog;
 
+    @SuppressLint("MissingPermission")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -58,6 +53,7 @@ public class ListarRefugioFragment extends Fragment {
         View root = binding.getRoot();
 
         vm = new ViewModelProvider(this).get(ListarRefugioViewModel.class);
+
 
 
 
@@ -80,12 +76,15 @@ public class ListarRefugioFragment extends Fragment {
 
               vm.cargarPerfilRefugio(marker);
 
+
             }
         });
 
         vm.getPerfilRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
             @Override
             public void onChanged(Refugio refugio) {
+
+
 
 
                 viewperfilrefugio = LayoutInflater.from(ListarRefugioFragment.this.getContext()).inflate(R.layout.perfilrefugio, null);
@@ -100,10 +99,10 @@ public class ListarRefugioFragment extends Fragment {
 
 
                 Glide.with(requireActivity())
-                        .load(/*API.URLBASE +  refugio.getBannerUrl()*/"https://random.imagecdn.app/200/200")
+                        .load(API.URLBASE + refugio.getBannerUrl())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .fitCenter()
-                        .override(210,238)
+                        .override(380,150)
                         .into(SIVBanner);
 
                 TextView nombrerefugio = viewperfilrefugio.findViewById(R.id.TVNombreRefugio);
@@ -113,7 +112,7 @@ public class ListarRefugioFragment extends Fragment {
                 direccionrefugio.setText(refugio.getDireccion());
 
                 TextView telefonorefugio = viewperfilrefugio.findViewById(R.id.TVTelefono);
-                telefonorefugio.setText(refugio.getTelefono());
+                telefonorefugio.setText("Telefono: "+ refugio.getTelefono());
 
                 Button BTN = viewperfilrefugio.findViewById(R.id.BTNDetalleRefugio);
 
@@ -135,11 +134,12 @@ public class ListarRefugioFragment extends Fragment {
                                 navigate(R.id.detalleRefugioFragment, bundle);
                     }
                 });
-
-                if(!bottomSheetDialog.isShowing()){
+                bottomSheetDialog.show();
+               /* if(!bottomSheetDialog.isShowing()){
                     bottomSheetDialog.show();
-                }
-                   // bottomSheetDialog.show();
+                }else{
+                    bottomSheetDialog.dismiss();
+                }*/
 
             }
         });
@@ -157,7 +157,22 @@ public class ListarRefugioFragment extends Fragment {
         vm.getListaRefugioM().observe(getViewLifecycleOwner(), new Observer<List<Refugio>>() {
             @Override
             public void onChanged(List<Refugio> refugios) {
-                vm.ObtenerMapa();
+
+
+                // Inicializar FusedLocationProviderClient
+                FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+                fusedLocationClient.getLastLocation().addOnSuccessListener( requireActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                          //  vm.SetPosicion(location);
+                            vm.ObtenerMapa(location);
+                        }
+                    }
+                });
+
+
+
             }
         });
 
@@ -168,5 +183,11 @@ public class ListarRefugioFragment extends Fragment {
 
         return root;
     };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 
 }

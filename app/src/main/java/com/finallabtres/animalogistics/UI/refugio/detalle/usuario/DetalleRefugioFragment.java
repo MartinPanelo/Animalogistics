@@ -1,4 +1,4 @@
-package com.finallabtres.animalogistics.UI.refugio.detalle;
+package com.finallabtres.animalogistics.UI.refugio.detalle.usuario;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,34 +8,25 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.finallabtres.animalogistics.API.API;
 import com.finallabtres.animalogistics.MODELO.Carousel;
-import com.finallabtres.animalogistics.MODELO.Noticia;
 import com.finallabtres.animalogistics.MODELO.Refugio;
 import com.finallabtres.animalogistics.R;
-import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
-import com.finallabtres.animalogistics.UI.noticia.listar.NoticiaAdapter;
-import com.finallabtres.animalogistics.databinding.FragmentDetalleNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleRefugioBinding;
-import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselSnapHelper;
 import com.google.android.material.carousel.FullScreenCarouselStrategy;
 import com.google.android.material.carousel.HeroCarouselStrategy;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DetalleRefugioFragment extends Fragment {
 
@@ -60,7 +51,12 @@ public class DetalleRefugioFragment extends Fragment {
         vm = new ViewModelProvider(this).get(DetalleRefugioViewModel.class);
 
 
-
+        binding.BTNLlamarRefugio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vm.LlamarRefugio();
+            }
+        });
 
 
         vm.getRefugioM().observe(getViewLifecycleOwner(), new Observer<Refugio>() {
@@ -68,14 +64,16 @@ public class DetalleRefugioFragment extends Fragment {
             public void onChanged(Refugio refugio) {
 
 
-                Glide.with(getActivity())
-                        .load(/*API.URLBASE + */refugio.getBannerUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                Glide.with(root)
+                        .load(API.URLBASE + refugio.getBannerUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()
-                        .override(150, 150)
+                        .override(384, 150)
                         .into(binding.shapeableImageView2);
 
                 binding.textView3.setText(refugio.getNombre());
+                binding.TVTelefonoRefugioPerfil.setText(refugio.getTelefono());
+                binding.TVDireccionRefugioPerfil.setText(refugio.getDireccion());
                 binding.textView4.setText(refugio.getDescripcion());
 
 
@@ -87,14 +85,15 @@ public class DetalleRefugioFragment extends Fragment {
                 CarouselLayoutManager layoutManager = new CarouselLayoutManager(new HeroCarouselStrategy(),RecyclerView.VERTICAL);
 
 
-                layoutManager.setCarouselAlignment(CarouselLayoutManager.ALIGNMENT_CENTER);
+                layoutManager.setCarouselAlignment(CarouselLayoutManager.ALIGNMENT_START);
+
 
 
                 recyclerView.setLayoutManager(layoutManager);
 
 
                 if (snapHelper == null) {
-                    snapHelper = new CarouselSnapHelper(false);
+                    snapHelper = new CarouselSnapHelper(true);
                 }
 
                 snapHelper.attachToRecyclerView(recyclerView);
@@ -116,6 +115,7 @@ public class DetalleRefugioFragment extends Fragment {
 
 
 
+
         Bundle bundle = this.getArguments();
 
         if(bundle != null){
@@ -126,6 +126,21 @@ public class DetalleRefugioFragment extends Fragment {
         return root;
     }
 
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.GONE);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

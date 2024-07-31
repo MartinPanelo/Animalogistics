@@ -4,6 +4,12 @@
         <item>Undefined</item>
         <item>Male</item>
         <item>Female</item>
-
     </array>
+
+    <array name="menu_estado">
+        <item>In rehabilitation</item>
+        <item>Available for adoption</item>
+        <item>Adopted</item>
+    </array>
+
 </resources>

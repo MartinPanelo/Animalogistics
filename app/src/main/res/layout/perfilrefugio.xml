@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#73CCFC"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.google.android.material.bottomsheet.BottomSheetDragHandleView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="#D6FAE2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CLFormularioRegistro"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#95BCFFCF">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/IMGFotoRefugio"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:layout_marginTop="4dp"
-            android:background="#FD9473"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/banner" />

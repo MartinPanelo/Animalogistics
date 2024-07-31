@@ -3,6 +3,7 @@ package com.finallabtres.animalogistics.UI.noticia.detalle;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.noticia.listar.ListarNoticiaViewModel;
 import com.finallabtres.animalogistics.databinding.FragmentDetalleNoticiaBinding;
 import com.finallabtres.animalogistics.databinding.FragmentListarNoticiaBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DetalleNoticiaFragment extends Fragment {
 
@@ -45,19 +47,20 @@ public class DetalleNoticiaFragment extends Fragment {
 
 
         vm.getNoticiaM().observe(getActivity(), new Observer<Noticia>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(Noticia noticia) {
 
                 Glide.with(getActivity())
-                        .load(/*API.URLBASE +*/ noticia.getBannerUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .load(API.URLBASE + noticia.getBannerUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .fitCenter()
                         .override(300,200)
                         .into(binding.IMGFotoNoticia);
 
                 binding.TVCategoriaNoticia.setText(noticia.getCategoria());
 
-                binding.TVAutorNoticia.setText(noticia.getVoluntario().getUsuario().getApellido()+" "+noticia.getVoluntario().getUsuario().getNombre());
+                binding.TVAutorNoticia.setText(noticia.getUsuario().getApellido()+" "+noticia.getUsuario().getNombre());
 
                 binding.TVTituloNoticia.setText(noticia.getTitulo());
 
@@ -79,33 +82,23 @@ public class DetalleNoticiaFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return root;
     }
 
-/*    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DetalleNoticiaViewModel.class);
-        // TODO: Use the ViewModel
-    }*/
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.GONE);
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+    }
 }

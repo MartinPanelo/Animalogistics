@@ -48,35 +48,6 @@ public class Refugio implements Serializable {
         this.bannerUrl = bannerUrl;
     }
 
-/*    public Refugio(Usuario usuario, String nombre, String direccion, String descripcion, String telefono, Double gpsy, Double gpsx, int gpsRango, String bannerUrl, Carousel carousel) {
-        this.usuario = usuario;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.descripcion = descripcion;
-        this.telefono = telefono;
-        this.gpsy = gpsy;
-        this.gpsx = gpsx;
-        this.gpsRango = gpsRango;
-        this.bannerUrl = bannerUrl;
-        this.carousel = carousel;
-    }*/
-
-    public int getGpsRango() {
-        return gpsRango;
-    }
-
-    public void setGpsRango(int gpsRango) {
-        this.gpsRango = gpsRango;
-    }
-
-/*    public Carousel getCarousel() {
-        return carousel;
-    }
-
-    public void setCarousel(Carousel carousel) {
-        this.carousel = carousel;
-    }*/
-
     public int getId() {
         return id;
     }

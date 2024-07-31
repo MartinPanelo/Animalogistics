@@ -6,26 +6,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start|top"
-    android:fitsSystemWindows="true"
-    >
+
+    android:fitsSystemWindows="true">
 
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:theme="@style/Theme.Animalogistics.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="0dp"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Animalogistics.PopupOverlay" />
+            android:background="@android:color/holo_green_dark"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            app:popupTheme="@style/Theme.Animalogistics.PopupOverlay"
+            app:titleTextColor="#000000" />
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLContenedor"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+        <!--// aca tendria que estar el contenentfragment?-->
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/host_fragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -37,49 +62,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/divider">
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
+            style="@style/fotoredonda"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:background="@drawable/bottonnavigation"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="#000000"
+            app:menu="@menu/menu_bottomnav">
 
-
-            android:background="#E912162E"
-            app:menu="@menu/menu_bottomnav" />
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        tools:context=".MainActivity">
-
-
-        <!--// aca tendria que estar el contenentfragment?-->
-
-        <include
-            android:id="@+id/include"
-            layout="@layout/host_fragment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/NVSideBar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginBottom="30dp"
         android:fitsSystemWindows="true"
-        app:drawerLayoutCornerSize="30dp"
-        app:headerLayout="@layout/navside" />
+        android:isScrollContainer="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbars="none"
+        app:drawerLayoutCornerSize="30dp">
+        <!--
+        app:headerLayout="@layout/navside"
+-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <include
+                android:id="@+id/include2"
+                layout="@layout/navside"
+                android:isScrollContainer="true"
+
+                />
+
+
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

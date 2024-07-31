@@ -29,6 +29,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 
+import com.bumptech.glide.Glide;
+import com.finallabtres.animalogistics.API.API;
+import com.finallabtres.animalogistics.MODELO.Animal;
 import com.finallabtres.animalogistics.R;
 import com.finallabtres.animalogistics.UI.animal.listar.ListarAnimalFragment;
 import com.finallabtres.animalogistics.UI.animal.listar.ListarAnimalViewModel;
@@ -56,6 +59,8 @@ public class AgregarAnimalFragment extends Fragment {
 
     private FusedLocationProviderClient fusedLocationClient;
 
+
+
     @SuppressLint({"MissingPermission", "ClickableViewAccessibility"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -69,6 +74,8 @@ public class AgregarAnimalFragment extends Fragment {
 
         vm = new ViewModelProvider(this).get(AgregarAnimalViewModel.class);
 
+        binding.LYFormularioRegistrarAnimal.menuEstado.setVisibility(View.GONE);
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
 
@@ -76,28 +83,33 @@ public class AgregarAnimalFragment extends Fragment {
 
               @Override
             public void onClick(View view) {
+                  if (isAdded()) {
 
-                  int radioButtonId = binding.LYFormularioRegistrarAnimal.RBTNTamano.getCheckedRadioButtonId();
-                  String tamanoSeleccionado ="";
+                      int radioButtonId = binding.LYFormularioRegistrarAnimal.RBTNTamano.getCheckedRadioButtonId();
+                      String tamanoSeleccionado = "";
 
-                  if (radioButtonId != -1) {
-                      // Encuentra el RadioButton seleccionado por su ID
-                      RadioButton radioButton = binding.LYFormularioRegistrarAnimal.RBTNTamano.findViewById(radioButtonId);
+                      if (radioButtonId != -1) {
+                          // Encuentra el RadioButton seleccionado por su ID
+                          RadioButton radioButton = binding.LYFormularioRegistrarAnimal.RBTNTamano.findViewById(radioButtonId);
 
-                      // Obtén el texto del RadioButton seleccionado
-                      tamanoSeleccionado = radioButton.getText().toString();
+                          // Obtén el texto del RadioButton seleccionado
+                          tamanoSeleccionado = radioButton.getText().toString();
+                      }
+
+                          vm.registrarAnimal(view,
+                                  binding.LYFormularioRegistrarAnimal.TIETNombreAnimal.getText().toString(),
+                                  binding.LYFormularioRegistrarAnimal.TIETTipoAnimal.getText().toString(),
+                                  binding.LYFormularioRegistrarAnimal.SLREdad.getValue(),
+                                  tamanoSeleccionado,
+                                  binding.LYFormularioRegistrarAnimal.SWTCollar.isChecked(),
+                                  binding.LYFormularioRegistrarAnimal.CBGenero.getText().toString(),
+                                  binding.LYFormularioRegistrarAnimal.TIETDetalles.getText().toString(),
+                                  binding.LYFormularioRegistrarAnimal.IMGFoto);
+
+
+
                   }
-
-                vm.registrarAnimal(view,
-                        binding.LYFormularioRegistrarAnimal.TIETNombreAnimal.getText().toString(),
-                        binding.LYFormularioRegistrarAnimal.TIETTipoAnimal.getText().toString(),
-                        binding.LYFormularioRegistrarAnimal.SLREdad.getValue(),
-                        tamanoSeleccionado,
-                        binding.LYFormularioRegistrarAnimal.SWTCollar.isChecked(),
-                        binding.LYFormularioRegistrarAnimal.CBGenero.getText().toString(),
-                        binding.LYFormularioRegistrarAnimal.TIETDetalles.getText().toString(),
-                        binding.LYFormularioRegistrarAnimal.IMGFoto);
-            }
+              }
         });
 
 
@@ -132,7 +144,6 @@ public class AgregarAnimalFragment extends Fragment {
                                 public void onSuccess(Location location) {
                                     if (location != null) {
                                         vm.ObtenerMapa(location);
-                                        Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
                                     }
                                 }
                             });
@@ -141,25 +152,16 @@ public class AgregarAnimalFragment extends Fragment {
         });
 
 
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener( requireActivity(), new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location != null) {
-                            vm.ObtenerMapa(location);
-                            Snackbar.make(requireView(), "Latitud: " + location.getLatitude() + "\nLongitud: " + location.getLongitude(), Snackbar.LENGTH_LONG).show();
-                        }
-                    }
-                });
 
         vm.getMapa().observe(requireActivity(), new Observer<AgregarAnimalViewModel.MapaActual>() {
             @Override
             public void onChanged(AgregarAnimalViewModel.MapaActual mapaActual) {
+                if (isAdded()) {
 
-                SupportMapFragment SMF = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapaRegistroAnimal);
+                    SupportMapFragment SMF = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapaRegistroAnimal);
 
-                SMF.getMapAsync(mapaActual);
-
+                    SMF.getMapAsync(mapaActual);
+                }
             }
         });
 
@@ -193,6 +195,16 @@ public class AgregarAnimalFragment extends Fragment {
 
 
 
+            fusedLocationClient.getLastLocation().addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                vm.ObtenerMapa(location);
+                            }
+                        }
+                    });
+
+
         return root;
 
     }
@@ -207,6 +219,9 @@ public class AgregarAnimalFragment extends Fragment {
                     vm.respuetaDeCamara(result);
                 }
             });
+
+
+
 
 }
 

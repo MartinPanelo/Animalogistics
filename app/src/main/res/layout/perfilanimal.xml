@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#73CCFC"
+    android:orientation="vertical">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/BSDHVPerfilAnimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLDatosAnimal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/IMGFotoAnimal"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="4dp"
+            android:background="#FD9473"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/banner" />
+
+
+        <TextView
+            android:id="@+id/TVTipoAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="36dp"
+            android:text="Tipo"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IMGFotoAnimal" />
+
+        <TextView
+            android:id="@+id/TVTamanoAnimal"
+            android:layout_width="194dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="36dp"
+            android:text="tamano"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTipoAnimal"
+            app:layout_constraintTop_toBottomOf="@+id/IMGFotoAnimal" />
+
+        <TextView
+            android:id="@+id/TVGeneroAnimal"
+            android:layout_width="145dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="Direccion del refugio"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVTipoAnimal" />
+
+        <TextView
+            android:id="@+id/TVComentaiosAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Direccion del refugio"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVGeneroAnimal" />
+
+        <Button
+            android:id="@+id/BTNAgregarAnimalRefugio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="49dp"
+            android:text="Agregar al Refugio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVComentaiosAnimal" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</TableLayout>

@@ -8,25 +8,33 @@
     tools:context=".UI.animal.crear.AgregarAnimalFragment">
 
 
-    <!--
-
--->
-
-
-    <ScrollView
-        android:id="@+id/SVRegistrarAnimal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="80dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="80dp">
 
-        <include
-            android:id="@+id/LYFormularioRegistrarAnimal"
-            layout="@layout/formularioregistraranimal" />
+        <ScrollView
+            android:id="@+id/SVRegistrarAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-    </ScrollView>
+            <include
+                android:id="@+id/LYFormularioRegistrarAnimal"
+                layout="@layout/formularioregistraranimal" />
+
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
 

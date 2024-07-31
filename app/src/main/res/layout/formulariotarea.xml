@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILActividadTarea"
+        android:layout_width="360dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="40dp"
+        android:hint="@string/actividad"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:startIconDrawable="@drawable/id_svgrepo_com">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TIETActividadTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILDescripcionTarea"
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:hint="@string/detalles"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILActividadTarea">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+
+            android:id="@+id/TIETDescripcionTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="textImeMultiLine|textMultiLine"
+            android:textColorHint="@color/orange" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/CBLiberarTarea"
+        android:layout_width="234dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/liberar_esta_tarea"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVTituloUsuarioTarea" />
+
+    <TextView
+        android:id="@+id/TVTituloUsuarioTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/a_cargo_de"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TILDescripcionTarea" />
+
+    <TextView
+        android:id="@+id/TVUsuarioTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/nadie"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/TVTituloUsuarioTarea"
+        app:layout_constraintTop_toBottomOf="@+id/TILDescripcionTarea" />
+
+    <Button
+        android:id="@+id/BTNGuardarTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/guardar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CBLiberarTarea" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

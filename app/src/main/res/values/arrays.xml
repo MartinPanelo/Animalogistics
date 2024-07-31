@@ -4,6 +4,11 @@
         <item>Indefinido</item>
         <item>Macho</item>
         <item>Hembra</item>
+    </array>
 
+    <array name="menu_estado">
+        <item>En recuperacion</item>
+        <item>En adopcion</item>
+        <item>Adoptado</item>
     </array>
 </resources>

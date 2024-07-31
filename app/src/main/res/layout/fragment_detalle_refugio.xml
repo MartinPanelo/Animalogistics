@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.refugio.detalle.DetalleRefugioFragment">
+    tools:context=".UI.refugio.detalle.usuario.DetalleRefugioFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,10 +15,10 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
             android:background="#4CAF50"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,38 +29,103 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="TextView"
+            android:layout_marginTop="8dp"
+            android:text="@string/nombre_del_refugio"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shapeableImageView2" />
 
+
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="77dp"
-            android:text="TextView"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/descripcion_del_refugio"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
+            app:layout_constraintTop_toBottomOf="@+id/TVDireccionRefugioPerfil" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RVCarousel"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="330dp"
+            android:layout_marginBottom="5dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:orientation="vertical"
             app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/BTNLlamarRefugio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/llamar"
+            app:icon="@android:drawable/stat_sys_phone_call"
+            app:layout_constraintStart_toEndOf="@+id/TVTelefonoRefugioPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/TVTelefonoRefugioPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/telefono"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVTelefonoRefugio"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/TVDireccionRefugioPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/direccion"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/TVDescripcionRefugio"
+            app:layout_constraintTop_toBottomOf="@+id/TVTelefonoRefugioPerfil" />
+
+        <TextView
+            android:id="@+id/TVDescripcionRefugio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/direccion"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.149"
-            android:clipChildren="false"
-            android:clipToPadding="false"/>
+            app:layout_constraintTop_toBottomOf="@+id/TVTelefonoRefugio" />
+
+        <TextView
+            android:id="@+id/TVTelefonoRefugio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/telefono_"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

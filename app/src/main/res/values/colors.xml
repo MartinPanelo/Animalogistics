@@ -12,9 +12,15 @@
     <color name="magenta">#FFFF00FF</color>
     <color name="grey">#FF808080</color>
 
+
 <!--    &#45;&#45;-->
     <color name="Azulado">#009688</color>
 
+
+    <!--toast-->
+
+    <color name="toast_error">#FF3A3A</color>
+    <color name="toast_success">#3AFF3A</color>
 
     <!--MAPA-->
     <color name="Area">#81009688</color>
